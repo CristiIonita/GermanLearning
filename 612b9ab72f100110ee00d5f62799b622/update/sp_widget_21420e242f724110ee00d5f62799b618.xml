@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.main_container{
+background:#484649;
+  width:14px;
+  height:176px;
+ border-radius:0px 8px 8px 0px;
+  border: 0.5px solid white;
+  border-left:0px;
+  opacity:0.96;
+}
+.decoration{
+  position:absolute;
+  visibility: visible;
+width:2px;
+height:50px;
+background-color:white;
+margin:6px;
+margin-top:63px;
+}
+p{
+visibility: hidden;
+}
+
+.second_container{
+ margin-left:5px;
+padding-top:3px
+}
+.third_container{
+  position:relative;
+  top:23%;
+margin-top:15px;
+  margin-left:5px;
+}
+.col-xs-4{
+	width:50px;
+  height:50px;
+  border:2px solid #DEE2E6;
+  background-color:#606264;
+}
+
+img{
+  position:relative;
+  margin:0px 0px 7px -15px;
+  text-align:center;
+width:46px;
+  height:46px;
+}
+
+.glasor{
+position: relative;
+visibility: hidden;
+}
+div:hover.main_container{
+background:#484649;
+  width:260px;
+  height:175px;
+  border-radius:0px 8px 8px 0px;
+ 	opacity:0.96;
+}
+div:hover .decoration{
+//visibility: hidden;
+  margin:252px;
+margin-top:63px;
+}
+div:hover .glasor{
+visibility:visible;
+  position:relative;
+  margin-left:75px;;
+  margin-top:17px;
+}
+div:hover p{
+  visibility: visible;
+color:white;
+  text-align:center;
+font-weight: bold;
+  font-size:12px;
+}
+
+
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>grades widget</description>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>gla_homepage_grades</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>gla_homepage_grades</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+data.student= false;
+data.profesor= false;
+data.display=[];
+if (gs.getUser().isMemberOf("ce2b99ec2fa04110ee00d5f62799b6e8")){
+
+data.student= true;
+
+}
+	if (gs.getUser().isMemberOf("ae4b9dec2fa04110ee00d5f62799b62e")){
+
+data.profesor= true;
+
+}
+//student
+	var nota=0;
+	var avg=0;
+	var gr1=new GlideRecord('x_723119_germanlrn_user_assignment');
+	gr1.addQuery('user',gs.getUserID());
+	gr1.addQuery('state','5');
+	gr1.query();
+	while(gr1.next()){
+		nota+=parseInt(gr1.grade);
+		avg++;
+	}
+	if(!nota||!avg){
+		data.averageGrade=0;
+	}else{
+	data.averageGrade=nota/avg;
+	}
+	var gr=new GlideRecord('sys_user');
+	gr.addQuery('sys_id',gs.getUserID());
+	gr.query();
+	if(gr.next()){
+		data.practicePoints=''+parseFloat(gr.u_points).toFixed(2);
+	}
+	
+	if(data.averageGrade>=6){
+		data.pic1='award.png';
+	}
+	
+	if(avg>=10){
+		data.pic2='trophy.png';
+	}
+	
+	if(data.averageGrade>=9){
+		data.pic3='hat.png';
+	}
+	
+	if(data.practicePoints>100){
+		data.pic4='brandenburg.png';
+	}
+	if((''+gr.u_practice_time).length==8 && parseInt((''+gr.u_practice_time)[3])>=3){
+		data.pic5='hourglass.png';
+	}
+	
+	if(data.practicePoints>150){ 
+		data.pic6='flag.png';
+	}
+	
+	
+	//profesor
+	
+	var gr2=new GlideRecord('sys_user_grmember');
+	gr2.addEncodedQuery('group=ce2b99ec2fa04110ee00d5f62799b6e8');
+	gr2.query();
+	while(gr2.next()){
+		var resource_data={};
+		var nota=0;
+	var avg=0;
+	var gr3=new GlideRecord('x_723119_germanlrn_user_assignment');
+	gr3.addQuery('user',gr2.user);
+	gr3.addQuery('state','5');
+	gr3.query();
+	while(gr3.next()){
+		nota+=parseInt(gr3.grade);
+		avg++;
+	}
+	if(!nota||!avg){
+		resource_data.grade=0;
+	}else{
+	resource_data.grade=nota/avg;
+	}
+		resource_data.name=gr2.user.getDisplayValue();
+		resource_data.points=''+parseFloat(gr2.user.u_points).toFixed(2);
+		data.display.push(resource_data);
+		
+	}
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-04-08 12:07:40</sys_created_on>
+        <sys_id>21420e242f724110ee00d5f62799b618</sys_id>
+        <sys_mod_count>224</sys_mod_count>
+        <sys_name>gla_homepage_grades</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_21420e242f724110ee00d5f62799b618</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-04-21 10:01:09</sys_updated_on>
+        <template><![CDATA[<div  class="main_container">
+  
+	<div class="decoration" style="z-index:1000;">
+    
+  </div>
+  
+  <div ng-if=data.student class="second_container">
+    <p>Average assigments grade: <span style="color: #FFD541">{{data.averageGrade}}</span></p>
+    <p>Total practice points: <span style="color: #FFD541">{{data.practicePoints}}</span></p>
+ </div>
+  <div ng-if=data.student class="glasor">
+  <div class="row">
+    <div class="col-xs-4">
+       <img alt="" title="Average greater than 6" ng-src="{{ data.pic1 }}" />
+    </div>
+    <div class="col-xs-4">
+       <img alt="" title="More than 10 assignments submitted" ng-src="{{ data.pic2 }}" />
+    </div>
+    <div class="col-xs-4">
+       <img alt="" title="Average greater than 9" ng-src="{{ data.pic3 }}" />
+    </div>
+  </div>
+  
+  <div class="row">
+        <div class="col-xs-4">
+       <img alt=""  title="Earn 100 points" ng-src="{{ data.pic4 }}" />
+    </div>
+    <div class="col-xs-4">
+       <img alt="" title="More than 30 minutes practice time" ng-src="{{ data.pic5 }}" />
+    </div>
+    <div class="col-xs-4">
+       <img alt="" title=" Earn 150 points" ng-src="{{ data.pic6 }}" />
+    </div>
+  </div>
+   </div>
+     
+  <div ng-if=data.profesor class="third_container">
+   <div ng-repeat='resource_data in data.display'>
+     <p style="text-align:left;"><span style="color: #FE5339">{{resource_data.name}} </span>average grade <span style="color: #FFD541">{{resource_data.grade}}</span> and <span style="color: #FFD541">{{resource_data.points}}</span> points</p>
+    </div>
+    
+  </div>
+  
+</div>]]></template>
+    </sp_widget>
+</record_update>

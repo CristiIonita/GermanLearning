@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="DELETE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function(spUtil,$scope,$window) {
+  /* widget controller */
+  var c = this;
+	//c.options.record_id=
+		
+		$scope.$watch(function () {
+     return $scope.page.g_form.getValue('select_record');
+   }, function (value) {
+		 $timeout(function() { 
+		  c.data.id = $scope.page.g_form.getValue('select_record');
+			c.server.update();
+		 $scope.$apply();
+		 });
+
+	
+		});}				
+	]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id/>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Copy of EmbedForTesting</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+data.sys_id = "";
+	if (input && input.id){
+	data.sys_id = input.id;	
+	console.log(data.sys_id + " from server");
+
+}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-11 13:20:14</sys_created_on>
+        <sys_id>a954ca2a2fe14110ee00d5f62799b63a</sys_id>
+        <sys_mod_count>19</sys_mod_count>
+        <sys_name>Copy of EmbedForTesting</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_a954ca2a2fe14110ee00d5f62799b63a</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-11 13:51:11</sys_updated_on>
+        <template><![CDATA[<div>
+<widget id ='std_ticket_attachments' options={'record_id':{{c.options.record_id}},'record_table':'x_723119_germanlrn_resource'}></widget>
+  <div>
+    {{c.options.record_id}}
+    {{::options.record_table}}
+  
+  </div>
+</div>]]></template>
+    </sp_widget>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sp_widget_a954ca2a2fe14110ee00d5f62799b63a</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_widget"&gt;&lt;sp_widget action="INSERT_OR_UPDATE"&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[api.controller=function(spUtil,$scope,$window) {
+  /* widget controller */
+  var c = this;
+	//c.options.record_id=
+		
+		$scope.$watch(function () {
+     return $scope.page.g_form.getValue('select_record');
+   }, function (value) {
+		 $timeout(function() { 
+		  c.data.id = $scope.page.g_form.getValue('select_record');
+			c.server.update();
+		 $scope.$apply();
+		 });
+
+	
+		});}				
+	]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css/&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;true&lt;/has_preview&gt;&lt;id/&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]&gt;&lt;/link&gt;&lt;name&gt;Copy of EmbedForTesting&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+data.sys_id = "";
+	if (input &amp;&amp; input.id){
+	data.sys_id = input.id;	
+	console.log(data.sys_id + " from server");
+
+}
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;icristi&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-02-11 13:20:14&lt;/sys_created_on&gt;&lt;sys_id&gt;a954ca2a2fe14110ee00d5f62799b63a&lt;/sys_id&gt;&lt;sys_mod_count&gt;19&lt;/sys_mod_count&gt;&lt;sys_name&gt;Copy of EmbedForTesting&lt;/sys_name&gt;&lt;sys_package display_value="German Learning" source="x_723119_germanlrn"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="German Learning"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_a954ca2a2fe14110ee00d5f62799b63a&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;icristi&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-02-11 13:51:11&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div&gt;
+&lt;widget id ='std_ticket_attachments' options={'record_id':{{c.options.record_id}},'record_table':'x_723119_germanlrn_resource'}&gt;&lt;/widget&gt;
+  &lt;div&gt;
+    {{c.options.record_id}}
+    {{::options.record_table}}
+  
+  &lt;/div&gt;
+&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>492327472</payload_hash>
+        <record_name>Copy of EmbedForTesting</record_name>
+        <reverted_from/>
+        <source>a52b9ab72f100110ee00d5f62799b624</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-11 13:51:11</sys_created_on>
+        <sys_id>f26b0e6e2fe14110ee00d5f62799b6fa</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ee90d528d0000001</sys_recorded_at>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-11 13:51:11</sys_updated_on>
+        <type>Widget</type>
+        <update_guid>3e6b0e6effe141108eb82d9bab4dbef9</update_guid>
+        <update_guid_history>3e6b0e6effe141108eb82d9bab4dbef9:492327472,5b19422e6ee1411015597d7c662578b0:-1170189552,3ef8c62eb0e1411057ff76fab5a36215:-2068637962,76d8422e12e141101bca67a8abd4adc6:-313075818,5d98022e03e14110a3f0227150651c37:183871523,4888caead0e14110f8b383356ee5f39d:-460120688,9178c2ea47e14110f324339bea71a267:672104944,6957ceaa85e14110e8107897f3689acc:841239021,9937ceaaf3e141100a3b490999d50180:-800054991,dd270aaaafe14110d4adec91adac6b08:-935318767,41178eaa86e14110553d7fb1c9a4415b:2124070929,cdf502aa82e141102b2195d560d8719e:1411659655,75e58e6a12e141102fd3b76313e25b03:1324691975,59d58e6a62e14110da3d8449eaddfaae:-1727408089,2fb54e6a4ae14110b1ddf0f696fca19a:368863587,3e95c26acce14110b526868a02181fb6:705881530,f0650a6aabe141107c8f9dadb15792fa:-668559685,9ce4ce2ac6e141103d529519d4c2be62:1560866102,73944a2a81e1411047533e98fa97b279:-485727370,a554ca2a46e14110d5bf1646ec8a093c:810241105</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Copy of EmbedForTesting">6d8b46ae2fe14110ee00d5f62799b6bc</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-11 13:51:38</sys_created_on>
+        <sys_db_object display_value="" name="sp_widget">sp_widget</sys_db_object>
+        <sys_id>5bef784cc2cc4e89a85a13c87e3cc741</sys_id>
+        <sys_metadata>a954ca2a2fe14110ee00d5f62799b63a</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Copy of EmbedForTesting</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sp_widget_a954ca2a2fe14110ee00d5f62799b63a</sys_update_name>
+        <sys_update_version display_value="sp_widget_a954ca2a2fe14110ee00d5f62799b63a">f26b0e6e2fe14110ee00d5f62799b6fa</sys_update_version>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-11 13:51:38</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

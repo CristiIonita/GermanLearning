@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_723119_germanlrn.LexicalaApi</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>LexicalaApi</name>
+        <script><![CDATA[var LexicalaApi = Class.create();
+LexicalaApi.prototype = {
+    partOfSpeech: function(word) {
+
+
+
+        var url = 'https://lexicala1.p.rapidapi.com/search?source=global&language=de&text=' + word;
+        var request = new sn_ws.RESTMessageV2();
+        request.setHttpMethod('get');
+        request.setEndpoint(url);
+        request.setRequestHeader('x-rapidapi-host', 'lexicala1.p.rapidapi.com');
+        request.setRequestHeader('x-rapidapi-key', '916225f22emsh959d17aa78a5d43p146d6djsna6ee4570ebfc');
+        var response = request.execute();
+        var httpResponseStatus = response.getStatusCode();
+        if (httpResponseStatus == 200) {
+            var responseObj = response.getBody();
+            var res = JSON.parse(responseObj);
+
+
+            var partOfSpeech = res.results[0].headword.pos;
+
+            return partOfSpeech;
+        }
+
+    },
+
+    details: function(word, speech) {
+        //word api
+        var url = 'https://lexicala1.p.rapidapi.com/search?source=global&language=de&text=' + word;
+        var request = new sn_ws.RESTMessageV2();
+        request.setHttpMethod('get');
+        request.setEndpoint(url);
+        request.setRequestHeader('x-rapidapi-host', 'lexicala1.p.rapidapi.com');
+        request.setRequestHeader('x-rapidapi-key', '916225f22emsh959d17aa78a5d43p146d6djsna6ee4570ebfc');
+        var response = request.execute();
+        var httpResponseStatus = response.getStatusCode();
+        if (httpResponseStatus == 200) {
+            var responseObj = response.getBody();
+            var res = JSON.parse(responseObj);
+
+            var entry_id = res.results[0].id;
+        }
+
+        //entry api
+
+        var urlEntry = "https://lexicala1.p.rapidapi.com/entries/" + entry_id;
+        var requestEntry = new sn_ws.RESTMessageV2();
+        requestEntry.setHttpMethod('get');
+        requestEntry.setEndpoint(urlEntry);
+        requestEntry.setRequestHeader('x-rapidapi-host', 'lexicala1.p.rapidapi.com');
+        requestEntry.setRequestHeader('x-rapidapi-key', '916225f22emsh959d17aa78a5d43p146d6djsna6ee4570ebfc');
+        var responseEntry = requestEntry.execute();
+        var http_ResponseStatus = responseEntry.getStatusCode();
+        if (http_ResponseStatus == 200) {
+            var response_Obj = responseEntry.getBody();
+            var res_entry = JSON.parse(response_Obj);
+        }
+        if (speech == "noun") {
+            var plural = res_entry.headword.inflections[1].text;
+            var gender = res_entry.headword.gender;
+            var example1 = res_entry.senses[0].examples[0].text;
+            var example2 = res_entry.senses[0].examples[0].translations.en.text;
+
+
+            var detailsObj = {
+                plural: plural,
+                gender: gender,
+                example1: example1,
+                example2: example2
+
+            };
+
+            return detailsObj;
+        } else {
+
+
+            var example1 = res_entry.senses[0].examples[0].text;
+            var example2 = res_entry.senses[0].examples[0].translations.en.text;
+
+
+            var detailsObj = {
+
+                example1: example1,
+                example2: example2
+
+            };
+
+            return detailsObj;
+        }
+
+
+    },
+
+
+
+    type: 'LexicalaApi'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-02-23 10:45:07</sys_created_on>
+        <sys_id>fbd31b162f398110ee00d5f62799b6df</sys_id>
+        <sys_mod_count>43</sys_mod_count>
+        <sys_name>LexicalaApi</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_script_include_fbd31b162f398110ee00d5f62799b6df</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-04 12:58:53</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function(spUtil , $rootScope) {
+  /* widget controller */
+  var c = this;
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.container-fluid{&#13;
+  	margin:0;&#13;
+  padding:0;&#13;
+background-color:#54BC69;&#13;
+text-align:center;&#13;
+  width:100%;&#13;
+	height : calc(69.8vh - 35px);&#13;
+}&#13;
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>copy_of_gla_homepage_greetings</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Copy of GLA Homepage greeting</name>
+        <option_schema>[{"name":"access_type","section":"Behavior","label":"Access type","type":"string"}]</option_schema>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+data.userName = gs.getUserName();
+data.student = false;
+data.profesor = false;
+
+if (gs.getUser().isMemberOf("ce2b99ec2fa04110ee00d5f62799b6e8")){
+
+data.student= true;
+
+}
+	if (gs.getUser().isMemberOf("ae4b9dec2fa04110ee00d5f62799b62e")){
+
+data.profesor= true;
+
+}
+	//student
+	//Days since enrollment
+data.currentDate = new GlideDate();
+data.user = new GlideRecord('sys_user');
+data.user.get(gs.getUserID());
+data.enrollmentDate = new GlideDate();
+data.enrollmentDate.setDisplayValue(data.user.u_enrollment_date.toString());
+data.duration = GlideDate.subtract(data.enrollmentDate,data.currentDate);
+data.days = data.duration.getDayPart();
+	data.practiceTime=data.user.getDisplayValue('u_practice_time');
+	// Assignments completed
+	data.completed = 0;
+	data.assignment = new GlideRecord('x_723119_germanlrn_user_assignment');
+	data.assignment.addQuery('user',gs.getUserID());
+	data.assignment.query();
+
+	while(data.assignment.next())
+		{
+			if(data.assignment.state == 5){
+			data.completed++;
+		}
+		}
+//profesor
+		// number of groups that the current user manages
+	data.groupCount = 0;
+	data.group = new GlideRecord('sys_user_group');
+	data.group.addQuery('manager',gs.getUserID());
+	data.group.query();
+		while(data.group.next())
+		{
+	data.groupCount++;
+		}
+	
+	//number of users that are part of the groups managed
+	data.member = new GlideAggregate('sys_user_grmember');
+	data.member.addQuery('group.manager',gs.getUserID());
+	data.member.addAggregate('COUNT');
+	data.member.query();
+
+	data.memberCount = 0; // default to error state since 0 is a valid count
+
+	if (data.member.next()) {
+		data.memberCount = data.member.getAggregate('COUNT');
+	}
+
+	
+	//number of resources created by the current user
+	
+	data.resource = new GlideAggregate('x_723119_germanlrn_resource');
+	data.resource.addQuery('sys_created_by',gs.getUserName());
+	data.resource.addAggregate('COUNT');
+	data.resource.query();
+	if(data.resource.next())
+		{
+	data.resourceCount = data.resource.getAggregate('COUNT')
+		}
+	//number of homework records created
+	
+	data.homework = new GlideRecord('x_723119_germanlrn_homework');
+	data.homework.addQuery('sys_created_by',gs.getUserName());
+  data.homework.query();
+	var count=0;
+	while(data.homework.next())
+		{
+	count++;
+		}
+	data.homeworkCount=count;
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-03-22 09:21:04</sys_created_on>
+        <sys_id>429386cf2fd2c110ee00d5f62799b692</sys_id>
+        <sys_mod_count>30</sys_mod_count>
+        <sys_name>Copy of GLA Homepage greeting</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_429386cf2fd2c110ee00d5f62799b692</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-03-23 12:28:20</sys_updated_on>
+        <template><![CDATA[<div class="container-fluid">
+
+    <h1 class="welcome-greeting-text">Welcome {{data.userName}}</h1>
+
+<div ng-if=data.student style="height:100%">
+  <p class="text-center" ng-ift=data.days>Days since enrollment: {{data.days}}</p>
+  <p class="text-center" ng-ift=data.assignments >Completed assignments: {{data.completed}}</p>
+  <p class="text-center" ng-ift=data.practiceTime>Practice time: </p>
+</div>
+  
+  
+<div ng-if=data.profesor style="height:100%">
+	<p class="text-center" ng-ift=data.nrOfGroups>Group managed: {{data.groupCount}}</p>
+    <p class="text-center" ng-ift=data.assignments >User managed: {{data.memberCount}}</p>
+ 	<p class="text-center" ng-ift=data.practiceTime>Resources created: {{data.resourceCount}}</p>
+ 	<p class="text-center" ng-ift=data.lorem>Homeworks: {{data.homeworkCount}}</p>
+</div>
+  
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>@media (max-width: 800px) {
+  .col-lg-4 {
+ margin-left : 75px;
+  }
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>taskstyle</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>TasksStyle</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-03-07 13:05:57</sys_created_on>
+        <sys_id>8317e9962f828110ee00d5f62799b68e</sys_id>
+        <sys_mod_count>50</sys_mod_count>
+        <sys_name>TasksStyle</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_8317e9962f828110ee00d5f62799b68e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-03-07 14:02:52</sys_updated_on>
+        <template><![CDATA[
+  
+
+<div>
+   <div class = "row">
+      <div class="col-lg-12 text-center" >
+         <input style="width : 50%" id ="searchBar" placeholder="Search for a record" ng-model="c.data.filterText" ng-change="c.update()"  />
+      </div>
+   </div>
+   <div class = "row">
+      <div class="col-lg-4">
+      <p>
+         Type :
+      </p>
+      <div >
+         <input  ng-click = "c.update()" ng-model="c.data.homew" class="filterInput" type="checkbox" name="homew" value="Homeworks" />
+         <label for="homew">Homeworks</label>
+      </div>
+      <div >
+         <input ng-click = "c.update()" ng-model="c.data.userAss" class="filterInput" type="checkbox" name="userAss" value="User Assignments" />
+         <label for="userAss">User Assignments</label>
+      </div>
+      <div>
+         <input ng-click = "c.update()" ng-model="c.data.assig" class="filterInput" type="checkbox" name="assig" value="Assignments" />
+         <label for="assig">Assignments</label>
+      </div>
+   </div>
+   <div class="col-lg-4">
+      <p>
+         Active :
+      </p>
+      <div>
+         <input  ng-click = "c.update()" ng-model="c.data.active" class="filterInput" type="checkbox" name="active" value="Active" />
+         <label for="active">Active</label>
+      </div>
+   </div>
+   <div class="col-lg-4">
+      <p>
+         Order :
+      </p>
+      <div >
+         <input  ng-click = "c.update()" ng-model="c.data.ordAlph" class="filterInput" type="checkbox" name="Alphabetically" value="Alpha" />
+         <label for="Alphabetically">Alphabetically</label>
+      </div>
+      <div>
+         <input  ng-click = "c.update()" ng-model="c.data.ordCreated" class="filterInput" type="checkbox" name="Created" value="Created" />
+         <label for="Created">Created</label>
+      </div>
+   </div>
+   </div>
+  
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

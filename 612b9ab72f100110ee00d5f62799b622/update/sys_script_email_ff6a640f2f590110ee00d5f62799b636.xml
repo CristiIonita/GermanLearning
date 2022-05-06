@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>GLATeachersNotification</name>
+        <new_lines_to_html>false</new_lines_to_html>
+        <script><![CDATA[(function runMailScript( /* GlideRecord */ current, /* TemplatePrinter */ template,
+    /* Optional EmailOutbound */
+    email, /* Optional GlideRecord */ email_action,
+    /* Optional GlideRecord */
+    event) {
+
+    // Add your code here
+    var date = new GlideDate();
+    dateFormatted = date.getByFormat("dd-MM-yyyy");
+    var result = JSON.parse(event.parm1);
+    var toPrint = "";
+    for (var i = 0; i < result.assignment.length; i++) {
+        var numberLink = new GlideRecord('x_723119_germanlrn_user_assignment');
+        numberLink.get(result.assignment[i].number);
+        var assignNrLink = new GlideRecord('x_723119_germanlrn_assignment');
+        assignNrLink.get(result.assignment[i].assignNr);
+        var homeworkLink = new GlideRecord('x_723119_germanlrn_homework');
+        homeworkLink.get(result.assignment[i].homework);
+        var numberLinkToUse = numberLink.sys_id + '"';
+        var assignNrLinkToUse = assignNrLink.sys_id + '"';
+        var homeworkLinkToUse = homeworkLink.sys_id + '"';
+        toPrint += "<tr><td>" + '<a style = "text-decoration : none" href = "https://dev101723.service-now.com/glap?id=gla_user_assignment&sys_id=' + numberLinkToUse + ">" + result.assignment[i].number + "</a></td><td>" + '<a style = "text-decoration : none" href = "https://dev101723.service-now.com/glap?id=gla_assignment&sys_id=' + assignNrLinkToUse + ">" + result.assignment[i].assignNr + "</a></td><td>"  + '<a style = "text-decoration : none" href = "https://dev101723.service-now.com/glap?id=gla_homework&sys_id=' + homeworkLinkToUse + ">" + result.assignment[i].homework + "</a></td><td>" + result.assignment[i].dueDate + "</td><td>" + result.assignment[i].state + "</td><td>" + result.assignment[i].user + "</td></tr>";
+    }
+    email.setSubject("Assignments ready for review - " + dateFormatted);
+    template.print("<table><tr><th>Number</th><th>Assignment</th><th>Homework</th><th>Due Date</th><th>State</th><th>User</th></tr>" + toPrint + "</table>");
+
+})(current, template, email, email_action, event);]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-01-31 09:51:24</sys_created_on>
+        <sys_id>ff6a640f2f590110ee00d5f62799b636</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>GLATeachersNotification</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_script_email_ff6a640f2f590110ee00d5f62799b636</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-01 14:09:49</sys_updated_on>
+    </sys_script_email>
+</record_update>

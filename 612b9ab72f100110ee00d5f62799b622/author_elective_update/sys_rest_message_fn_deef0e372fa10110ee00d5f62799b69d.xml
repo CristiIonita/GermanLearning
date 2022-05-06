@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn">
+    <sys_rest_message_fn action="DELETE">
+        <authentication_type>inherit_from_parent</authentication_type>
+        <basic_auth_password/>
+        <basic_auth_profile/>
+        <basic_auth_user/>
+        <content/>
+        <function_name>Default GET</function_name>
+        <http_method>get</http_method>
+        <lock>false</lock>
+        <oauth2_profile/>
+        <protocol_name/>
+        <qualified_name>Lexicala [ Default GET ]</qualified_name>
+        <rest_endpoint>https://dictapi.lexicala.com/search?source=global&amp;language=de&amp;text=reden</rest_endpoint>
+        <rest_message display_value="Lexicala">c8bf8a372fa10110ee00d5f62799b6f7</rest_message>
+        <sys_class_name>sys_rest_message_fn</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-02-15 11:23:14</sys_created_on>
+        <sys_id>deef0e372fa10110ee00d5f62799b69d</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>Default GET</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_rest_message_fn_deef0e372fa10110ee00d5f62799b69d</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-02-21 13:42:06</sys_updated_on>
+        <use_basic_auth>false</use_basic_auth>
+        <use_mid_server/>
+        <use_mutual_auth>false</use_mutual_auth>
+    </sys_rest_message_fn>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sys_rest_message_fn_deef0e372fa10110ee00d5f62799b69d</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn"><sys_rest_message_fn action="INSERT_OR_UPDATE"><authentication_type>inherit_from_parent</authentication_type><basic_auth_password/><basic_auth_profile/><basic_auth_user/><content/><function_name>Default GET</function_name><http_method>get</http_method><lock>false</lock><oauth2_profile/><protocol_name/><qualified_name>Lexicala [ Default GET ]</qualified_name><rest_endpoint>https://dictapi.lexicala.com/search?source=global&amp;language=de&amp;text=reden</rest_endpoint><rest_message display_value="Lexicala">c8bf8a372fa10110ee00d5f62799b6f7</rest_message><sys_class_name>sys_rest_message_fn</sys_class_name><sys_created_by>mdaniel</sys_created_by><sys_created_on>2022-02-15 11:23:14</sys_created_on><sys_id>deef0e372fa10110ee00d5f62799b69d</sys_id><sys_mod_count>8</sys_mod_count><sys_name>Default GET</sys_name><sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package><sys_policy/><sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope><sys_update_name>sys_rest_message_fn_deef0e372fa10110ee00d5f62799b69d</sys_update_name><sys_updated_by>mdaniel</sys_updated_by><sys_updated_on>2022-02-21 13:42:06</sys_updated_on><use_basic_auth>false</use_basic_auth><use_mid_server/><use_mutual_auth>false</use_mutual_auth></sys_rest_message_fn></record_update>]]></payload>
+        <payload_hash>1007549952</payload_hash>
+        <record_name>Default GET</record_name>
+        <reverted_from/>
+        <source>f280a6c92f550110ee00d5f62799b650</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-02-21 13:42:06</sys_created_on>
+        <sys_id>d739a5392ff90110ee00d5f62799b6f7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17f1c8499680000001</sys_recorded_at>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-02-21 13:42:06</sys_updated_on>
+        <type>HTTP Method</type>
+        <update_guid>1339a53915f9011035d1d58835b81ef7</update_guid>
+        <update_guid_history>1339a53915f9011035d1d58835b81ef7:1007549952,cbb5bbc88af101106c98472ec6462e75:-977925179,b6a5bbc86bf10110e0474af6d4281c46:-1801330641,abe13f4881f10110d1912033fb823181:1170403423,7f83d23f00e10110550dae3fa2f2ee46:1694603329,357356bbabe10110a73c939df6d02cf8:-1650016725,c933daf702e101101ef2d06aa8f823e1:-1200418413,ca9212f344e1011054acbc3091732670:1694603329,1aef0e377fa101106eafb2f869a729a0:586967681</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-02-21 13:43:14</sys_created_on>
+        <sys_db_object display_value="" name="sys_rest_message_fn">sys_rest_message_fn</sys_db_object>
+        <sys_id>21f662e131a041ae94e8712461331e01</sys_id>
+        <sys_metadata>deef0e372fa10110ee00d5f62799b69d</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Default GET</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sys_rest_message_fn_deef0e372fa10110ee00d5f62799b69d</sys_update_name>
+        <sys_update_version display_value="sys_rest_message_fn_deef0e372fa10110ee00d5f62799b69d">d739a5392ff90110ee00d5f62799b6f7</sys_update_version>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-02-21 13:43:14</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

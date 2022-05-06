@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="DELETE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>comments</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>Comments min length</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+    if (isLoading || newValue === '') {
+        return;
+    }
+	var html = g_form.getValue('comments');
+	var txtStr = html.replace(/<(?:.|\n)*?>/gm, '');
+	
+    if (g_form.isMandatory('comments')) {
+		
+		if (txtStr.length < 20) {
+
+            g_form.setValue('comments', '');
+            alert('Please enter minimum 20 characters');
+
+		}
+    }
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2021-12-17 10:24:16</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>89d2092c2f604110ee00d5f62799b67e</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Comments min length</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_script_client_89d2092c2f604110ee00d5f62799b67e</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2021-12-21 13:38:57</sys_updated_on>
+        <table>x_723119_germanlrn_user_assignment</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sys_script_client_89d2092c2f604110ee00d5f62799b67e</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_script_client"&gt;&lt;sys_script_client action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;applies_extended&gt;false&lt;/applies_extended&gt;&lt;condition/&gt;&lt;description/&gt;&lt;field&gt;comments&lt;/field&gt;&lt;global&gt;true&lt;/global&gt;&lt;isolate_script&gt;true&lt;/isolate_script&gt;&lt;messages/&gt;&lt;name&gt;Comments min length&lt;/name&gt;&lt;order/&gt;&lt;script&gt;&lt;![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+    if (isLoading || newValue === '') {
+        return;
+    }
+	var html = g_form.getValue('comments');
+	var txtStr = html.replace(/&lt;(?:.|\n)*?&gt;/gm, '');
+	
+    if (g_form.isMandatory('comments')) {
+		
+		if (txtStr.length &lt; 20) {
+
+            g_form.setValue('comments', '');
+            alert('Please enter minimum 20 characters');
+
+		}
+    }
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_client&lt;/sys_class_name&gt;&lt;sys_created_by&gt;mdaniel&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2021-12-17 10:24:16&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;89d2092c2f604110ee00d5f62799b67e&lt;/sys_id&gt;&lt;sys_mod_count&gt;5&lt;/sys_mod_count&gt;&lt;sys_name&gt;Comments min length&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="German Learning" source="x_723119_germanlrn"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="German Learning"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_client_89d2092c2f604110ee00d5f62799b67e&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;mdaniel&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2021-12-21 13:38:57&lt;/sys_updated_on&gt;&lt;table&gt;x_723119_germanlrn_user_assignment&lt;/table&gt;&lt;type&gt;onChange&lt;/type&gt;&lt;ui_type&gt;10&lt;/ui_type&gt;&lt;view/&gt;&lt;/sys_script_client&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-975619170</payload_hash>
+        <record_name>Comments min length</record_name>
+        <reverted_from/>
+        <source>e364117d2fec0110ee00d5f62799b667</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2021-12-21 13:38:57</sys_created_on>
+        <sys_id>7cf5d2f12fe04110ee00d5f62799b697</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ddd3770400000001</sys_recorded_at>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2021-12-21 13:38:57</sys_updated_on>
+        <type>Client Script</type>
+        <update_guid>b4f5d2f1c8e04110498f64c31e2a4d97</update_guid>
+        <update_guid_history>b4f5d2f1c8e04110498f64c31e2a4d97:-975619170,0635d27144e0411085a27301da43742c:-1906742883,fdc98279f2a041101a8babf07df372c3:1427322512,22b9c679f3a0411005478ef1ac545efa:-1231937529,68a9c279c4a04110ceebceed590e5420:948820551,6d03856c35604110bd0aadd939fb5346:1427322512</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2021-12-21 14:03:43</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_client">sys_script_client</sys_db_object>
+        <sys_id>0b49742dda664bf89858eeb0ca089a40</sys_id>
+        <sys_metadata>89d2092c2f604110ee00d5f62799b67e</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Comments min length</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent display_value="User assignment">bcc13e3f2f500110ee00d5f62799b6d6</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sys_script_client_89d2092c2f604110ee00d5f62799b67e</sys_update_name>
+        <sys_update_version display_value="sys_script_client_89d2092c2f604110ee00d5f62799b67e">7cf5d2f12fe04110ee00d5f62799b697</sys_update_version>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2021-12-21 14:03:43</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

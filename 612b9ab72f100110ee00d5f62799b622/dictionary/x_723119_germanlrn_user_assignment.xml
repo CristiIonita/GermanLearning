@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="User assignment" max_length="40" name="x_723119_germanlrn_user_assignment" sizeclass="64" type="collection">
+        <element label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Assignment" max_length="32" name="assignment" reference="x_723119_germanlrn_assignment" reference_qual="active=true" reference_qual_condition="active=true" type="reference"/>
+        <element label="Comments" max_length="8000" name="comments" type="html"/>
+        <element label="Grade" max_length="40" name="grade" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Instructions" max_length="40" name="instructions" type="string"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Response" max_length="8000" name="response" type="html"/>
+        <element choice="1" default="1" label="State" max_length="20" name="state" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="New" sequence="100" value="1"/>
+                <element inactive_on_update="false" label="In Progress" sequence="200" value="2"/>
+                <element inactive_on_update="false" label="Ready for review" sequence="300" value="3"/>
+                <element inactive_on_update="false" label="Incomplete" sequence="400" value="4"/>
+                <element inactive_on_update="false" label="Completed" sequence="500" value="5"/>
+            </choice>
+        </element>
+        <element label="User" max_length="32" name="user" reference="sys_user" reference_qual="javascript: 'active=true^' + new GLAUtils().managerCheck('8e4a55ec2fa04110ee00d5f62799b63a');" type="reference" use_reference_qualifier="advanced"/>
+        <index name="index">
+            <element name="assignment"/>
+        </index>
+        <index name="index2">
+            <element name="user"/>
+        </index>
+    </element>
+</database>

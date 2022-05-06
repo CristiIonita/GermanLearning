@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+	c.update = function() {
+		c.server.update();
+		
+	}
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    align-items: flex-start;
+
+    }
+
+
+.flex-item{
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+    }
+
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>searchtestingwidget</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>SearchTestingWidget</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+if(input && input.filterText) {
+	console.log(input.filterText);
+	
+}
+	data.test1 = true;
+	data.test2 = true;
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-08 11:27:31</sys_created_on>
+        <sys_id>6cbd8aed2fa10110ee00d5f62799b682</sys_id>
+        <sys_mod_count>17</sys_mod_count>
+        <sys_name>SearchTestingWidget</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_6cbd8aed2fa10110ee00d5f62799b682</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-09 13:37:08</sys_updated_on>
+        <template><![CDATA[<div class="text-center">
+    <button ng-click="c.showFilters()">
+        Add Filters
+    </button>
+    <input placeholder="Search for a record" ng-model="c.data.filterText" ng-change="c.update()" style="align: center;" />
+</div>
+
+
+    <div class="flex-container" ng-show="true">
+        <div class="flex-item" style="margin-left: 20px; margin-top: 2px;">
+            <p>
+                Type :
+            </p>
+
+            <input ng-model="c.data.homew" class="filterInput" type="checkbox" name="homew" value="Homeworks" />
+            <label for="homew">Homeworks</label>
+
+            <input ng-model="c.data.userAss" class="filterInput" type="checkbox" name="userAss" value="User Assignments" />
+            <label for="userAss">User Assignments</label>
+
+            <input ng-model="c.data.assig" class="filterInput" type="checkbox" name="assig" value="Assignments" />
+            <label for="assig">Assignments</label>
+        </div>
+
+        <div class="flex-item">
+            <p>
+                Active :
+            </p>
+
+            <input ng-model="c.data.active" class="filterInput" type="checkbox" name="active" value="Active" />
+            <label for="active">Active</label>
+        </div>
+        <div class="flex-item">
+            <p>
+                Order :
+            </p>
+
+            <input ng-model="c.data.ordAlph" class="filterInput" type="checkbox" name="Alphabetically" value="Alpha" />
+            <label for="Alphabetically">Alphabetically</label>
+
+            <input ng-model="c.data.ordCreated" class="filterInput" type="checkbox" name="Created" value="Created" />
+            <label for="Created">Created</label>
+        </div>
+        <div class="flex-item">
+            <button ng-click="c.update()">
+                Apply Filters
+            </button>
+        </div>
+    </div>
+
+]]></template>
+    </sp_widget>
+</record_update>

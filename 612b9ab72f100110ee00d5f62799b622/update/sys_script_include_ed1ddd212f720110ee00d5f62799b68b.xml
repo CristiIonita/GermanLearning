@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_723119_germanlrn.Testvoice</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>Testvoice</name>
+        <script><![CDATA[var Testvoice = Class.create();
+Testvoice.prototype = {
+    initialize: function() {
+
+        try {
+             var request = new sn_ws.RESTMessageV2();
+        request.setHttpMethod('get');
+        request.setEndpoint('https://voicecup.com/api?key=ztiK72XUhm&q=nicht&lang=ger');
+       
+     
+  
+        var response = request.execute();
+        var httpResponseStatus = response.getStatusCode();
+
+       return httpResponseStatus;
+        } catch (ex) {
+            var message = ex.message;
+        }
+    },
+
+    type: 'Testvoice'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-04-11 11:13:55</sys_created_on>
+        <sys_id>ed1ddd212f720110ee00d5f62799b68b</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Testvoice</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_script_include_ed1ddd212f720110ee00d5f62799b68b</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-04-12 08:29:07</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>true</advanced>
+        <condition/>
+        <description>Assignment table&#13;
+&gt; Teachers: create</description>
+        <name>x_723119_germanlrn_assignment</name>
+        <operation display_value="create">create</operation>
+        <script><![CDATA[var groupChecker = new GLAUtils();
+var firstList = groupChecker.usersCheck('446ad56c2fa04110ee00d5f62799b64f');
+var secondList = groupChecker.usersCheck('c12a55ec2fa04110ee00d5f62799b636');
+var currentUser = gs.getUserID() + '';
+if(firstList.search(currentUser)!==-1&&secondList.search(currentUser)!==-1){
+	answer=true;
+}else{
+	answer=false;
+}
+]]></script>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-01-04 09:30:00</sys_created_on>
+        <sys_id>5e33a1522f700110ee00d5f62799b64e</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>x_723119_germanlrn_assignment</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_security_acl_5e33a1522f700110ee00d5f62799b64e</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-01-11 10:41:54</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+</record_update>

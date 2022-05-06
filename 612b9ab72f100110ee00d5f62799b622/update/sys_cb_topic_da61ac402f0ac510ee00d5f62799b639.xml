@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_topic">
+    <sys_cb_topic action="INSERT_OR_UPDATE">
+        <applicability/>
+        <applicability_mode>query</applicability_mode>
+        <autopilot_topic>false</autopilot_topic>
+        <category/>
+        <channels/>
+        <connect_queue/>
+        <description>Auto Resolution Topic</description>
+        <expose_on_palette>false</expose_on_palette>
+        <flexible_conversation_switching>true</flexible_conversation_switching>
+        <graph>{
+  "graph_api_version": "1.0.36",
+  "goals": {
+    "primary": {
+      "id": "primary",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "15860e5fdb7d42dc8080b6ca2d02fdfd": {
+          "id": "15860e5fdb7d42dc8080b6ca2d02fdfd",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "f336a067de854429ba59efd9269fdd18": {
+          "id": "f336a067de854429ba59efd9269fdd18",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "8a1e4164e3f54ed2949c6ae3ab84d308": {
+          "id": "8a1e4164e3f54ed2949c6ae3ab84d308",
+          "stepType": "Decision",
+          "name": "Help Now?"
+        },
+        "18244b52f7b74956a549c2882b7a9c56": {
+          "id": "18244b52f7b74956a549c2882b7a9c56",
+          "name": "Invoke Resolution Topic",
+          "script": "(function execute() {\n   vaSystem.switchTopicById(vaVars.topic_id);\n})()\n",
+          "stepType": "ScriptAction",
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "b75b3c5995814ddb98b6194f9dcdf2e4": {
+          "stepType": "ChoicePrompt",
+          "name": "Close Task Input",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "If there's anything else you need related to this ticket, I can keep it open."
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "variableId": "254d267dc8d64505a912b78d2da4a7a1",
+          "id": "b75b3c5995814ddb98b6194f9dcdf2e4",
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "cardMetadata": {
+            "mode": "card",
+            "metadataScript": "",
+            "cardTemplate": "",
+            "cardFields": {},
+            "cardDefinition": {}
+          },
+          "hasCardHeader": false
+        },
+        "6d2b09edba374fdfb27be3cc7571e470": {
+          "id": "6d2b09edba374fdfb27be3cc7571e470",
+          "stepType": "Decision",
+          "name": "Close Task?"
+        },
+        "90e8b23afd2e4e7d98d776050d7a7658": {
+          "id": "90e8b23afd2e4e7d98d776050d7a7658",
+          "name": "Unassign Task and keep task open",
+          "script": "(function execute() {\n    \n   var helper = new AutoResolutionContextHelper();\n   helper.executeTemplate(helper.UNRESOLVED, vaVars.auto_resolution_context_id);\n\n})()\n",
+          "stepType": "ScriptAction",
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "85336aab153b4d738528e00d062508ed": {
+          "id": "85336aab153b4d738528e00d062508ed",
+          "name": "Mark Task Resolved",
+          "script": "(function execute() {\n\n    var helper = new AutoResolutionContextHelper();\n    helper.executeTemplate(helper.RESOLVED, vaVars.auto_resolution_context_id)\n    \n})()\n",
+          "stepType": "ScriptAction",
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "70c8ee1d612b43f4ad2ee7bcf793250a": {
+          "id": "70c8ee1d612b43f4ad2ee7bcf793250a",
+          "stepType": "TextOutput",
+          "name": "Unable to Proceed",
+          "value": {
+            "value": "(function execute() {\n    var taskUpdated = vaVars.validation_reason.includes('has changed the task state');\n\n    if (vaVars.is_notification_expired || taskUpdated)\n        return gs.getMessage(\"It looks like another agent is already working on your incident. I won’t be able to help you at this time.\");\n    else\n        return gs.getMessage(\"I’m currently unable to help with your request.\");\n\n    var helper = new AutoResolutionContextHelper();\n    helper.executeTemplate(helper.ERROR, vaVars.auto_resolution_context_id);\n})()\n",
+            "mode": "script"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "secure": false
+        },
+        "f3fd4ffbe7d84eaea82487fff2462dc1": {
+          "id": "f3fd4ffbe7d84eaea82487fff2462dc1",
+          "stepType": "TextOutput",
+          "name": "Let's Get Started",
+          "secure": false,
+          "value": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Great, if it turns out you need more help with it, we can leave the ticket open."
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "8f3b82b949cb437a87e8a9abaf9eb34b": {
+          "id": "8f3b82b949cb437a87e8a9abaf9eb34b",
+          "stepType": "TextOutput",
+          "name": "Unassigned Task Message",
+          "secure": false,
+          "value": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": ""
+                  },
+                  {
+                    "text": "I unassigned myself from the ticket. An agent will reach out to help you with it."
+                  },
+                  {
+                    "text": ""
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "c8dddf1a934445f5b3bb6a510c0c26d0": {
+          "id": "c8dddf1a934445f5b3bb6a510c0c26d0",
+          "name": "Apply topic completion template",
+          "script": "(function execute() {\n    var helper = new AutoResolutionContextHelper();\n    helper.executeTemplate(helper.TOPIC_COMPLETED, vaVars.auto_resolution_context_id);\n})()\n",
+          "stepType": "ScriptAction",
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "0b36e83b34ba4adebc726929c5023d24": {
+          "id": "0b36e83b34ba4adebc726929c5023d24",
+          "name": "Mark context declined",
+          "script": "(function execute() {\n\n    var contextHelper = new AutoResolutionContextHelper();\n    contextHelper.updateNotificationResponded(vaVars.auto_resolution_context_id, \"declined\");\n    contextHelper.executeTemplate(contextHelper.DECLINED, vaVars.auto_resolution_context_id);\n\n})()\n",
+          "stepType": "ScriptAction",
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "ba4004ca25aa42a09e30a22712331c8d": {
+          "id": "ba4004ca25aa42a09e30a22712331c8d",
+          "stepType": "TextOutput",
+          "name": "Close message",
+          "secure": false,
+          "value": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Awesome! I've closed it!  Check in with me next time you need help with things like this.  "
+                  },
+                  {
+                    "type": "emoji",
+                    "emoji": {
+                      "id": "wave",
+                      "name": "Waving Hand Sign",
+                      "short_names": [
+                        "wave"
+                      ],
+                      "colons": ":wave:",
+                      "emoticons": [],
+                      "unified": "1f44b",
+                      "skin": 1,
+                      "native": ""
+                    },
+                    "children": [
+                      {
+                        "text": ""
+                      }
+                    ]
+                  },
+                  {
+                    "text": ""
+                  },
+                  {
+                    "type": "emoji",
+                    "emoji": {
+                      "id": "wave",
+                      "name": "Waving Hand Sign",
+                      "short_names": [
+                        "wave"
+                      ],
+                      "colons": ":wave:",
+                      "emoticons": [],
+                      "unified": "1f44b",
+                      "skin": 1,
+                      "native": ""
+                    },
+                    "children": [
+                      {
+                        "text": ""
+                      }
+                    ]
+                  },
+                  {
+                    "text": ""
+                  },
+                  {
+                    "type": "emoji",
+                    "emoji": {
+                      "id": "wave",
+                      "name": "Waving Hand Sign",
+                      "short_names": [
+                        "wave"
+                      ],
+                      "colons": ":wave:",
+                      "emoticons": [],
+                      "unified": "1f44b",
+                      "skin": 1,
+                      "native": ""
+                    },
+                    "children": [
+                      {
+                        "text": ""
+                      }
+                    ]
+                  },
+                  {
+                    "text": ""
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "620b95b1b2fe4e2ea135d419bb4b7b45": {
+          "id": "620b95b1b2fe4e2ea135d419bb4b7b45",
+          "stepType": "Component",
+          "name": "Track Deflection",
+          "fields": [],
+          "reusableTopicId": "7fb4ca055303201033cdddeeff7b12b3",
+          "reusableTopicChoice": "Deflection Tracker",
+          "sourceType": "TOPIC_BLOCK",
+          "loading": false,
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "inputs": {
+            "deflection_configuration": {
+              "value": "93d2f7645383201033cdddeeff7b1208",
+              "mode": "simple",
+              "type": "Reference",
+              "table": "ssa_deflection_configuration"
+            },
+            "deflection_pattern": {
+              "value": "d7d6f3285383201033cdddeeff7b12c0",
+              "mode": "string",
+              "type": "Reference",
+              "table": "ssa_deflection_pattern"
+            },
+            "activity_table": {
+              "value": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": ""
+                    },
+                    {
+                      "type": "datapill",
+                      "dataPill": {
+                        "value": "{{vaVars.task_table}}",
+                        "displayValue": "Script Variables➛task_table"
+                      },
+                      "children": [
+                        {
+                          "text": ""
+                        }
+                      ]
+                    },
+                    {
+                      "text": ""
+                    }
+                  ]
+                }
+              ],
+              "mode": "string",
+              "type": "String"
+            },
+            "activity_ids": {
+              "value": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": ""
+                    },
+                    {
+                      "type": "datapill",
+                      "dataPill": {
+                        "value": "{{vaVars.task_id}}",
+                        "displayValue": "Script Variables➛task_id"
+                      },
+                      "children": [
+                        {
+                          "text": ""
+                        }
+                      ]
+                    },
+                    {
+                      "text": ""
+                    }
+                  ]
+                }
+              ],
+              "mode": "string",
+              "type": "String"
+            }
+          },
+          "outputs": [],
+          "outdatedNote": false,
+          "variableIds": []
+        }
+      },
+      "edges": [
+        {
+          "id": "45ce6de4079545029c139765f6c95cfd",
+          "edgeType": "Edge",
+          "source": "15860e5fdb7d42dc8080b6ca2d02fdfd",
+          "target": "8a1e4164e3f54ed2949c6ae3ab84d308",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "c28d1077ac2f49fc8393e66f030622ce",
+          "edgeType": "Edge",
+          "source": "c8dddf1a934445f5b3bb6a510c0c26d0",
+          "target": "b75b3c5995814ddb98b6194f9dcdf2e4",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "cb247d63c1f34f7fa1dfb5d0133e799e",
+          "edgeType": "Edge",
+          "source": "8f3b82b949cb437a87e8a9abaf9eb34b",
+          "target": "f336a067de854429ba59efd9269fdd18",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "8f4f3a910fba46cda8ab9c8110b14a46",
+          "edgeType": "Branch",
+          "source": "6d2b09edba374fdfb27be3cc7571e470",
+          "target": "85336aab153b4d738528e00d062508ed",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "vaInputs.close_task_input=close",
+            "mode": "query"
+          },
+          "label": "Yes"
+        },
+        {
+          "id": "cce1473f937049319f77294fc857f9e7",
+          "edgeType": "Edge",
+          "source": "b75b3c5995814ddb98b6194f9dcdf2e4",
+          "target": "6d2b09edba374fdfb27be3cc7571e470",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "b97b99f658c64789a5a7c4b43304b611",
+          "edgeType": "Branch",
+          "source": "6d2b09edba374fdfb27be3cc7571e470",
+          "target": "90e8b23afd2e4e7d98d776050d7a7658",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "vaInputs.close_task_input=open",
+            "mode": "query"
+          },
+          "label": "No"
+        },
+        {
+          "id": "0d15e51ec4b841c1beeebc235b519545",
+          "edgeType": "Branch",
+          "source": "8a1e4164e3f54ed2949c6ae3ab84d308",
+          "target": "70c8ee1d612b43f4ad2ee7bcf793250a",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "mode": "script",
+            "value": "(function execute() {\n    return !vaVars.is_valid;\n})()\n"
+          },
+          "label": "Error/Timeout"
+        },
+        {
+          "id": "3465ae00f9b04a2ab83803d96ce2c378",
+          "edgeType": "Edge",
+          "source": "70c8ee1d612b43f4ad2ee7bcf793250a",
+          "target": "f336a067de854429ba59efd9269fdd18",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "84f085d1c5634b1d9d323e42f47e518a",
+          "edgeType": "Branch",
+          "source": "8a1e4164e3f54ed2949c6ae3ab84d308",
+          "target": "f3fd4ffbe7d84eaea82487fff2462dc1",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "mode": "script",
+            "value": "(function execute() {\n    return vaVars.is_valid &amp;&amp; vaVars.action_sys_id === \"19164c195377101055eeddeeff7b129d\";\n})()\n"
+          },
+          "label": "Yes"
+        },
+        {
+          "id": "74bf5d1e0c3f4a2580e9f1ab495cfec2",
+          "edgeType": "Edge",
+          "source": "f3fd4ffbe7d84eaea82487fff2462dc1",
+          "target": "18244b52f7b74956a549c2882b7a9c56",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "30f0170b0cb849dfb682d54cc7fae12c",
+          "edgeType": "Edge",
+          "source": "90e8b23afd2e4e7d98d776050d7a7658",
+          "target": "8f3b82b949cb437a87e8a9abaf9eb34b",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "c5c72d53aa7345049865d780d4f2ed31",
+          "edgeType": "Edge",
+          "source": "18244b52f7b74956a549c2882b7a9c56",
+          "target": "c8dddf1a934445f5b3bb6a510c0c26d0",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "616adb80905d44e7b6906748dc36faf2",
+          "edgeType": "Branch",
+          "source": "8a1e4164e3f54ed2949c6ae3ab84d308",
+          "target": "0b36e83b34ba4adebc726929c5023d24",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "mode": "script",
+            "value": "(function execute() {\n    return vaVars.is_valid &amp;&amp; vaVars.action_sys_id === \"2a2f0c421b77101093b5ebda234bcb7f\";\n})()\n"
+          },
+          "label": "No"
+        },
+        {
+          "id": "b72bc965371c462a96c5bfbc33185dfa",
+          "edgeType": "Edge",
+          "source": "0b36e83b34ba4adebc726929c5023d24",
+          "target": "8f3b82b949cb437a87e8a9abaf9eb34b",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "2d562fe391c449c09f476732989a1141",
+          "edgeType": "Edge",
+          "source": "ba4004ca25aa42a09e30a22712331c8d",
+          "target": "f336a067de854429ba59efd9269fdd18",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "844a678aa8ec49a2812299363a599fbb",
+          "edgeType": "Edge",
+          "source": "85336aab153b4d738528e00d062508ed",
+          "target": "620b95b1b2fe4e2ea135d419bb4b7b45",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "a7fcf17770094507849e2004d93d5f13",
+          "edgeType": "Edge",
+          "source": "620b95b1b2fe4e2ea135d419bb4b7b45",
+          "target": "ba4004ca25aa42a09e30a22712331c8d",
+          "sourcePort": "",
+          "targetPort": ""
+        }
+      ]
+    }
+  },
+  "variables": {
+    "92f20d98b385402d9252df234382b1a2": {
+      "category": "vaInputs",
+      "id": "92f20d98b385402d9252df234382b1a2",
+      "label": "User",
+      "name": "user",
+      "table": "sys_user",
+      "varType": "reference"
+    },
+    "999f9e5be0fb4367a09f8559e270719e": {
+      "id": "999f9e5be0fb4367a09f8559e270719e",
+      "value": {
+        "mode": "script",
+        "value": "(function execute() {\n})()\n"
+      },
+      "name": "is_valid",
+      "label": "is_valid",
+      "varType": "script",
+      "category": "vaVars"
+    },
+    "bc4aa27e59ed4ce68641c6b6a342112d": {
+      "id": "bc4aa27e59ed4ce68641c6b6a342112d",
+      "value": {
+        "mode": "simple",
+        "value": ""
+      },
+      "name": "validation_reason",
+      "label": "validation_reason",
+      "varType": "script",
+      "category": "vaVars"
+    },
+    "03d8b32218a24ebaa1376b5947bddbb8": {
+      "id": "03d8b32218a24ebaa1376b5947bddbb8",
+      "value": {
+        "value": "",
+        "mode": "simple"
+      },
+      "name": "auto_resolution_context_id",
+      "label": "auto_resolution_context_id",
+      "varType": "script",
+      "category": "vaVars"
+    },
+    "63b152fd43a74b48bd35ceb82875a070": {
+      "id": "63b152fd43a74b48bd35ceb82875a070",
+      "value": {
+        "value": "",
+        "mode": "simple"
+      },
+      "name": "topic_id",
+      "label": "topic_id",
+      "varType": "script",
+      "category": "vaVars"
+    },
+    "254d267dc8d64505a912b78d2da4a7a1": {
+      "id": "254d267dc8d64505a912b78d2da4a7a1",
+      "name": "close_task_input",
+      "label": "Close Task Input",
+      "varType": "choice",
+      "choices": [
+        {
+          "label": "No, close it",
+          "value": "close"
+        },
+        {
+          "label": "Yes, keep it open",
+          "value": "open",
+          "checked": true
+        }
+      ],
+      "category": "vaInputs"
+    },
+    "6fec9b5f829a4acaa01a1b17601abf56": {
+      "id": "6fec9b5f829a4acaa01a1b17601abf56",
+      "value": {
+        "value": "",
+        "mode": "simple"
+      },
+      "name": "task_id",
+      "label": "task_id",
+      "varType": "script",
+      "category": "vaVars"
+    },
+    "e18fd90ed66b48cbb2f86419c96dc731": {
+      "id": "e18fd90ed66b48cbb2f86419c96dc731",
+      "value": {
+        "value": "",
+        "mode": "simple"
+      },
+      "name": "task_table",
+      "label": "task_table",
+      "varType": "script",
+      "category": "vaVars"
+    },
+    "dadbef9541e240d69eb298c64815abab": {
+      "id": "dadbef9541e240d69eb298c64815abab",
+      "value": {
+        "mode": "simple",
+        "value": "false"
+      },
+      "name": "is_notification_expired",
+      "label": "is_notification_expired",
+      "varType": "script",
+      "category": "vaVars"
+    },
+    "f11b97be982748169d9e2bceffc48804": {
+      "id": "f11b97be982748169d9e2bceffc48804",
+      "value": {
+        "value": "",
+        "mode": "simple"
+      },
+      "name": "action_sys_id",
+      "label": "action_sys_id",
+      "varType": "script",
+      "category": "vaVars"
+    },
+    "36251586fdc3451bb63495631f043e7a": {
+      "id": "36251586fdc3451bb63495631f043e7a",
+      "value": {
+        "mode": "simple",
+        "value": "true"
+      },
+      "name": "is_iar_wrapper_topic",
+      "label": "is_iar_wrapper_topic",
+      "varType": "script",
+      "category": "vaVars"
+    }
+  }
+}</graph>
+        <key_phrases>IssueAutoResolutionTest,Issue Auto-Resolution</key_phrases>
+        <library>false</library>
+        <live_agent>false</live_agent>
+        <name>IssueAutoResolutionTest</name>
+        <nlu_intent/>
+        <nlu_intent_label/>
+        <nlu_model/>
+        <nlu_model_label/>
+        <nlu_provider/>
+        <palette_label/>
+        <roles/>
+        <source_topic_id>d1cf2a4e5316101055eeddeeff7b12cc</source_topic_id>
+        <sys_class_name>sys_cb_topic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-28 08:14:37</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>da61ac402f0ac510ee00d5f62799b639</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>IssueAutoResolutionTest</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_cb_topic_da61ac402f0ac510ee00d5f62799b639</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-28 08:45:54</sys_updated_on>
+        <triggerable_by_notification>false</triggerable_by_notification>
+        <type>STANDARD</type>
+        <variables/>
+    </sys_cb_topic>
+    <sys_variable_value action="delete_multiple" query="document_key=da61ac402f0ac510ee00d5f62799b639"/>
+</record_update>

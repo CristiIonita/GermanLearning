@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_theme">
+    <sp_theme action="INSERT_OR_UPDATE">
+        <css_variables/>
+        <footer/>
+        <footer_fixed>true</footer_fixed>
+        <header display_value="Copy of Stock Header">755ccb942f424910ee00d5f62799b6ab</header>
+        <name>GLA Theme</name>
+        <navbar_fixed>true</navbar_fixed>
+        <sys_class_name>sp_theme</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-01-04 11:38:13</sys_created_on>
+        <sys_id>8770c21a2fb00110ee00d5f62799b6ce</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>GLA Theme</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_theme_8770c21a2fb00110ee00d5f62799b6ce</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-02 14:14:40</sys_updated_on>
+    </sp_theme>
+</record_update>

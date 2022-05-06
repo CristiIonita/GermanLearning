@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function(spUtil,$scope,$window) {
+  /* widget controller */
+  var c = this;
+	
+c.onload = function (){
+if (!c.data.user) {
+	 $window.location.href = '/glap?id=gla_404';
+}
+}
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.container1{&#13;
+ &#13;
+	margin:0;&#13;
+  padding:0;&#13;
+  width:100%;&#13;
+height : calc(69.8vh - 35px);&#13;
+  margin-bottom:0.9vh;&#13;
+}&#13;
+&#13;
+.container2{&#13;
+  	margin:0;&#13;
+  padding:0;&#13;
+ height : calc(30vh - 35px);&#13;
+&#13;
+ &#13;
+}&#13;
+&#13;
+.item1{&#13;
+width:33%;&#13;
+  display: inline-block;&#13;
+  float:left;&#13;
+}&#13;
+&#13;
+.item2{&#13;
+width:33%;&#13;
+  display: inline-block;&#13;
+  position:relative;&#13;
+	left:0.45%;&#13;
+ }&#13;
+&#13;
+.item3{&#13;
+width:33%;&#13;
+  display: inline-block;&#13;
+ float:right;&#13;
+&#13;
+}&#13;
+&#13;
+@media (max-width: 800px) {&#13;
+  .container2{&#13;
+  display:flex;&#13;
+    flex-wrap:wrap;&#13;
+  }&#13;
+  .item1, .item2, .item3 {&#13;
+    flex: 100%;&#13;
+    margin-bottom:0.9vh;&#13;
+  }&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>copy_of_gla_homepage</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Copy of GLA Homepage</name>
+        <option_schema>[]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+data.currentDate = new GlideDate();
+data.user = new GlideRecord('sys_user');
+data.user.get(gs.getUserID());
+
+if(data.user.u_enrollment_date == '')
+{
+data.user.u_enrollment_date = data.currentDate;
+data.user.update();
+}
+	if (gs.getUser().isMemberOf("45ea11202fe04110ee00d5f62799b64f")){
+
+data.user= true;
+
+}
+	else{
+		data.user = false;
+	}
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-03-22 09:16:50</sys_created_on>
+        <sys_id>50a2ca8f2fd2c110ee00d5f62799b66e</sys_id>
+        <sys_mod_count>71</sys_mod_count>
+        <sys_name>Copy of GLA Homepage</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_50a2ca8f2fd2c110ee00d5f62799b66e</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-03-23 12:29:56</sys_updated_on>
+        <template><![CDATA[<div class="checkout">
+<div class="container1"><widget id="copy_of_gla_homepage_greetings"></widget></div>
+<div class="container2">
+<div class="item1"><widget id="copy_of_gla_homepage_homework"></widget></div>
+<div class="item2"><widget id="copy_of_gla_homepage_resources"></widget></div>
+<div class="item3"><widget id="copy_of_gla_homepage_practice"></widget></div>
+</div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="catalog_ui_policy_action">
+    <catalog_ui_policy_action action="DELETE">
+        <catalog_item display_value="Create Resource">450df1172f300110ee00d5f62799b64f</catalog_item>
+        <catalog_variable>IO:c10df55b2f300110ee00d5f62799b6d3</catalog_variable>
+        <cleared>false</cleared>
+        <disabled>ignore</disabled>
+        <field/>
+        <mandatory>true</mandatory>
+        <order>100</order>
+        <sys_class_name>catalog_ui_policy_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-01-30 19:25:57</sys_created_on>
+        <sys_id>0cf4e9762f110110ee00d5f62799b64e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>name</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>catalog_ui_policy_action_0cf4e9762f110110ee00d5f62799b64e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-01-30 19:25:57</sys_updated_on>
+        <table/>
+        <ui_policy display_value="Makes Name Mandatory">b3d4e5762f110110ee00d5f62799b6eb</ui_policy>
+        <variable>name</variable>
+        <variable_set/>
+        <visible>ignore</visible>
+    </catalog_ui_policy_action>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>catalog_ui_policy_action_0cf4e9762f110110ee00d5f62799b64e</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="catalog_ui_policy_action"><catalog_ui_policy_action action="INSERT_OR_UPDATE"><catalog_item display_value="Create Resource">450df1172f300110ee00d5f62799b64f</catalog_item><catalog_variable>IO:c10df55b2f300110ee00d5f62799b6d3</catalog_variable><cleared>false</cleared><disabled>ignore</disabled><field/><mandatory>true</mandatory><order>100</order><sys_class_name>catalog_ui_policy_action</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-01-30 19:25:57</sys_created_on><sys_id>0cf4e9762f110110ee00d5f62799b64e</sys_id><sys_mod_count>0</sys_mod_count><sys_name>name</sys_name><sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package><sys_policy/><sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope><sys_update_name>catalog_ui_policy_action_0cf4e9762f110110ee00d5f62799b64e</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-01-30 19:25:57</sys_updated_on><table/><ui_policy display_value="Makes Name Mandatory">b3d4e5762f110110ee00d5f62799b6eb</ui_policy><variable>name</variable><variable_set/><visible>ignore</visible></catalog_ui_policy_action></record_update>]]></payload>
+        <payload_hash>1054644322</payload_hash>
+        <record_name>name</record_name>
+        <reverted_from/>
+        <source>a52b9ab72f100110ee00d5f62799b624</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-01-30 19:25:57</sys_created_on>
+        <sys_id>edf4e5762f110110ee00d5f62799b685</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17eac737f160000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-01-30 19:25:57</sys_updated_on>
+        <type>Catalog UI Policy Action</type>
+        <update_guid>29f4e576521101103cf52cfa89477185</update_guid>
+        <update_guid_history>29f4e576521101103cf52cfa89477185:1054644322</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="name">0a0abf1c2ffd0110ee00d5f62799b681</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2022-02-17 08:23:50</sys_created_on>
+        <sys_db_object display_value="" name="catalog_ui_policy_action">catalog_ui_policy_action</sys_db_object>
+        <sys_id>26ab1774327a4aa0ab39c22f4a400100</sys_id>
+        <sys_metadata>0cf4e9762f110110ee00d5f62799b64e</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>name</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>catalog_ui_policy_action_0cf4e9762f110110ee00d5f62799b64e</sys_update_name>
+        <sys_update_version display_value="catalog_ui_policy_action_0cf4e9762f110110ee00d5f62799b64e">edf4e5762f110110ee00d5f62799b685</sys_update_version>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2022-02-17 08:23:50</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

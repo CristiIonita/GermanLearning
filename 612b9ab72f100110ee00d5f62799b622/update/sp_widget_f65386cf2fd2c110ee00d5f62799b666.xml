@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.container_1{&#13;
+  	margin:0;&#13;
+  padding:0;&#13;
+  background-color:#FFD541;&#13;
+width:100%;&#13;
+  text-align: center;&#13;
+  color: white;&#13;
+  font-size:24px;&#13;
+  height : calc(30vh - 35px);&#13;
+}&#13;
+&#13;
+.center_container{&#13;
+   position:relative;&#13;
+  top:25%;&#13;
+}&#13;
+&#13;
+p{&#13;
+  font-size:3vh;&#13;
+}&#13;
+.badge_position{&#13;
+    margin:6px;&#13;
+background-color : white;&#13;
+color:black; &#13;
+float: right;&#13;
+&#13;
+}&#13;
+img{&#13;
+  margin-left:9%;&#13;
+ width:10vh;&#13;
+  height:10vh;&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>copy_of_gla_homepage_practice</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Copy of GLA Homepage practice</name>
+        <option_schema>[{"name":"access_type","section":"Behavior","label":"Access type","type":"string"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+data.practice=0;
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-03-22 09:20:01</sys_created_on>
+        <sys_id>f65386cf2fd2c110ee00d5f62799b666</sys_id>
+        <sys_mod_count>15</sys_mod_count>
+        <sys_name>Copy of GLA Homepage practice</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_f65386cf2fd2c110ee00d5f62799b666</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-03-23 12:51:16</sys_updated_on>
+        <template><![CDATA[<a href='https://dev101723.service-now.com/glap?id=gla_practice'>
+<div class="container_1">
+  <span class="badge badge_position"  ng-ift=data.practice >{{data.practice}} </span>
+  <div class="center_container">
+  		
+ 		<img src="trainee.png"/>
+ 		<p>Practice</p>
+	</div>
+</div>
+</a>]]></template>
+    </sp_widget>
+</record_update>

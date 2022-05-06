@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_dependency_js_include">
+    <m2m_sp_dependency_js_include action="INSERT_OR_UPDATE">
+        <order>100</order>
+        <sp_dependency display_value="HTML editor">e5a115802f650110ee00d5f62799b694</sp_dependency>
+        <sp_js_include display_value="https://cdn.tiny.cloud/1/n0j5dtlc4k4pwwni647mequi4majekrifjlwtcpt5amtbaj1/tinymce/5/tinymce.min.js">9bc295042f650110ee00d5f62799b620</sp_js_include>
+        <sys_class_name>m2m_sp_dependency_js_include</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-02-03 15:19:34</sys_created_on>
+        <sys_id>5be295042f650110ee00d5f62799b6d2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>HTML editor.https://cloud.tinymce.com/stable/tinymce.min.js</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>m2m_sp_dependency_js_include_5be295042f650110ee00d5f62799b6d2</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-02-03 15:19:34</sys_updated_on>
+    </m2m_sp_dependency_js_include>
+</record_update>

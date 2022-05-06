@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_catalog">
+    <sc_cat_item_catalog action="DELETE">
+        <sc_cat_item display_value="Copy of Create Assignment ">f7bf59292f210110ee00d5f62799b656</sc_cat_item>
+        <sc_catalog display_value="GLA Catalog">d2dd8bbb2f490110ee00d5f62799b657</sc_catalog>
+        <sys_class_name>sc_cat_item_catalog</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-08 08:06:29</sys_created_on>
+        <sys_id>44cf59292f210110ee00d5f62799b6e7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>GLA Catalog.Copy of Create Assignment </sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sc_cat_item_catalog_44cf59292f210110ee00d5f62799b6e7</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-08 08:06:29</sys_updated_on>
+    </sc_cat_item_catalog>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sc_cat_item_catalog_44cf59292f210110ee00d5f62799b6e7</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_catalog"><sc_cat_item_catalog action="INSERT_OR_UPDATE"><sc_cat_item display_value="Copy of Create Assignment ">f7bf59292f210110ee00d5f62799b656</sc_cat_item><sc_catalog display_value="GLA Catalog">d2dd8bbb2f490110ee00d5f62799b657</sc_catalog><sys_class_name>sc_cat_item_catalog</sys_class_name><sys_created_by>icristi</sys_created_by><sys_created_on>2022-02-08 08:06:29</sys_created_on><sys_id>44cf59292f210110ee00d5f62799b6e7</sys_id><sys_mod_count>0</sys_mod_count><sys_name>GLA Catalog.Copy of Create Assignment </sys_name><sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package><sys_policy/><sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope><sys_update_name>sc_cat_item_catalog_44cf59292f210110ee00d5f62799b6e7</sys_update_name><sys_updated_by>icristi</sys_updated_by><sys_updated_on>2022-02-08 08:06:29</sys_updated_on></sc_cat_item_catalog></record_update>]]></payload>
+        <payload_hash>1799186167</payload_hash>
+        <record_name>GLA Catalog.Copy of Create Assignment </record_name>
+        <reverted_from/>
+        <source>ddf81ff32f890110ee00d5f62799b6e1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-08 08:06:29</sys_created_on>
+        <sys_id>44cf59292f210110ee00d5f62799b6eb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ed85ea9630000001</sys_recorded_at>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-08 08:06:29</sys_updated_on>
+        <type>Catalog Items Catalog</type>
+        <update_guid>4ccf5929ca21011092e9c12c7582c8ea</update_guid>
+        <update_guid_history>4ccf5929ca21011092e9c12c7582c8ea:1799186167</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="GLA Catalog.Copy of Create Assignment ">78f8ca3c2f5e4110ee00d5f62799b648</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-03-15 09:58:07</sys_created_on>
+        <sys_db_object display_value="" name="sc_cat_item_catalog">sc_cat_item_catalog</sys_db_object>
+        <sys_id>38b6daa5c2f84e2084857705ac3be1f9</sys_id>
+        <sys_metadata>44cf59292f210110ee00d5f62799b6e7</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>GLA Catalog.Copy of Create Assignment </sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent display_value="Edit Assignment ">f7bf59292f210110ee00d5f62799b656</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sc_cat_item_catalog_44cf59292f210110ee00d5f62799b6e7</sys_update_name>
+        <sys_update_version display_value="sc_cat_item_catalog_44cf59292f210110ee00d5f62799b6e7">44cf59292f210110ee00d5f62799b6eb</sys_update_version>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-03-15 09:58:07</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

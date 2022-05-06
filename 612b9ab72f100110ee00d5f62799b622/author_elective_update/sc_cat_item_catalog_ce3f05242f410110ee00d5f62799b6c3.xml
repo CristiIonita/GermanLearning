@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_catalog">
+    <sc_cat_item_catalog action="DELETE">
+        <sc_cat_item display_value="Create Resource">450df1172f300110ee00d5f62799b64f</sc_cat_item>
+        <sc_catalog display_value="Service Catalog">e0d08b13c3330100c8b837659bba8fb4</sc_catalog>
+        <sys_class_name>sc_cat_item_catalog</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-01-11 07:48:56</sys_created_on>
+        <sys_id>ce3f05242f410110ee00d5f62799b6c3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Service Catalog.Create Resource</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sc_cat_item_catalog_ce3f05242f410110ee00d5f62799b6c3</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-01-11 07:48:56</sys_updated_on>
+    </sc_cat_item_catalog>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sc_cat_item_catalog_ce3f05242f410110ee00d5f62799b6c3</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_catalog"><sc_cat_item_catalog action="INSERT_OR_UPDATE"><sc_cat_item display_value="Create Resource">450df1172f300110ee00d5f62799b64f</sc_cat_item><sc_catalog display_value="Service Catalog">e0d08b13c3330100c8b837659bba8fb4</sc_catalog><sys_class_name>sc_cat_item_catalog</sys_class_name><sys_created_by>icristi</sys_created_by><sys_created_on>2022-01-11 07:48:56</sys_created_on><sys_id>ce3f05242f410110ee00d5f62799b6c3</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Service Catalog.Create Resource</sys_name><sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package><sys_policy/><sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope><sys_update_name>sc_cat_item_catalog_ce3f05242f410110ee00d5f62799b6c3</sys_update_name><sys_updated_by>icristi</sys_updated_by><sys_updated_on>2022-01-11 07:48:56</sys_updated_on></sc_cat_item_catalog></record_update>]]></payload>
+        <payload_hash>1120536687</payload_hash>
+        <record_name>Service Catalog.Create Resource</record_name>
+        <reverted_from/>
+        <source>cdaad7e62fb04110ee00d5f62799b660</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-01-11 07:48:56</sys_created_on>
+        <sys_id>4a3fc9242f410110ee00d5f62799b61a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17e481c88410000001</sys_recorded_at>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-01-11 07:48:56</sys_updated_on>
+        <type>Catalog Items Catalog</type>
+        <update_guid>823fc9241a41011003a1dc8aeb5ed91a</update_guid>
+        <update_guid_history>823fc9241a41011003a1dc8aeb5ed91a:1120536687</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Service Catalog.Create Resource">76c011a42f410110ee00d5f62799b6ba</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-01-11 07:55:49</sys_created_on>
+        <sys_db_object display_value="" name="sc_cat_item_catalog">sc_cat_item_catalog</sys_db_object>
+        <sys_id>3a814d9653234e53a3d4d05e293499f1</sys_id>
+        <sys_metadata>ce3f05242f410110ee00d5f62799b6c3</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Service Catalog.Create Resource</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent display_value="Create Resource">450df1172f300110ee00d5f62799b64f</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sc_cat_item_catalog_ce3f05242f410110ee00d5f62799b6c3</sys_update_name>
+        <sys_update_version display_value="sc_cat_item_catalog_ce3f05242f410110ee00d5f62799b6c3">4a3fc9242f410110ee00d5f62799b61a</sys_update_version>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-01-11 07:55:49</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

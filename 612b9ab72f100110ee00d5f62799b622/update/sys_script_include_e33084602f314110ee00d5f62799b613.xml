@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_723119_germanlrn.RecordEditor</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>RecordEditor</name>
+        <script><![CDATA[var RecordEditor = Class.create();
+RecordEditor.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+    editResource: function(resource, newResource, notes, active) {
+        resource = resource ? resource : this.getParameter('sysparm_resource');
+        newResource = newResource ? newResource : this.getParameter('sysparm_newResource');
+        notes = notes ? notes : this.getParameter('sysparm_notes');
+        active = active ? active : this.getParameter('sysparm_active');
+
+        var resourceGR = new GlideRecord('x_723119_germanlrn_resource');
+        resourceGR.addQuery('sys_id', resource);
+        resourceGR.query();
+        if (resourceGR.next()) {
+            resourceGR.name = newResource;
+            resourceGR.notes = notes;
+            resourceGR.active = active;
+			resourceGR.setWorkflow(false);
+            resourceGR.update();
+        }
+    },
+    editHomework: function(homework, newHomework, instructions, active, resources) {
+        homework = homework ? homework : this.getParameter('sysparm_homework');
+        newHomework = newHomework ? newHomework : this.getParameter('sysparm_newHomework');
+        instructions = instructions ? instructions : this.getParameter('sysparm_instructions');
+        active = active ? active : this.getParameter('sysparm_active');
+        resources = resources ? resources : this.getParameter('sysparm_resources');
+
+        var homeworkGR = new GlideRecord('x_723119_germanlrn_homework');
+        homeworkGR.addQuery('sys_id', homework);
+        homeworkGR.query();
+        if (homeworkGR.next()) {
+
+            homeworkGR.name = newHomework;
+
+
+            homeworkGR.instructions = instructions;
+            homeworkGR.active = active;
+            homeworkGR.resources = resources;
+			homeworkGR.setWorkflow(false);
+            homeworkGR.update();
+        }
+    },
+	/*
+	 editAssignment: function(assignment,homework,group,user,active,due_date) {
+        resource = resource ? resource : this.getParameter('sysparm_resource');
+        newResource = newResource ? newResource : this.getParameter('sysparm_newResource');
+        notes = notes ? notes : this.getParameter('sysparm_notes');
+        active = active ? active : this.getParameter('sysparm_active');
+
+        var resourceGR = new GlideRecord('x_723119_germanlrn_resource');
+        resourceGR.addQuery('sys_id', resource);
+        resourceGR.query();
+        if (resourceGR.next()) {
+            resourceGR.name = newResource;
+            resourceGR.notes = notes;
+            resourceGR.active = active;
+			resourceGR.setWorkflow(false);
+            resourceGR.update();
+        }
+    },*/
+    type: 'RecordEditor'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-17 09:02:18</sys_created_on>
+        <sys_id>e33084602f314110ee00d5f62799b613</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>RecordEditor</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_script_include_e33084602f314110ee00d5f62799b613</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-03-15 10:37:39</sys_updated_on>
+    </sys_script_include>
+</record_update>

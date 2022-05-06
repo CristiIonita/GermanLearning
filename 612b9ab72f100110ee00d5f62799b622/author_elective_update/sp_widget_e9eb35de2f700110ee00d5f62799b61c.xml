@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="DELETE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {  /* widget controller */  var c = this;};]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs display_value="Widgets">948bab53d721120023c84f80de61034e</docs>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>gla_resource</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Resource</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+data.table = $sp.getValue('x_723119_germanlrn_resource');
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-01-04 11:17:48</sys_created_on>
+        <sys_id>e9eb35de2f700110ee00d5f62799b61c</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>Resource</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_e9eb35de2f700110ee00d5f62799b61c</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-01-20 13:52:04</sys_updated_on>
+        <template><![CDATA[<div>
+<!-- your widget template -->
+  <widget id="gla_resource"></widget>
+</div>]]></template>
+    </sp_widget>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sp_widget_e9eb35de2f700110ee00d5f62799b61c</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_widget"&gt;&lt;sp_widget action="INSERT_OR_UPDATE"&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[api.controller=function() {  /* widget controller */  var c = this;};]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css/&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs display_value="Widgets"&gt;948bab53d721120023c84f80de61034e&lt;/docs&gt;&lt;field_list/&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id&gt;gla_resource&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function link(scope, element, attrs, controller) {  }]]&gt;&lt;/link&gt;&lt;name&gt;Resource&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+data.table = $sp.getValue('x_723119_germanlrn_resource');
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-01-04 11:17:48&lt;/sys_created_on&gt;&lt;sys_id&gt;e9eb35de2f700110ee00d5f62799b61c&lt;/sys_id&gt;&lt;sys_mod_count&gt;10&lt;/sys_mod_count&gt;&lt;sys_name&gt;Resource&lt;/sys_name&gt;&lt;sys_package display_value="German Learning" source="x_723119_germanlrn"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="German Learning"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_e9eb35de2f700110ee00d5f62799b61c&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;icristi&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-01-20 13:52:04&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div&gt;
+&lt;!-- your widget template --&gt;
+  &lt;widget id="gla_resource"&gt;&lt;/widget&gt;
+&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1636027722</payload_hash>
+        <record_name>Resource</record_name>
+        <reverted_from/>
+        <source>3f92cc272fc10110ee00d5f62799b6bd</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-01-20 13:52:04</sys_created_on>
+        <sys_id>19a870ef2f450110ee00d5f62799b6ab</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17e77c23a910000001</sys_recorded_at>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-01-20 13:52:04</sys_updated_on>
+        <type>Widget</type>
+        <update_guid>51a870ef034501105db1fc11a029f4ab</update_guid>
+        <update_guid_history>51a870ef034501105db1fc11a029f4ab:-1636027722,ea48fcaf57450110574687f16d86e2de:571591713,5e083caf924501105a8c05836a2ef2cc:-1333368768,fab730afa545011019529b1f102f21f8:-484666255,b4a7f4afd54501107f1417cbfc527655:-2010765783,ec272f22c9f0411052f1c5b6a9302507:1556212965,bf3e7a624e704110c20d3ca71e7224b0:1626873018,b73bde5a56f00110bf3344c04939942b:898627374,1055d21a9ff00110229eb52cb5a45c37:84488512,cf05d6d657f00110d957509d61cf3c13:-21617543,a5eb35dea6700110457354090080221f:258801611</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Resource">a269bcef2f450110ee00d5f62799b67c</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-01-20 13:55:26</sys_created_on>
+        <sys_db_object display_value="" name="sp_widget">sp_widget</sys_db_object>
+        <sys_id>2c93661308384498943a4550bc436691</sys_id>
+        <sys_metadata>e9eb35de2f700110ee00d5f62799b61c</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Resource</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sp_widget_e9eb35de2f700110ee00d5f62799b61c</sys_update_name>
+        <sys_update_version display_value="sp_widget_e9eb35de2f700110ee00d5f62799b61c">19a870ef2f450110ee00d5f62799b6ab</sys_update_version>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-01-20 13:55:26</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

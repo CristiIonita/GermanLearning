@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_widget_dependency">
+    <m2m_sp_widget_dependency action="DELETE">
+        <sp_dependency display_value="HTML editor">e5a115802f650110ee00d5f62799b694</sp_dependency>
+        <sp_widget display_value="Copy of User Assignment">6192eeed2fe10110ee00d5f62799b666</sp_widget>
+        <sys_class_name>m2m_sp_widget_dependency</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-08 12:58:30</sys_created_on>
+        <sys_id>e592eeed2fe10110ee00d5f62799b668</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>HTML editor.Copy of User Assignment</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>m2m_sp_widget_dependency_e592eeed2fe10110ee00d5f62799b668</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-08 12:58:30</sys_updated_on>
+    </m2m_sp_widget_dependency>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>m2m_sp_widget_dependency_e592eeed2fe10110ee00d5f62799b668</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_widget_dependency"><m2m_sp_widget_dependency action="INSERT_OR_UPDATE"><sp_dependency display_value="HTML editor">e5a115802f650110ee00d5f62799b694</sp_dependency><sp_widget display_value="Copy of User Assignment">6192eeed2fe10110ee00d5f62799b666</sp_widget><sys_class_name>m2m_sp_widget_dependency</sys_class_name><sys_created_by>icristi</sys_created_by><sys_created_on>2022-02-08 12:58:30</sys_created_on><sys_id>e592eeed2fe10110ee00d5f62799b668</sys_id><sys_mod_count>0</sys_mod_count><sys_name>HTML editor.Copy of User Assignment</sys_name><sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package><sys_policy/><sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope><sys_update_name>m2m_sp_widget_dependency_e592eeed2fe10110ee00d5f62799b668</sys_update_name><sys_updated_by>icristi</sys_updated_by><sys_updated_on>2022-02-08 12:58:30</sys_updated_on></m2m_sp_widget_dependency></record_update>]]></payload>
+        <payload_hash>-1223667685</payload_hash>
+        <record_name>HTML editor.Copy of User Assignment</record_name>
+        <reverted_from/>
+        <source>ddf81ff32f890110ee00d5f62799b6e1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-08 12:58:30</sys_created_on>
+        <sys_id>3d92eeed2fe10110ee00d5f62799b66a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ed96a03700000001</sys_recorded_at>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-08 12:58:30</sys_updated_on>
+        <type>Widget Dependency</type>
+        <update_guid>7592eeed10e1011017ce31567096dd6a</update_guid>
+        <update_guid_history>7592eeed10e1011017ce31567096dd6a:-1223667685</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="HTML editor.Copy of User Assignment">d4f52ea12f250110ee00d5f62799b6e1</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-08 13:13:09</sys_created_on>
+        <sys_db_object display_value="" name="m2m_sp_widget_dependency">m2m_sp_widget_dependency</sys_db_object>
+        <sys_id>18eb7cb5fa834718866a852cf092b969</sys_id>
+        <sys_metadata>e592eeed2fe10110ee00d5f62799b668</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>HTML editor.Copy of User Assignment</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>m2m_sp_widget_dependency_e592eeed2fe10110ee00d5f62799b668</sys_update_name>
+        <sys_update_version display_value="m2m_sp_widget_dependency_e592eeed2fe10110ee00d5f62799b668">3d92eeed2fe10110ee00d5f62799b66a</sys_update_version>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-08 13:13:09</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

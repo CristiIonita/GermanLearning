@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function($scope,spUtil) {
+  /* widget controller */
+  var c = this;
+	
+	$scope.search = function(){
+		c.data.word = '';
+		c.data.file_name = '';
+		c.data.start = '';
+		c.data.duration ='';
+		c.data.body = '';
+					
+		
+		var variable = document.getElementById('input');
+		var value = variable.value;
+		if(value == ""){
+			spUtil.addErrorMessage("Search field is empty");
+			return false;
+		}
+	$scope.loadingIndicator = true;
+	c.data.control = "search";
+	c.data.word = value;
+	c.data.clicked = true;
+	c.server.update().then(function(r) {
+               $scope.loadingIndicator = false;
+            });
+		
+};
+};
+
+	]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.main_container{
+margin-top : 10px;
+background-color: #444343; 
+border-radius: 4px; 
+height:250px;
+width: 100%;
+
+}
+
+.inputText
+{
+width: 50%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top:15px;
+  margin-left:15px;
+  font-size: 16px;
+ 
+}
+
+ .searchButton{
+ 
+  background-color: #ffffff;
+  border: none;
+  border-radius:5px;
+  color: #484649;
+  margin-top:15px;
+  margin-left:25px;
+  margin-right:20px;
+  padding: 12px 26px;
+  text-align: center;
+  font-size: 16px;
+ 
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+ }
+ .searchButton:hover
+{
+opacity: 0.6;
+}
+
+.flex-parent {
+  display: flex;
+}
+
+.jc-center {
+  justify-content: center;
+}
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id/>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Prounciation widget</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+    if (input && input.control) {
+        if (input.control == "search") {
+					// add 5 points per search for badge system
+			var grU= new GlideRecord('sys_user');
+							grU.addQuery('sys_id',gs.getUserID());
+							grU.query();
+							if(grU.next()){
+							grU.u_points=parseFloat(grU.u_points)+5;
+							grU.update();
+							}
+		//end of adding points
+           search(input.word);
+			
+        }
+    }
+
+   
+
+})();
+
+ function search(word) {      
+		word = encodeURIComponent(word.trim());
+        var request = new sn_ws.RESTMessageV2();
+        request.setHttpMethod('get');
+        request.setEndpoint('https://voicecup.com/api?key=ztiK72XUhm&q='+word+'&lang=ger&format=json');
+
+        var response = request.execute();
+        var httpResponseStatus = response.getStatusCode();
+
+        if (httpResponseStatus == 200) {
+            responseObj = response.getBody();
+            var res = JSON.parse(responseObj);
+			 var hits = res.hits_total;
+			
+					if(hits > 0){
+            data.file_name = res.hits[0].filename_audio;
+			data.start = res.hits[0].start_precise;
+			data.duration = res.hits[0].duration_precise;
+			data.body = res.hits[0].body;
+						
+					}
+							 
+					else
+						{
+            data.body = "No results found."
+        }
+				}
+	 else
+		 {
+			 data.body = "Oops there is an error. Please try again later."
+		 }
+        
+    }]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-04-06 07:08:57</sys_created_on>
+        <sys_id>bb15be772f220110ee00d5f62799b68e</sys_id>
+        <sys_mod_count>125</sys_mod_count>
+        <sys_name>Prounciation widget</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_bb15be772f220110ee00d5f62799b68e</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-04-21 10:24:14</sys_updated_on>
+        <template><![CDATA[<div  class = "main_container" >
+<!-- your widget template -->
+<div class="flex-parent jc-center">
+  <input id ="input" placeholder="Search..." class="inputText">
+  <button  class="searchButton" ng-click = "search()" >Search</button>
+   
+  </div>
+ <div class = "row text-center" >
+    <div class="spinner" ng-show="loadingIndicator">
+       <img src="spinner-front.svg" class="loading-spinner"/>
+    </div>
+  </div>
+  <br>
+  <div class="flex-parent jc-center">
+    <audio  ng-if = {data.start} controls="true" preload="none" controlsList="nodownload">
+<source src="https://voicecup.com/play?key=ztiK72XUhm&filename={{data.file_name}}&filetype=mp4&start={{data.start}}&duration={{data.duration}}" type="audio/mp4">
+<source src="https://voicecup.com/play?key=ztiK72XUhm&filename={{data.file_name}}&filetype=mp4&start={{data.start}}&duration={{data.duration}}" type="audio/webm">
+</audio>
+    </div>
+   <div class= "row text-center" style="color:#fff; padding:5px; margin-left:10px; font-size:20px">
+  {{data.body}}
+</div>
+
+
+
+]]></template>
+    </sp_widget>
+</record_update>

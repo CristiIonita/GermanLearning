@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category">
+    <sc_cat_item_category action="DELETE">
+        <sc_cat_item display_value="Copy of Create Assignment ">f7bf59292f210110ee00d5f62799b656</sc_cat_item>
+        <sc_category display_value="Assignments">c5d09b3f2f490110ee00d5f62799b63a</sc_category>
+        <sys_class_name>sc_cat_item_category</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-08 08:06:29</sys_created_on>
+        <sys_id>c8cf59292f210110ee00d5f62799b6ec</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Assignments.Copy of Create Assignment </sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sc_cat_item_category_c8cf59292f210110ee00d5f62799b6ec</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-08 08:06:29</sys_updated_on>
+    </sc_cat_item_category>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sc_cat_item_category_c8cf59292f210110ee00d5f62799b6ec</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category"><sc_cat_item_category action="INSERT_OR_UPDATE"><sc_cat_item display_value="Copy of Create Assignment ">f7bf59292f210110ee00d5f62799b656</sc_cat_item><sc_category display_value="Assignments">c5d09b3f2f490110ee00d5f62799b63a</sc_category><sys_class_name>sc_cat_item_category</sys_class_name><sys_created_by>icristi</sys_created_by><sys_created_on>2022-02-08 08:06:29</sys_created_on><sys_id>c8cf59292f210110ee00d5f62799b6ec</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Assignments.Copy of Create Assignment </sys_name><sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package><sys_policy/><sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope><sys_update_name>sc_cat_item_category_c8cf59292f210110ee00d5f62799b6ec</sys_update_name><sys_updated_by>icristi</sys_updated_by><sys_updated_on>2022-02-08 08:06:29</sys_updated_on></sc_cat_item_category></record_update>]]></payload>
+        <payload_hash>-1501948891</payload_hash>
+        <record_name>Assignments.Copy of Create Assignment </record_name>
+        <reverted_from/>
+        <source>ddf81ff32f890110ee00d5f62799b6e1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-08 08:06:29</sys_created_on>
+        <sys_id>08cf99292f210110ee00d5f62799b615</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ed85eaa470000001</sys_recorded_at>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-08 08:06:29</sys_updated_on>
+        <type>Catalog Item Category</type>
+        <update_guid>40cf9929652101107c965561be0f6f15</update_guid>
+        <update_guid_history>40cf9929652101107c965561be0f6f15:-1501948891</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Assignments.Copy of Create Assignment ">b0f8867c2f5e4110ee00d5f62799b6ff</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-03-15 09:58:08</sys_created_on>
+        <sys_db_object display_value="" name="sc_cat_item_category">sc_cat_item_category</sys_db_object>
+        <sys_id>afef0edbfbfd40feaa609e956a2f0a44</sys_id>
+        <sys_metadata>c8cf59292f210110ee00d5f62799b6ec</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Assignments.Copy of Create Assignment </sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sc_cat_item_category_c8cf59292f210110ee00d5f62799b6ec</sys_update_name>
+        <sys_update_version display_value="sc_cat_item_category_c8cf59292f210110ee00d5f62799b6ec">08cf99292f210110ee00d5f62799b615</sys_update_version>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-03-15 09:58:08</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

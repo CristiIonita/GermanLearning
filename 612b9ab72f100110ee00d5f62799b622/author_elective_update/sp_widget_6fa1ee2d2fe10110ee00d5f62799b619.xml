@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="DELETE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.myTable{&#13;
+&#13;
+&#13;
+background-color: #e3e3e3;&#13;
+height:230px;&#13;
+width:180px;&#13;
+margin-left:auto;&#13;
+margin-right:auto;&#13;
+}&#13;
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id/>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Copy of GLA User Assignments</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+    var currentUser = gs.getUserID();
+    var userChecker = new GLAUtils();
+    data.display = [];
+    if (userChecker.usersCheck('8e4a55ec2fa04110ee00d5f62799b63a').search(currentUser) !== -1) {
+        //if student
+        var gr = new GlideRecord('x_723119_germanlrn_user_assignment');
+        gr.addQuery('active', true);
+        gr.query();
+        while (gr.next()) {
+            var user_assignment_data = {};
+            user_assignment_data.number = gr.getValue('number');
+           // homework_data.name = gr.getValue('name');
+            user_assignment_data.link = "https://dev101723.service-now.com/glap?id=gla_user_assignment&sys_id=" + gr.getUniqueValue();
+            if (gr.active == true) {
+                user_assignment_data.isActive = "background-color:green; color:green; float: right;";
+            } else {
+                user_assignment_data.isActive = "background-color:red; color:red; float: right;";
+            }
+            data.display.push(user_assignment_data);
+        }
+    }
+
+    if (userChecker.usersCheck('446ad56c2fa04110ee00d5f62799b64f').search(currentUser) !== -1) {
+        //if teacher
+        var gr = new GlideRecord('x_723119_germanlrn_user_assignment');
+        gr.query();
+        while (gr.next()) {
+            var user_assignment_data = {};
+            user_assignment_data.number = gr.getValue('number');
+       //     user_assignment_data.name = gr.getValue('name');
+            user_assignment_data.link = "https://dev101723.service-now.com/glap?id=gla_user_assignment&sys_id=" + gr.getUniqueValue();
+            if (gr.active == true) {
+                user_assignment_data.isActive = "background-color:green; color:green; float: right;";
+            } else {
+                user_assignment_data.isActive = "background-color:red; color:red; float: right;";
+            }
+           data.display.push(user_assignment_data);
+
+        }
+    }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-08 12:54:32</sys_created_on>
+        <sys_id>6fa1ee2d2fe10110ee00d5f62799b619</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Copy of GLA User Assignments</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_6fa1ee2d2fe10110ee00d5f62799b619</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-08 12:54:32</sys_updated_on>
+        <template><![CDATA[<div>
+	<div class="row">
+    <div ng-repeat='user_assignment_data in data.display'>
+      
+    	<div class="col-sm-4 " style="border: 10px white solid;  border-radius: 25px; background-color:#e3e3e3;">
+ 
+        <a href={{user_assignment_data.link}} style="color:black"> 
+          <br>
+          <span class="badge" style={{user_assignment_data.isActive}}>0</span>
+            <table class="myTable">
+      
+             	<!-- <tr><td  style="font-size:18px; padding-left:10px">Name:</td><td  style="font-size:18px; padding-left:10px">{{user_assignment.name}}</td></tr>-->
+              <tr><td style="font-size:17px; padding-left:10px">User assignment</td><td style="font-size:14px; padding-left:10px"></td></tr>
+      	 		<tr><td style="font-size:14px; padding-left:10px">Number:</td><td style="font-size:14px; padding-left:10px">{{user_assignment_data.number}}</td></tr>
+ 			 
+          	</table>
+           
+        </a>
+       
+      </div>
+        
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sp_widget_6fa1ee2d2fe10110ee00d5f62799b619</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_widget"&gt;&lt;sp_widget action="INSERT_OR_UPDATE"&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;.myTable{&amp;#13;
+&amp;#13;
+&amp;#13;
+background-color: #e3e3e3;&amp;#13;
+height:230px;&amp;#13;
+width:180px;&amp;#13;
+margin-left:auto;&amp;#13;
+margin-right:auto;&amp;#13;
+}&amp;#13;
+&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id/&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]&gt;&lt;/link&gt;&lt;name&gt;Copy of GLA User Assignments&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+    var currentUser = gs.getUserID();
+    var userChecker = new GLAUtils();
+    data.display = [];
+    if (userChecker.usersCheck('8e4a55ec2fa04110ee00d5f62799b63a').search(currentUser) !== -1) {
+        //if student
+        var gr = new GlideRecord('x_723119_germanlrn_user_assignment');
+        gr.addQuery('active', true);
+        gr.query();
+        while (gr.next()) {
+            var user_assignment_data = {};
+            user_assignment_data.number = gr.getValue('number');
+           // homework_data.name = gr.getValue('name');
+            user_assignment_data.link = "https://dev101723.service-now.com/glap?id=gla_user_assignment&amp;sys_id=" + gr.getUniqueValue();
+            if (gr.active == true) {
+                user_assignment_data.isActive = "background-color:green; color:green; float: right;";
+            } else {
+                user_assignment_data.isActive = "background-color:red; color:red; float: right;";
+            }
+            data.display.push(user_assignment_data);
+        }
+    }
+
+    if (userChecker.usersCheck('446ad56c2fa04110ee00d5f62799b64f').search(currentUser) !== -1) {
+        //if teacher
+        var gr = new GlideRecord('x_723119_germanlrn_user_assignment');
+        gr.query();
+        while (gr.next()) {
+            var user_assignment_data = {};
+            user_assignment_data.number = gr.getValue('number');
+       //     user_assignment_data.name = gr.getValue('name');
+            user_assignment_data.link = "https://dev101723.service-now.com/glap?id=gla_user_assignment&amp;sys_id=" + gr.getUniqueValue();
+            if (gr.active == true) {
+                user_assignment_data.isActive = "background-color:green; color:green; float: right;";
+            } else {
+                user_assignment_data.isActive = "background-color:red; color:red; float: right;";
+            }
+           data.display.push(user_assignment_data);
+
+        }
+    }
+
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;icristi&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-02-08 12:54:32&lt;/sys_created_on&gt;&lt;sys_id&gt;6fa1ee2d2fe10110ee00d5f62799b619&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;Copy of GLA User Assignments&lt;/sys_name&gt;&lt;sys_package display_value="German Learning" source="x_723119_germanlrn"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="German Learning"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_6fa1ee2d2fe10110ee00d5f62799b619&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;icristi&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-02-08 12:54:32&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div&gt;
+	&lt;div class="row"&gt;
+    &lt;div ng-repeat='user_assignment_data in data.display'&gt;
+      
+    	&lt;div class="col-sm-4 " style="border: 10px white solid;  border-radius: 25px; background-color:#e3e3e3;"&gt;
+ 
+        &lt;a href={{user_assignment_data.link}} style="color:black"&gt; 
+          &lt;br&gt;
+          &lt;span class="badge" style={{user_assignment_data.isActive}}&gt;0&lt;/span&gt;
+            &lt;table class="myTable"&gt;
+      
+             	&lt;!-- &lt;tr&gt;&lt;td  style="font-size:18px; padding-left:10px"&gt;Name:&lt;/td&gt;&lt;td  style="font-size:18px; padding-left:10px"&gt;{{user_assignment.name}}&lt;/td&gt;&lt;/tr&gt;--&gt;
+              &lt;tr&gt;&lt;td style="font-size:17px; padding-left:10px"&gt;User assignment&lt;/td&gt;&lt;td style="font-size:14px; padding-left:10px"&gt;&lt;/td&gt;&lt;/tr&gt;
+      	 		&lt;tr&gt;&lt;td style="font-size:14px; padding-left:10px"&gt;Number:&lt;/td&gt;&lt;td style="font-size:14px; padding-left:10px"&gt;{{user_assignment_data.number}}&lt;/td&gt;&lt;/tr&gt;
+ 			 
+          	&lt;/table&gt;
+           
+        &lt;/a&gt;
+       
+      &lt;/div&gt;
+        
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1747851345</payload_hash>
+        <record_name>Copy of GLA User Assignments</record_name>
+        <reverted_from/>
+        <source>ddf81ff32f890110ee00d5f62799b6e1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-08 12:54:33</sys_created_on>
+        <sys_id>23a1ee2d2fe10110ee00d5f62799b61c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ed966632b0000001</sys_recorded_at>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-08 12:54:33</sys_updated_on>
+        <type>Widget</type>
+        <update_guid>6ba1ee2d5ee1011008795cbe9819251b</update_guid>
+        <update_guid_history>6ba1ee2d5ee1011008795cbe9819251b:1747851345</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Copy of GLA User Assignments">72122eed2fe10110ee00d5f62799b6ab</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-08 12:56:24</sys_created_on>
+        <sys_db_object display_value="" name="sp_widget">sp_widget</sys_db_object>
+        <sys_id>007005cb3ab247d680d4281b81dbe5e4</sys_id>
+        <sys_metadata>6fa1ee2d2fe10110ee00d5f62799b619</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Copy of GLA User Assignments</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sp_widget_6fa1ee2d2fe10110ee00d5f62799b619</sys_update_name>
+        <sys_update_version display_value="sp_widget_6fa1ee2d2fe10110ee00d5f62799b619">23a1ee2d2fe10110ee00d5f62799b61c</sys_update_version>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-08 12:56:24</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

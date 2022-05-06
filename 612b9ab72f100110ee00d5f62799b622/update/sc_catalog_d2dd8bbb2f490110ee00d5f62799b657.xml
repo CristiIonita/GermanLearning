@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_catalog">
+    <sc_catalog action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <background_color>white</background_color>
+        <description/>
+        <desktop_continue_shopping/>
+        <desktop_home_page/>
+        <desktop_image/>
+        <editors/>
+        <enable_wish_list>false</enable_wish_list>
+        <manager display_value="Cristi Ionita">5d6816772f100110ee00d5f62799b61b</manager>
+        <sys_class_name>sc_catalog</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-01-21 19:23:48</sys_created_on>
+        <sys_id>d2dd8bbb2f490110ee00d5f62799b657</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>GLA Catalog</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sc_catalog_d2dd8bbb2f490110ee00d5f62799b657</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-01-21 19:23:48</sys_updated_on>
+        <title>GLA Catalog</title>
+    </sc_catalog>
+    <sys_translated_text action="delete_multiple" query="documentkey=d2dd8bbb2f490110ee00d5f62799b657"/>
+</record_update>

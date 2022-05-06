@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="catalog_ui_policy_action">
+    <catalog_ui_policy_action action="INSERT_OR_UPDATE">
+        <catalog_item display_value="Create Homework">90a8db152f910110ee00d5f62799b6b6</catalog_item>
+        <catalog_variable>IO:a4a893552f910110ee00d5f62799b6ae</catalog_variable>
+        <cleared>false</cleared>
+        <disabled>ignore</disabled>
+        <field/>
+        <mandatory>true</mandatory>
+        <order>100</order>
+        <sys_class_name>catalog_ui_policy_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-01-30 19:24:35</sys_created_on>
+        <sys_id>2f94e1762f110110ee00d5f62799b673</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>instructions</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>catalog_ui_policy_action_2f94e1762f110110ee00d5f62799b673</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-01-30 19:24:35</sys_updated_on>
+        <table/>
+        <ui_policy display_value="Makes Name and Instructions Mandatory">807421762f110110ee00d5f62799b633</ui_policy>
+        <variable>instructions</variable>
+        <variable_set/>
+        <visible>ignore</visible>
+    </catalog_ui_policy_action>
+</record_update>

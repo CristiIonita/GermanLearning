@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="live_feed=false" label="Assignment" max_length="40" name="x_723119_germanlrn_assignment" sizeclass="35" type="collection">
+        <element label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Due date" max_length="40" name="due_date" type="glide_date"/>
+        <element label="Group" max_length="32" name="group" reference="sys_user_group" reference_qual="javascript: new GLAUtils().typeCheck('8e4a55ec2fa04110ee00d5f62799b63a');" type="reference" use_reference_qualifier="advanced"/>
+        <element label="Homework" max_length="40" name="homework" reference="x_723119_germanlrn_homework" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="User" max_length="32" name="user" reference="sys_user" reference_qual="javascript: new GLAUtils().usersCheck('8e4a55ec2fa04110ee00d5f62799b63a');" type="reference" use_reference_qualifier="advanced"/>
+        <index name="index">
+            <element name="user"/>
+        </index>
+        <index name="index2">
+            <element name="group"/>
+        </index>
+    </element>
+</database>

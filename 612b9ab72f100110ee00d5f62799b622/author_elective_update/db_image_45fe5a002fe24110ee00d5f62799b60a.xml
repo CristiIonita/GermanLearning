@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="db_image">
+    <db_image action="DELETE">
+        <active>true</active>
+        <category/>
+        <format/>
+        <height/>
+        <image>f1536e042fe24110ee00d5f62799b628</image>
+        <name>portal-loading-spinner.svg</name>
+        <size_bytes>3420</size_bytes>
+        <sys_class_name>db_image</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-25 13:54:48</sys_created_on>
+        <sys_id>45fe5a002fe24110ee00d5f62799b60a</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>portal-loading-spinner.svg</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>db_image_45fe5a002fe24110ee00d5f62799b60a</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-25 14:13:41</sys_updated_on>
+        <thumbnail/>
+        <width/>
+    </db_image>
+    <sys_attachment action="DELETE">
+        <average_image_color/>
+        <chunk_size_bytes>700000</chunk_size_bytes>
+        <compressed>true</compressed>
+        <content_type>image/svg+xml</content_type>
+        <file_name>image</file_name>
+        <hash>18a067a464eac9eb4b64123da5b5b3a41a10db5e9e5bf91380c1a3bb5fc5efe3</hash>
+        <image_height/>
+        <image_width/>
+        <size_bytes>3420</size_bytes>
+        <size_compressed>535</size_compressed>
+        <state>pending</state>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-25 14:13:41</sys_created_on>
+        <sys_id>f1536e042fe24110ee00d5f62799b628</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-25 14:13:41</sys_updated_on>
+        <table_name>ZZ_YYdb_image</table_name>
+        <table_sys_id>45fe5a002fe24110ee00d5f62799b60a</table_sys_id>
+    </sys_attachment>
+    <sys_attachment_doc action="DELETE">
+        <data>H4sIAAAAAAAAAA==</data>
+        <length>16</length>
+        <position>0</position>
+        <sys_attachment display_value="image" sys_id="f1536e042fe24110ee00d5f62799b628">f1536e042fe24110ee00d5f62799b628</sys_attachment>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-25 14:13:41</sys_created_on>
+        <sys_id>35536e042fe24110ee00d5f62799b628</sys_id>
+    </sys_attachment_doc>
+    <sys_attachment_doc action="DELETE">
+        <data>1ZdNj5swEIbv+yum08uutAQDgXySVdtze6h6qaoeDDjECtjINiH8+06yq1W32lNFDrZAaDTDeN4HG5jt07lt4CSMlVrlGM0YglClrqSqc+zdPlji0+5ua081UKSyOR6c69ZhOAzDbEhm2tRhzBgLKQKfQ9bnRqrje4HRarUKr14E68ZG5NhyU0u1Bt47vYGCl8fa6F5VazB1cR+n6SNELH6EdPGwgUraruHjGopGl8cN2APvRGCEqoShgl+yIAyycgdSw5LujHAQsj64V/MkxfBZn3NkwCj39UTojLDCnMQn24nSfedO6hzPX2X1k04kAjU4w5Xda9PmaLTjTtwzSC/HA/kBtoZuBMo7XyCMOcZzBENmQhcys9eysr9KihH2smly/JiWKUvjaybKxZVsaQbgzhlZ9E584y3R0h0vpRtJBG96QQ8j2lDtRzH+kO3FZJsIoeoNOSxCIQhtjgGbraLszSCnEZ3g7guxpjokEdxLJZ3A3TZ8mfwqKryoIvlhvXsXQeINg2XyZsynY5B5w2CRTqd65Y3qLLvV6o9ibyCky1st/yj1B8KEqpfeqJ6/ffsvpoMQR95ASP4ZE0KYewMhnnADxAtvZEe3+wIkzBsKbHmzLZB48hvI/kvy3fZDEMCvppL6N9RCCUNBFRQjXFocSz1Oo/mlY5pJHUIQUCbqhnZ/AAfueeVcDQAA</data>
+        <length>700</length>
+        <position>1</position>
+        <sys_attachment display_value="image" sys_id="f1536e042fe24110ee00d5f62799b628">f1536e042fe24110ee00d5f62799b628</sys_attachment>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-25 14:13:41</sys_created_on>
+        <sys_id>b5536e042fe24110ee00d5f62799b628</sys_id>
+    </sys_attachment_doc>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>db_image_45fe5a002fe24110ee00d5f62799b60a</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="db_image"><db_image action="INSERT_OR_UPDATE"><active>true</active><category/><format/><height/><image>f1536e042fe24110ee00d5f62799b628</image><name>portal-loading-spinner.svg</name><size_bytes>3420</size_bytes><sys_class_name>db_image</sys_class_name><sys_created_by>mdaniel</sys_created_by><sys_created_on>2022-03-25 13:54:48</sys_created_on><sys_id>45fe5a002fe24110ee00d5f62799b60a</sys_id><sys_mod_count>5</sys_mod_count><sys_name>portal-loading-spinner.svg</sys_name><sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package><sys_policy/><sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope><sys_update_name>db_image_45fe5a002fe24110ee00d5f62799b60a</sys_update_name><sys_updated_by>mdaniel</sys_updated_by><sys_updated_on>2022-03-25 14:13:41</sys_updated_on><thumbnail/><width/></db_image><sys_attachment action="INSERT_OR_UPDATE"><average_image_color/><chunk_size_bytes>700000</chunk_size_bytes><compressed>true</compressed><content_type>image/svg+xml</content_type><file_name>image</file_name><hash>18a067a464eac9eb4b64123da5b5b3a41a10db5e9e5bf91380c1a3bb5fc5efe3</hash><image_height/><image_width/><size_bytes>3420</size_bytes><size_compressed>535</size_compressed><state>pending</state><sys_created_by>mdaniel</sys_created_by><sys_created_on>2022-03-25 14:13:41</sys_created_on><sys_id>f1536e042fe24110ee00d5f62799b628</sys_id><sys_mod_count>2</sys_mod_count><sys_updated_by>mdaniel</sys_updated_by><sys_updated_on>2022-03-25 14:13:41</sys_updated_on><table_name>ZZ_YYdb_image</table_name><table_sys_id>45fe5a002fe24110ee00d5f62799b60a</table_sys_id></sys_attachment><sys_attachment_doc action="INSERT_OR_UPDATE"><data>H4sIAAAAAAAAAA==</data><length>16</length><position>0</position><sys_attachment display_value="image" sys_id="f1536e042fe24110ee00d5f62799b628">f1536e042fe24110ee00d5f62799b628</sys_attachment><sys_created_by>mdaniel</sys_created_by><sys_created_on>2022-03-25 14:13:41</sys_created_on><sys_id>35536e042fe24110ee00d5f62799b628</sys_id></sys_attachment_doc><sys_attachment_doc action="INSERT_OR_UPDATE"><data>1ZdNj5swEIbv+yum08uutAQDgXySVdtze6h6qaoeDDjECtjINiH8+06yq1W32lNFDrZAaDTDeN4HG5jt07lt4CSMlVrlGM0YglClrqSqc+zdPlji0+5ua081UKSyOR6c69ZhOAzDbEhm2tRhzBgLKQKfQ9bnRqrje4HRarUKr14E68ZG5NhyU0u1Bt47vYGCl8fa6F5VazB1cR+n6SNELH6EdPGwgUraruHjGopGl8cN2APvRGCEqoShgl+yIAyycgdSw5LujHAQsj64V/MkxfBZn3NkwCj39UTojLDCnMQn24nSfedO6hzPX2X1k04kAjU4w5Xda9PmaLTjTtwzSC/HA/kBtoZuBMo7XyCMOcZzBENmQhcys9eysr9KihH2smly/JiWKUvjaybKxZVsaQbgzhlZ9E584y3R0h0vpRtJBG96QQ8j2lDtRzH+kO3FZJsIoeoNOSxCIQhtjgGbraLszSCnEZ3g7guxpjokEdxLJZ3A3TZ8mfwqKryoIvlhvXsXQeINg2XyZsynY5B5w2CRTqd65Y3qLLvV6o9ibyCky1st/yj1B8KEqpfeqJ6/ffsvpoMQR95ASP4ZE0KYewMhnnADxAtvZEe3+wIkzBsKbHmzLZB48hvI/kvy3fZDEMCvppL6N9RCCUNBFRQjXFocSz1Oo/mlY5pJHUIQUCbqhnZ/AAfueeVcDQAA</data><length>700</length><position>1</position><sys_attachment display_value="image" sys_id="f1536e042fe24110ee00d5f62799b628">f1536e042fe24110ee00d5f62799b628</sys_attachment><sys_created_by>mdaniel</sys_created_by><sys_created_on>2022-03-25 14:13:41</sys_created_on><sys_id>b5536e042fe24110ee00d5f62799b628</sys_id></sys_attachment_doc></record_update>]]></payload>
+        <payload_hash>0</payload_hash>
+        <record_name>portal-loading-spinner.svg</record_name>
+        <reverted_from/>
+        <source>6e3af8a42fda0110ee00d5f62799b6b1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-25 14:13:41</sys_created_on>
+        <sys_id>86536e042fe24110ee00d5f62799b658</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17fc16d05c60000001</sys_recorded_at>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-25 14:13:41</sys_updated_on>
+        <type>Images</type>
+        <update_guid>ce536e04cae241105ae05ce2b2d79157</update_guid>
+        <update_guid_history>ce536e04cae241105ae05ce2b2d79157:1551350374,02536e04c4e2411062f0ee4d33244c2f:1030196195,b5536e044ee241106f432ecbb536812c:380319153,90106a40dee24110c9132dd805702c1c:-2117244425,c91f9a00dbe24110853e0c28e885f07a:1642836315,701f9a00eee241103fd072d7257be877:-1180795938,341f9a00b3e24110ce11c2409030ba74:2003547948,9d0f9a0039e24110b0ea6a34fd349a0a:-1792442325</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="portal-loading-spinner.svg">ee736e042fe24110ee00d5f62799b6a6</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-25 14:14:16</sys_created_on>
+        <sys_db_object display_value="" name="db_image">db_image</sys_db_object>
+        <sys_id>0939c1642fd043778118a49e1173c979</sys_id>
+        <sys_metadata>45fe5a002fe24110ee00d5f62799b60a</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>portal-loading-spinner.svg</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>db_image_45fe5a002fe24110ee00d5f62799b60a</sys_update_name>
+        <sys_update_version display_value="db_image_45fe5a002fe24110ee00d5f62799b60a">86536e042fe24110ee00d5f62799b658</sys_update_version>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-25 14:14:16</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

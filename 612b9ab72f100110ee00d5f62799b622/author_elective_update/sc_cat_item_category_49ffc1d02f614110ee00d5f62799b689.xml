@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category">
+    <sc_cat_item_category action="DELETE">
+        <sc_cat_item display_value="Create Group 2-TEST">7cffc1d02f614110ee00d5f62799b682</sc_cat_item>
+        <sc_category display_value="Group Management">58e0137f2f490110ee00d5f62799b604</sc_category>
+        <sys_class_name>sc_cat_item_category</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-04 09:45:03</sys_created_on>
+        <sys_id>49ffc1d02f614110ee00d5f62799b689</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Group Management.Create Group 2-TEST</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sc_cat_item_category_49ffc1d02f614110ee00d5f62799b689</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-04 09:45:03</sys_updated_on>
+    </sc_cat_item_category>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sc_cat_item_category_49ffc1d02f614110ee00d5f62799b689</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category"><sc_cat_item_category action="INSERT_OR_UPDATE"><sc_cat_item display_value="Create Group 2-TEST">7cffc1d02f614110ee00d5f62799b682</sc_cat_item><sc_category display_value="Group Management">58e0137f2f490110ee00d5f62799b604</sc_category><sys_class_name>sc_cat_item_category</sys_class_name><sys_created_by>icristi</sys_created_by><sys_created_on>2022-02-04 09:45:03</sys_created_on><sys_id>49ffc1d02f614110ee00d5f62799b689</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Group Management.Create Group 2-TEST</sys_name><sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package><sys_policy/><sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope><sys_update_name>sc_cat_item_category_49ffc1d02f614110ee00d5f62799b689</sys_update_name><sys_updated_by>icristi</sys_updated_by><sys_updated_on>2022-02-04 09:45:03</sys_updated_on></sc_cat_item_category></record_update>]]></payload>
+        <payload_hash>1476055253</payload_hash>
+        <record_name>Group Management.Create Group 2-TEST</record_name>
+        <reverted_from/>
+        <source>ddf81ff32f890110ee00d5f62799b6e1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-04 09:45:03</sys_created_on>
+        <sys_id>c9ffc1d02f614110ee00d5f62799b68c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ec41f78f30000001</sys_recorded_at>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-04 09:45:03</sys_updated_on>
+        <type>Catalog Item Category</type>
+        <update_guid>05ffc1d0d561411038e9bdea3724208c</update_guid>
+        <update_guid_history>05ffc1d0d561411038e9bdea3724208c:1476055253</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Group Management.Create Group 2-TEST">c50c7d052fa10110ee00d5f62799b67d</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-06 20:53:01</sys_created_on>
+        <sys_db_object display_value="" name="sc_cat_item_category">sc_cat_item_category</sys_db_object>
+        <sys_id>000f4fa3f74d4eb4800031d731c36b10</sys_id>
+        <sys_metadata>49ffc1d02f614110ee00d5f62799b689</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Group Management.Create Group 2-TEST</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sc_cat_item_category_49ffc1d02f614110ee00d5f62799b689</sys_update_name>
+        <sys_update_version display_value="sc_cat_item_category_49ffc1d02f614110ee00d5f62799b689">c9ffc1d02f614110ee00d5f62799b68c</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-06 20:53:01</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

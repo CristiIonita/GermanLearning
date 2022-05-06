@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function(spUtil, $scope, $timeout, $window) {
+	function isRefreshNeededForChanges(changes) {
+		var isNeeded = changes.length > 0 && !(
+			changes.length == 1 && (
+				changes[0] == 'comments' || changes[0] == 'work_notes' || changes[0] == 'task_percent_complete'
+			)
+		);
+		return isNeeded;
+	}
+	var c = this;
+	
+	c.KEYS = {
+		LEFT: 37,
+		RIGHT: 39
+	};
+	
+	//Click First visible Tab
+	function clickFirstVisibleTab() {
+		var uibTabs = $('#std-uib-tabset').children('ul');
+		var firstVisibleTab = uibTabs.children('.uib-vis-tab:first').find('>a');
+			$timeout(function(){
+				firstVisibleTab[0].click();
+			});
+	}
+	//Click dropdown menuitem on pressing right from tabs
+	c.keyUpOnTabs = function(e) {
+		var uibTabs = $('#std-uib-tabset').children('ul');
+		if(e.keyCode == c.KEYS.RIGHT && uibTabs && uibTabs.children('.uib-vis-tab:not(.hide-item):last')[0] == e.currentTarget) {
+			var selectables = $('#dropDownMenu').find('.hide-item:last').next();
+			if (selectables && selectables.length != 0) {
+				$timeout(function(){
+					selectables[0].click();
+				});
+			}
+			else
+				clickFirstVisibleTab();
+		}
+	}
+	
+	c.keyUpOnDropDown = function(e) {
+		var selectedMenuItem = $('#dropDownMenu').find('.tick-mark').parent();
+		if(e.keyCode == c.KEYS.RIGHT) {
+			var rightChild = getNextOrPrevChild(selectedMenuItem.next(), true); // Get next child of selected menu item
+			if (rightChild) {
+				$timeout(function(){
+					rightChild[0].click();
+				});
+			}
+			else
+				clickFirstVisibleTab(); // Move focus to first visible tab when no more menu Items present in dropdown
+		}
+		else if(e.keyCode == c.KEYS.LEFT) {
+			var leftChild =	getNextOrPrevChild(selectedMenuItem.prev(), false); // Get previous child of selected menu item
+			if (leftChild) {
+				$timeout(function(){
+					leftChild[0].click()
+				});
+			}
+		}
+	}
+	
+	function getNextOrPrevChild(child, right) {
+		if (right && child && child.next().length != 0 && child[0].tagName != 'LI') // To handle if next child is tooltip
+			return child.next();
+		else if (!right && child && child.prev().length != 0 && child[0].tagName != 'LI') // To handle if prev child is tooltip
+			return child.prev();
+		else if (child && child.length != 0)
+			return child;
+	}
+	
+	c.data.tabsCopy = Array.from(c.data.tabs);
+	var primaryWidth = 0;
+	$scope.selectedTab = null;
+
+	spUtil.recordWatch($scope, $scope.data.table, "sys_id=" + $scope.data.sys_id, function(name) {
+		if (isRefreshNeededForChanges(name.data.changes))
+			$scope.server.update();
+	});
+
+var doAdapt = function(isSelectedTabPrimary) {
+	if (!c.data.canRead && c.data.tabsCopy.length == 0)
+		return;
+	
+	var selectedTab = $scope.selectedTab;
+	var primaryItems = document.getElementsByClassName("uib-vis-tab");
+	var moreItems = document.getElementsByClassName("uib-more-tab");
+
+  // reveal all items for the calculation
+  Object.keys(primaryItems).forEach(function(item) {
+    primaryItems[item].classList.remove('hide-item');
+  });
+	
+  // hide items that won't fit in the Primary
+  var stopWidth = 0;
+	
+	if (document.getElementById("std-uib-tabset")) {
+		primaryWidth = document.getElementById("std-uib-tabset").offsetWidth;
+	}
+	var includeInMenuItem;
+	var actualPossibleWidth = primaryWidth;
+  Object.keys(primaryItems).forEach(function(item, i) {
+    primaryItems[item].id = 'uib-st-tab-' + c.data.tabsCopy[i].order;
+    moreItems[item].id = 'uib-more-tab-' + c.data.tabsCopy[i].order;
+    moreItems[item].children[0].setAttribute('role', "option");
+    if (primaryWidth >= stopWidth + primaryItems[item].offsetWidth && !includeInMenuItem) {
+			stopWidth += primaryItems[item].offsetWidth;
+			moreItems[item].classList.add('hide-item');
+			primaryItems[item].classList.remove('hide-item');
+    } else if(primaryItems[item] == primaryItems[primaryItems.length - 1]) {
+			document.getElementById("more-btn-text").style.maxWidth = (primaryItems[item - 1].offsetWidth + actualPossibleWidth) - stopWidth - 50 + 'px';
+			includeInMenuItem = true;
+			showItemInMenu(item - 1);
+			showItemInMenu(item);
+		} else if (actualPossibleWidth - stopWidth < parseInt(window.getComputedStyle(document.getElementById("more-btn"), null).getPropertyValue('min-width'))) {
+			showItemInMenu(item - 1);
+		} else {
+			var moreBtnWidth = 124;
+			document.getElementById("more-btn-text").style.maxWidth = actualPossibleWidth - stopWidth - moreBtnWidth - 50 + 'px';
+			includeInMenuItem = true;
+			showItemInMenu(item);
+			}
+  });
+	
+	function showItemInMenu(index) {
+		primaryItems[index].classList.add('hide-item');
+		moreItems[index].classList.remove('hide-item');
+	}
+	// show the selected tab and remove from more after clicked
+	if (selectedTab && document.getElementById('uib-st-tab-' + selectedTab.order)) {
+		var tabItem = document.getElementById('uib-st-tab-' + selectedTab.order);
+		var menuItem = document.getElementById('uib-more-tab-' + selectedTab.order);
+	
+		if (!menuItem.className.includes("hide-item")) { //If menu item is present in the dropdown and is the selectedTab
+			menuItem.children[0].classList.add("tick-mark");
+			menuItem.parentElement.setAttribute('aria-activedescendant', menuItem.id);
+			menuItem.children[0].setAttribute('aria-selected', true);
+			addSelected(menuItem); //Added for accessibilty
+		}
+		setTimeout(function(){
+			if (!isSelectedTabPrimary) 
+				tabItem.children[0].click();
+		 }, 0);
+	}
+	$scope.showOrHideMoreButton(moreItems);	
+}
+
+// adapt on load
+$timeout(function(){ 
+	doAdapt();
+	c.more_title = "${More_menu}";
+}, 0);
+
+$window.addEventListener('load',function() {
+    // handle load event
+	doAdapt();
+	c.more_title = "${More_menu}";
+});
+
+var prevTab;
+function renameMoreTab(tabSelected) {
+	var moreBtn = document.getElementById("more-btn");
+	var selectedItem;
+	if (tabSelected)
+		selectedItem = document.getElementById('uib-more-tab-'+ tabSelected.order);
+	var menuItemHidden;
+	if (tabSelected && selectedItem)
+		menuItemHidden = selectedItem.className.includes("hide-item");
+	if (moreBtn && tabSelected && !menuItemHidden) {
+		moreBtn.removeAttribute('tabindex'); //As menuitem is selected, now dropdown should appear in tabbing sequence
+		c.more_title = tabSelected.name;
+		if (!moreBtn.className.includes('active-dropdown'))
+			moreBtn.className += ' active-dropdown';
+	}
+	else if (moreBtn && tabSelected && menuItemHidden) {
+		c.more_title = "${More_menu}";
+		 $("#more-btn").removeClass("active-dropdown");
+		moreBtn.setAttribute('tabindex', '-1'); //Reset tabindex -1
+	}
+}
+window.addEventListener('resize', function() {
+	$timeout(function(){
+		doAdapt();
+	});
+	renameMoreTab($scope.selectedTab);
+	if (prevTab && prevTab.childNodes[1])
+			prevTab.removeChild(prevTab.childNodes[1]);
+}) // adapt on window resize
+
+function doOperationOnPrevTab(prevTab) {
+	if (prevTab) { //Remove the above added attr from previous selected tab on change of selection
+		prevTab.setAttribute('aria-selected', false);
+		prevTab.classList.remove("tick-mark");
+		if (prevTab.childNodes[1])
+			prevTab.removeChild(prevTab.childNodes[1]);
+	}
+}
+
+function addSelected(menuItem) {// Add span for reading the selected menu item in dropdown
+    var textSpan = document.createElement("span");
+    textSpan.innerHTML = "${ Selected}";
+    textSpan.classList.add("sr-only");
+    menuItem.children[0].appendChild(textSpan);
+}
+
+$scope.tabSelectedInMore = function(tab) {
+	doOperationOnPrevTab(prevTab);
+	prevTab = document.getElementById('uib-more-tab-'+ tab.order).children[0];
+	$scope.selectedTab = tab;
+	renameMoreTab($scope.selectedTab);
+	doAdapt();
+	var moreBtn = document.getElementById("more-btn");
+	moreBtn.removeAttribute('tabindex'); //As menuitem is selected, now dropdown should appear in tabbing sequence
+	if (moreBtn)
+		moreBtn.focus();
+}
+
+$scope.onTabClick = function(tab) {
+	renameMoreTab(tab);
+	doOperationOnPrevTab(prevTab);
+	var selectedItem = document.getElementById('uib-more-tab-'+ tab.order);
+	if (selectedItem)
+		prevTab = selectedItem.children[0];
+	$scope.selectedTab = tab;
+	doAdapt(true);
+		$scope.$emit('sp.components.resize');
+	};
+	
+$scope.showOrHideMoreButton = function(moreItems) {
+	c.showMore = false;
+	//hide dropdown if no elements are present
+	Object.keys(moreItems).forEach(function(item) {
+		if (!moreItems[item].className.includes("hide-item"))
+				c.showMore = true;
+	});
+	}
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.options-btn {
+    border:none;
+    background-image:none;
+    background-color:transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    color: $primary;
+    padding: 10px 10px !important;
+    font-size: 16px;
+    white-space: nowrap;
+    min-width: 122px;
+}
+
+.arrow-icon {
+  padding-left: 5px;
+  font-size: 10px;
+}
+
+.buttontext {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.tick-mark:before {
+  content:  "\2713";
+  padding-right: 5px;
+  color: $primary;
+}
+
+.tick-mark:focus::before {
+  color: white;
+}
+
+.more-btn-flex {
+  display: inline-flex;
+}
+
+ .options-btn:focus {
+  border-radius: 3px;
+  border: 2px solid $primary;
+  text-align: center;
+  font-size: 16px;
+  min-width: 122px;
+  text-decoration: underline;
+}
+
+.options-btn:hover {
+  background-color: $gray-lighter;
+  color: $primary;
+  border-bottom: 3px solid $nav-tabs-justified-link-border-color;
+  text-decoration: underline;
+}
+
+.active-dropdown {
+  border-bottom: 3px solid $primary !important;
+  color: $component-active-color;
+  background-color: transparent !important;
+}
+
+.active-dropdown:hover {
+  color: inherit;
+}
+
+.nav-tabs &gt; li.active &gt; a{
+  border: 0;
+  border-bottom: 3px solid $primary;
+  background-color: transparent;
+}
+
+.nav-tabs{
+  border: 1px solid $nav-tabs-justified-link-border-color;
+  border-bottom: none;
+  border-radius: 3px 3px 0 0;
+}
+
+.nav-tabs &gt; li &gt; a {
+  border-radius: 0;
+  border: none;
+  border-bottom: 3px solid transparent;
+  min-width: 124px;
+  text-align: center;
+  font-size: 16px;
+  margin: 0;
+}
+
+.nav-tabs &gt; li.active &gt; a:hover {
+  border: 0;
+  border-bottom: 3px solid $primary;
+  color: inherit;
+}
+
+.nav-tabs &gt; li.active &gt; a:focus {
+  border: 0;
+  border-bottom: 3px solid $primary;
+  color: inherit;
+}
+
+.nav-tabs &gt; li &gt; a:hover {
+  color: $primary;
+  border-bottom-color: $nav-tabs-justified-link-border-color;
+}
+
+.uib-more-tab :focus {
+  background-color: $primary;
+  color: white
+} 
+
+.hide-item {
+    display: none;
+  }
+
+.glyphicon {
+   color : inherit;
+}
+
+@media(max-width: 767px) {
+  .nav-tabs &gt; li &gt; a {
+  	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+	}
+  
+  .nav-tabs &gt; li {
+	max-width : 124px;
+	}
+  
+  .dropdown-menu {
+    max-width : 248px;
+  }
+  
+  .dropdown-menu &gt; li &gt; a {
+  	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+  }
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>attachmentsretreival</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>AttachmentsRetreival</name>
+        <option_schema>[{"name":"rich_text_editor","section":"other","label":"Enable Rich Text Editor","type":"boolean","default_value": "false"}, {"name":"at_mentions","section":"other","label":"Enable @ Mentions (works only when Rich Text Editor is enabled)","type":"boolean","default_value": "false"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	var tableName = $sp.getParameter('sys_attachment');
+	var sysId = $sp.getParameter('e21298832f190110ee00d5f62799b6d3');
+	var record = sn_std_tkt_api.TicketConfig.getTicketRecord(tableName, sysId); 
+
+	data.canRead = (record != null && record.isValid() && record.canRead());
+	if (!data.canRead)
+		return;
+	
+	if ($sp.getParameter('headless') == 'true')
+		data.headless = true;
+	else if ($sp.getParameter('headless') == 'false')
+		data.headless = false;
+	else if ($sp.getParameter('headless') == null)
+		data.headless = false;
+	else
+		return;
+
+	var urClosedState;
+	if (tableName == 'universal_request') {
+		urClosedState = (record.state == '7');
+		if (record.primary_task) {
+			var primary_table = record.primary_task.getRefRecord().getTableName();
+			record = sn_std_tkt_api.TicketConfig.getTicketRecord(primary_table, record.primary_task);
+			data.canRead = record != null && record.isValid() && record.canRead();
+			if (!data.canRead)
+				return;	
+		}	
+	}
+	else if (record.isValidField('universal_request') && !record.universal_request.nil())
+		urClosedState = (record.universal_request.state == '7');
+
+	data.table = record.getTableName();
+	data.sys_id = record.getUniqueValue();
+	
+	var tabs = [];
+	var config = sn_std_tkt_api.TicketConfig.getConfig(data.table, record.sys_domain);
+	var isNonPrimary = ((record.isValidField('universal_request') && !record.universal_request.nil()) && (record.universal_request.primary_task != record.sys_id));
+	if (!config.tabs) {
+		var tab_1 = {
+			name: gs.getMessage('Activity'),
+			order: 0,
+			widget: $sp.getWidget('std_ticket_conversations', 
+														{sys_id: data.sys_id, 
+														 table:data.table,
+														 btnLabel: gs.getMessage('Post'),
+														 read_only: isNonPrimary || urClosedState,
+														 rich_text_editor: options.rich_text_editor,
+														 at_mentions: options.at_mentions
+														})
+		};
+		tabs.push(tab_1);
+		var tab_2 = {
+			name: gs.getMessage('Attachments'),
+			order: 1,
+			widget: $sp.getWidget('std_ticket_attachments', {record_id: data.sys_id,
+															record_table: data.table,
+															read_only: isNonPrimary || urClosedState
+															})
+		};
+		tabs.push(tab_2);
+	}
+	else {
+		config.tabs.forEach(function (tabConfig) {
+			var tab = {};
+			tab.name = tabConfig.name;
+			tab.type = tabConfig.type;
+			var condition = tabConfig.visible_condition;
+			var isAdvCondition = tabConfig.advanced;
+			var scriptCondition = tabConfig.visible_script;
+			
+			if (isAdvCondition) {
+				if (scriptCondition) {
+					var evaluator = new GlideScopedEvaluator();
+					var tagGR = sn_std_tkt_api.TicketConfig.getTicketRecord('ticket_tab_configuration', tabConfig.sys_id);
+					evaluator.putVariable('current', record);
+					evaluator.putVariable('answer', null);
+					var response = evaluator.evaluateScript(tagGR, 'script');
+					if (typeof response !== 'undefined' && !(response == 'true' ||
+															response == true ||
+															response.answer ||
+															response.answer == 'true' ||
+															response.answer == true)) //either the script could return true, or set answer to true
+						 return;
+						 
+				}
+			}
+			else {
+				if (condition) {
+					if (!GlideFilter.checkRecord(record, condition))
+						return;
+				}
+			}
+			if (tabConfig.type == 'activity') {
+				tab.widget = $sp.getWidget('std_ticket_conversations', 
+																	 {sys_id: data.sys_id, 
+																		table: data.table,
+																		btnLabel: gs.getMessage('Post'),
+																		read_only: isNonPrimary || urClosedState,
+																		rich_text_editor: options.rich_text_editor,
+																		at_mentions: options.at_mentions
+																	 });
+			}
+			else if (tabConfig.type == 'attachments') {
+				tab.widget = $sp.getWidget('std_ticket_attachments', {record_id: data.sys_id,
+																	record_table: data.table,
+																	read_only: isNonPrimary || urClosedState
+																	});
+			}
+			else if (tabConfig.type == 'associated_requests') {
+				tab.widget = $sp.getWidget('my-requests-v2', {record_id: data.sys_id,
+																	record_table: data.table,
+																	is_associated_ticket_tab: true
+																	});
+			}
+			else if (tabConfig.type == 'variable_editor' || tabConfig.type == 'variable_summary') {
+				if (record.variables.getElements(true).length == 0)
+					return;
+				
+				var widgetParam = tabConfig.widget_param;
+				if (widgetParam)
+					widgetParam = JSON.parse(widgetParam)
+				else
+					widgetParam = {};
+				widgetParam.table = data.table;
+				widgetParam.sys_id = data.sys_id;
+				tab.widget = $sp.getWidget(tabConfig.widget, widgetParam);
+			}
+
+			else if (tabConfig.type == 'custom') {
+				var widgetParam = tabConfig.widget_param;
+				if (widgetParam)
+					widgetParam = JSON.parse(widgetParam)
+				else
+					widgetParam = {};
+				widgetParam.table = data.table;
+				widgetParam.sys_id = data.sys_id;
+				widgetParam.read_only = isNonPrimary || urClosedState;
+				tab.widget = $sp.getWidget(tabConfig.widget, widgetParam);
+			}
+			tab.order = tabConfig.order;
+			tabs.push(tab);
+		});
+	}
+	data.tabs = tabs;
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-01-31 12:05:13</sys_created_on>
+        <sys_id>1ba989072fd90110ee00d5f62799b669</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>AttachmentsRetreival</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_1ba989072fd90110ee00d5f62799b669</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-01-31 12:15:41</sys_updated_on>
+        <template><![CDATA[<uib-tabset ng-if="data.canRead && data.tabsCopy.length > 0" id="std-uib-tabset">
+  <uib-tab class= "uib-vis-tab" ng-repeat="tab in data.tabsCopy" index="$index" heading="{{tab.name}}" ng-click="onTabClick(tab)" data-toggle="tooltip" title="{{tab.name}}" ng-keyup="c.keyUpOnTabs($event)" add-uib-tab-accessibility>
+    <div ng-class="{'panel b wrapper': tab.type != 'activity' && tab.type != 'attachments'}">
+    	<sp-widget widget= "tab.widget" page="{table:data.table, sys_id:data.sys_id}"></sp-widget>  
+    </div>
+  </uib-tab>
+  <li ng-if="data.canRead" class="nav-item dropdown" id="moreDropdown" ng-class="{'hide-item': !c.showMore}" data-toggle="tooltip" title="{{c.more_title}}" data-original-title="{{c.more_title}}">
+    <button id="more-btn" class="options-btn pull-left nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-keyup="c.keyUpOnDropDown($event)" tabindex="-1">
+          <span class="more-btn-flex">
+            <span class="buttontext" id="more-btn-text">{{c.more_title}}</span>
+      </span>
+          <span class="arrow-icon glyphicon glyphicon-chevron-down"></span>
+    </button>
+     <div class="dropdown-menu pull-right" id="dropDownMenu" role="listbox">
+        <uib-tab class="uib-more-tab" ng-repeat="tab in data.tabsCopy" heading="{{tab.name}}" id="{{tab.name}}" ng-click="tabSelectedInMore(tab)" data-toggle="tooltip" title="{{tab.name}}">
+  </uib-tab>
+    </div> 
+  </li>
+</uib-tabset>]]></template>
+    </sp_widget>
+</record_update>

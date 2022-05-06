@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function(spUtil , $rootScope) {
+  /* widget controller */
+  var c = this;
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.container-fluid{&#13;
+background-color:#54BC69;&#13;
+text-align:center;&#13;
+  width:100%;&#13;
+  height:52.5vh;&#13;
+}&#13;
+&#13;
+.welcome-greeting-text{&#13;
+color:#FFFFFF;&#13;
+margin-bottom:5%;&#13;
+}&#13;
+&#13;
+p{&#13;
+font-size:38px;&#13;
+}&#13;
+&#13;
+h1{&#13;
+font-size:44px;&#13;
+}&#13;
+.container_border{&#13;
+ border: 2px solid white;&#13;
+ border-radius:0px;&#13;
+  margin:10px;&#13;
+  justify-content:center;&#13;
+  color:#FFFFFF;&#13;
+}&#13;
+&#13;
+&#13;
+@media screen and (max-width:913px){&#13;
+.container_border{&#13;
+ border: 2px solid white;&#13;
+ border-radius:0px;&#13;
+  margin:8px;&#13;
+  margin-bottom:6px;&#13;
+  justify-content:center;&#13;
+  color:#FFFFFF;&#13;
+}&#13;
+  .welcome-greeting-text{&#13;
+    color:#FFFFFF;&#13;
+margin-bottom:1%;&#13;
+  }&#13;
+  &#13;
+  p{&#13;
+font-size:26px;&#13;
+}&#13;
+&#13;
+h1{&#13;
+font-size:42px;&#13;
+}&#13;
+ .second_container{&#13;
+  position:relative;&#13;
+   top:8%;&#13;
+  }&#13;
+  .first_container{&#13;
+position:relative;&#13;
+   top:2%;&#13;
+  }&#13;
+}&#13;
+&#13;
+@media screen and (min-width:1024px){&#13;
+.container-fluid{&#13;
+background-color:#54BC69;&#13;
+text-align:center;&#13;
+  width:100%;&#13;
+  height:54.5vh;&#13;
+}&#13;
+  .second_container{&#13;
+  position:relative;&#13;
+   top:8%;&#13;
+  }&#13;
+  p{&#13;
+font-size:26px;&#13;
+}&#13;
+  .first_container{&#13;
+position:relative;&#13;
+   top:8%;&#13;
+  }&#13;
+}&#13;
+&#13;
+@media screen and (max-width:913px) and (max-height: 600px){&#13;
+  .container_border{&#13;
+ border: 2px solid white;&#13;
+ border-radius:0px;&#13;
+  margin:6px;&#13;
+  margin-bottom:4px;&#13;
+  justify-content:center;&#13;
+  color:#FFFFFF;&#13;
+}&#13;
+  .welcome-greeting-text{&#13;
+    color:#FFFFFF;&#13;
+margin-bottom:0;&#13;
+  }&#13;
+p{&#13;
+font-size:18px;&#13;
+}&#13;
+  h{&#13;
+font-size:18px;&#13;
+}&#13;
+  .second_container{&#13;
+  position:relative;&#13;
+   top:1%;&#13;
+  }&#13;
+  .first_container{&#13;
+position:relative;&#13;
+   top:1%;&#13;
+  } &#13;
+  &#13;
+  .container-fluid{&#13;
+background-color:#54BC69;&#13;
+text-align:center;&#13;
+  width:100%;&#13;
+}&#13;
+&#13;
+@media screen and (min-width: 1024px) and (max-height: 600px){&#13;
+.container-fluid{&#13;
+background-color:#54BC69;&#13;
+text-align:center;&#13;
+  width:100%;&#13;
+  height:53.8vh;&#13;
+}&#13;
+  .second_container{&#13;
+  position:relative;&#13;
+   top:5%;&#13;
+  }&#13;
+  p{&#13;
+font-size:24px;&#13;
+}&#13;
+  .first_container{&#13;
+position:relative;&#13;
+   top:6%;&#13;
+  }&#13;
+}&#13;
+&#13;
+@media screen and (min-width:1440px){&#13;
+.container-fluid{&#13;
+background-color:#54BC69;&#13;
+text-align:center;&#13;
+  width:100%;&#13;
+  height:55vh;&#13;
+}&#13;
+  .second_container{&#13;
+  position:relative;&#13;
+   top:14%;&#13;
+  }&#13;
+  .first_container{&#13;
+position:relative;&#13;
+   top:8%;&#13;
+  }&#13;
+}&#13;
+&#13;
+@media screen and (min-width:2559px){&#13;
+.container-fluid{&#13;
+background-color:#54BC69;&#13;
+text-align:center;&#13;
+  width:100%;&#13;
+  height:56vh;&#13;
+}&#13;
+  .second_container{&#13;
+  position:relative;&#13;
+   top:18%;&#13;
+  }&#13;
+   p{&#13;
+font-size:54px;&#13;
+}&#13;
+  h1{&#13;
+  font-size:68px;&#13;
+  }&#13;
+  .first_container{&#13;
+position:relative;&#13;
+   top:5%;&#13;
+  }&#13;
+}&#13;
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>gla_homepage_greeting</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>GLA Homepage greeting</name>
+        <option_schema>[{"name":"access_type","section":"Behavior","label":"Access type","type":"string"}]</option_schema>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+data.userName = gs.getUserName();
+data.student = false;
+data.profesor = false;
+data.test= false;
+if (gs.getUser().isMemberOf("ce2b99ec2fa04110ee00d5f62799b6e8")){
+
+data.test= true;
+
+}
+if (gs.getUser().isMemberOf("ce2b99ec2fa04110ee00d5f62799b6e8")){
+
+data.student= true;
+
+}
+	if (gs.getUser().isMemberOf("ae4b9dec2fa04110ee00d5f62799b62e")){
+
+data.profesor= true;
+
+}
+	//student
+	//Days since enrollment
+data.currentDate = new GlideDate();
+data.user = new GlideRecord('sys_user');
+data.user.get(gs.getUserID());
+data.enrollmentDate = new GlideDate();
+data.enrollmentDate.setDisplayValue(data.user.u_enrollment_date.toString());
+data.duration = GlideDate.subtract(data.enrollmentDate,data.currentDate);
+data.days = data.duration.getDayPart();
+	// Assignments completed
+	data.completed = 0;
+	data.assignment = new GlideRecord('x_723119_germanlrn_user_assignment');
+	data.assignment.addQuery('user',gs.getUserID());
+	data.assignment.query();
+
+	while(data.assignment.next())
+		{
+			if(data.assignment.state == 5){
+			data.completed++;
+		}
+		}
+//profesor
+		// number of groups that the current user manages
+	data.groupCount = 0;
+	data.group = new GlideRecord('sys_user_group');
+	data.group.addQuery('manager',gs.getUserID());
+	data.group.query();
+		while(data.group.next())
+		{
+	data.groupCount++;
+		}
+	
+	//number of users that are part of the groups managed
+	data.member = new GlideAggregate('sys_user_grmember');
+	data.member.addQuery('group.manager',gs.getUserID());
+	data.member.addAggregate('COUNT');
+	data.member.query();
+
+	data.memberCount = 0; // default to error state since 0 is a valid count
+
+	if (data.member.next()) {
+		data.memberCount = data.member.getAggregate('COUNT');
+	}
+
+	
+	//number of resources created by the current user
+	
+	data.resource = new GlideAggregate('x_723119_germanlrn_resource');
+	data.resource.addQuery('sys_created_by',gs.getUserName());
+	data.resource.addAggregate('COUNT');
+	data.resource.query();
+	if(data.resource.next())
+		{
+	data.resourceCount = data.resource.getAggregate('COUNT')
+		}
+	//number of homework records created
+	
+	data.homework = new GlideRecord('x_723119_germanlrn_homework');
+	data.homework.addQuery('sys_created_by',gs.getUserName());
+  data.homework.query();
+	var count=0;
+	while(data.homework.next())
+		{
+	count++;
+		}
+	data.homeworkCount=count;
+	// practice time
+	var qu='sys_created_on>javascript:gs.beginningOfLast3Months()^type=Page View^user='+gs.getUserID();// query for current user, last 3months,type of log page view
+	var gr=new GlideRecord('sp_log');
+	gr.addEncodedQuery(qu);
+	gr.orderBy('sys_created_on');
+	gr.query();
+	var arr=[];
+	while(gr.next()){
+		
+		var t=gr.getDisplayValue('sys_created_on');
+		var p=gr.getDisplayValue('page');
+		arr.push({time:t,page:p});
+	}
+	var total_time=0;
+	for(var i=1;i<arr.length;i++){
+		if(arr[i-1].page=='gla_practice'&&arr[i].page!='gla_practice'){
+			if((''+arr[i-1].time).split(' ')[0]==(''+arr[i].time).split(' ')[0]){
+			var time1=(''+arr[i-1].time).split(' ')[1];
+			var time2=(''+arr[i].time).split(' ')[1];
+			var a=(parseInt(time1[0]+time1[1])*3600)+(parseInt(time1[3]+time1[4])*60)+parseInt(time1[6]+time1[7]);
+			var b=(parseInt(time2[0]+time2[1])*3600)+(parseInt(time2[3]+time2[4])*60)+parseInt(time2[6]+time2[7]);
+			total_time+=(b-a);
+			}
+		}
+		
+	}
+	
+	var h=Math.floor(total_time/3600);
+	var x = total_time%3600;
+    var m = Math.floor(x/60); //minutes
+    var s = total_time%60; //seconds
+	if(h<10){h='0'+h;}
+	if(m<10){m='0'+m;}
+	if(s<10){s='0'+s;}
+	var grU= new GlideRecord('sys_user');
+							grU.get(gs.getUserID());
+							//points:
+							grU.u_practice_time=h+':'+m+":"+s;
+							grU.update();
+	
+	data.practiceTime=h+':'+m+":"+s;
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2021-12-28 12:36:30</sys_created_on>
+        <sys_id>31ca0a482f300110ee00d5f62799b6ea</sys_id>
+        <sys_mod_count>320</sys_mod_count>
+        <sys_name>GLA Homepage greeting</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_31ca0a482f300110ee00d5f62799b6ea</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-04-21 09:48:09</sys_updated_on>
+        <template><![CDATA[<div class="container-fluid">
+  
+<div class="row first_container">
+  <div class="col-sm-12">
+    <h1 class="welcome-greeting-text">
+			Welcome {{data.userName}}
+		</h1>
+  </div>
+</div>
+<div class="second_container">
+<div ng-if=data.student>
+
+  <div class="row">
+    
+    <!-- floating widget-->
+    <div style="position: fixed; font-size:10px; z-index:999; float:right;">
+ <widget id="gla_homepage_grades" ></widget>
+  </div>
+    
+    
+    <div class="col-sm-6">
+      <div class="container_border">
+      <p class="text-center" ng-ift=data.days>
+				Days since enrollment: {{data.days}}
+			</p>
+      </div>
+    </div>
+
+     <div class="col-sm-6">
+       <div class="container_border">
+      <p class="text-center" ng-ift=data.assignments >
+				Completed assignments: {{data.completed}}
+			</p>
+       </div>
+    </div>
+  </div> 
+
+  <div class="row">
+    <div class="col-sm-12 ">
+      <div class="container_border">
+			<p class="text-center" ng-ift=data.practiceTime>
+				Practice time: {{data.practiceTime}}
+			</p>
+      </div>
+    </div>
+  </div>
+</div> 
+  
+<div ng-if=data.profesor>
+	
+  <div class="row first_row">
+    
+    
+      <!-- floating widget-->
+    <div style="position: fixed; font-size:10px; z-index:999; float:right;">
+ <widget id="gla_homepage_grades" ></widget>
+  </div>
+    
+    <div class="col-sm-6">
+      <div class="container_border">
+			<p class="text-center" ng-ift=data.nrOfGroups>
+				Group managed: {{data.groupCount}}
+			</p>
+      </div>
+    </div>
+    
+    <div class="col-sm-6">
+      <div class="container_border">
+      <p class="text-center" ng-ift=data.assignments >
+				User managed: {{data.memberCount}}
+			</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    
+   
+    
+    <div class="col-sm-6">
+      <div class="container_border">
+			<p class="text-center" ng-if=data.resourceCount>
+				Resources created: {{data.resourceCount}}
+			</p>
+      </div>
+    </div>
+    
+    <div class="col-sm-6">
+      <div class="container_border">
+			<p class="text-center" ng-ift=data.lorem>
+				Homeworks: {{data.homeworkCount}}
+			</p>
+      </div>
+		</div>
+  </div>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

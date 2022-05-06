@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="DELETE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="3">4a8f52fa2f450110ee00d5f62799b6ac</sp_column>
+        <sp_widget display_value="GLA Homepage practice">406415a52f814110ee00d5f62799b628</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-01-18 13:43:43</sys_created_on>
+        <sys_id>1783e6be2f450110ee00d5f62799b668</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_instance_1783e6be2f450110ee00d5f62799b668</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-01-18 13:43:43</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters/>
+    </sp_instance>
+    <sys_translated_text action="DELETE" query="documentkey=1783e6be2f450110ee00d5f62799b668"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sp_instance_1783e6be2f450110ee00d5f62799b668</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance"><sp_instance action="INSERT_OR_UPDATE"><active>true</active><class_name/><color>default</color><css/><glyph/><id/><order>1</order><roles/><short_description/><size>md</size><sp_column display_value="3">4a8f52fa2f450110ee00d5f62799b6ac</sp_column><sp_widget display_value="GLA Homepage practice">406415a52f814110ee00d5f62799b628</sp_widget><sys_class_name>sp_instance</sys_class_name><sys_created_by>mdaniel</sys_created_by><sys_created_on>2022-01-18 13:43:43</sys_created_on><sys_id>1783e6be2f450110ee00d5f62799b668</sys_id><sys_mod_count>0</sys_mod_count><sys_name/><sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package><sys_policy/><sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope><sys_update_name>sp_instance_1783e6be2f450110ee00d5f62799b668</sys_update_name><sys_updated_by>mdaniel</sys_updated_by><sys_updated_on>2022-01-18 13:43:43</sys_updated_on><title/><url/><widget_parameters/></sp_instance><sys_translated_text action="delete_multiple" query="documentkey=1783e6be2f450110ee00d5f62799b668"/></record_update>]]></payload>
+        <payload_hash>1127264792</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>a52b9ab72f100110ee00d5f62799b624</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-01-18 13:43:43</sys_created_on>
+        <sys_id>5b83e6be2f450110ee00d5f62799b66a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17e6d6ddb360000001</sys_recorded_at>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-01-18 13:43:43</sys_updated_on>
+        <type>Instance</type>
+        <update_guid>9383e6be57450110b435cdc44a47fc6a</update_guid>
+        <update_guid_history>9383e6be57450110b435cdc44a47fc6a:1127264792</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">7c75aefe2f450110ee00d5f62799b610</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-01-18 13:52:00</sys_created_on>
+        <sys_db_object display_value="" name="sp_instance">sp_instance</sys_db_object>
+        <sys_id>0893879f04044456914c40c34d1e6424</sys_id>
+        <sys_metadata>1783e6be2f450110ee00d5f62799b668</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sp_instance_1783e6be2f450110ee00d5f62799b668</sys_update_name>
+        <sys_update_version display_value="sp_instance_1783e6be2f450110ee00d5f62799b668">5b83e6be2f450110ee00d5f62799b66a</sys_update_version>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-01-18 13:52:00</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

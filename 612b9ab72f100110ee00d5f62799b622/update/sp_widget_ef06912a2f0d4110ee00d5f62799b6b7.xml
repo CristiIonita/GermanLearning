@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.container {
+  height: 400px;
+  position: relative;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size:16px;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>gla_404</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>GLA 404</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-01-17 13:27:40</sys_created_on>
+        <sys_id>ef06912a2f0d4110ee00d5f62799b6b7</sys_id>
+        <sys_mod_count>38</sys_mod_count>
+        <sys_name>GLA 404</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_ef06912a2f0d4110ee00d5f62799b6b7</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-01-17 15:11:50</sys_updated_on>
+        <template><![CDATA[<div class="container">
+<!-- your widget template -->
+  <div class="center">
+
+  <img src="computer.png"/>  
+  <p>It seems you do not have access to this content.</p>
+	<p>Please request access by contacting the Service Desk.</p>
+  </div>
+</div>]]></template>
+    </sp_widget>
+    <sys_attachment action="INSERT_OR_UPDATE">
+        <average_image_color>#0</average_image_color>
+        <chunk_size_bytes>700000</chunk_size_bytes>
+        <compressed>true</compressed>
+        <content_type>image/png</content_type>
+        <file_name>computer.png</file_name>
+        <hash>f96f1c3f67ac9a67d04eb000afb98052cafb15994202c963ae3cd3897638063e</hash>
+        <image_height>64</image_height>
+        <image_width>64</image_width>
+        <size_bytes>982</size_bytes>
+        <size_compressed>1005</size_compressed>
+        <state>available</state>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-01-17 15:05:28</sys_created_on>
+        <sys_id>57aca5e62f4d4110ee00d5f62799b665</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-01-17 15:05:28</sys_updated_on>
+        <table_name>sp_widget</table_name>
+        <table_sys_id>ef06912a2f0d4110ee00d5f62799b6b7</table_sys_id>
+    </sys_attachment>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAAAA==</data>
+        <length>16</length>
+        <position>0</position>
+        <sys_attachment display_value="computer.png" sys_id="57aca5e62f4d4110ee00d5f62799b665">57aca5e62f4d4110ee00d5f62799b665</sys_attachment>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-01-17 15:05:28</sys_created_on>
+        <sys_id>97aca5e62f4d4110ee00d5f62799b665</sys_id>
+    </sys_attachment_doc>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>AdYDKfyJUE5HDQoaCgAAAA1JSERSAAAAQAAAAEAIBgAAAKppcd4AAAAEc0JJVAgICAh8CGSIAAAACXBIWXMAAAHYAAAB2AH6XKZyAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAA1NJREFUeJztmr1rFEEYxn/5NEI0ioaLEjAo+IGdouB3QEw0ptdCsAiijaQwYJM/QazFlFrZaAq1ixbaqKgoqBBMgoWYaBAxSmLk1mLncHayd5fbeefmwu4PFpLh5tlnntt9Z2f2ICPd1AGBbxM+qfdtwDdZAL4N+CYLwLcB32QBCOkEwEJM+7yAdpzGAkLTt0QAATAInADmtPaHwHbgrYX2B2AHMKq1/QZOAxcRCiGwOPLAZU3rCPATeACsUm3twJsE2u+BTUqjGbgH/AKOa+e7oDzYjMGqs/7NFNirDOvsqdBoXvXRaVbaJqM+AwiA4RhTOp3AeALdKaCrjPaQgH9rgVIhJB38ckKQGHwgNQvsJ76gbgM2W+i2A1ti2uuBoxa6EWxT1AteHIXCWKmuWfBMCoXR6y0wxtKC1xpjtofKi2BPjI6p3aw8eAtgjuilWLjn9ZrQANxKoH0HaNR0hoBJojXhAPDDZwB6CGbBG7YYvBmCXvCmVAgSgxcJIFBGJmLaXwtox2lMCA0+yLbEfBvwTeoDaCz/EXH+AM+AT8C0assRPvDsY+m06hyJIricYww4A6wt4aUNOAs8qqIv5yd4B5wsMehi9BEuiVd0APcp/Y2XoxW469Kjy2lwBLhE+FirswHoBw7yf6H0GXhKGNis8fl64CYw4Mink2THgCbjPOuB64R7fMX6zQPXgHVG3ybgsSOv4oKzwEZjALuBjxVojAO7DI124PtKCOCKYbyLcLqrVOcbsNXQulrrAXwBWjTDDcArC70XRB/WVicMs2oB3CDKgIDmeUNzpJYDOGWYfSmg+dzQ7K/lAHKa0U7s9+wDpaHvK3ZIepZcDC0CX7X/dxL+AsWWOqVVYEadSwTJAGaIPvTkin0wAR3a33l1LhGkrwAd80HIBnOFKHYFSC6H2wjn6QJxr7GS0kf0imqTEs62xHwb8E0WgG8DvskC8G3AN6kPICMj5Uis1srRAhxO2PcJMj+29Eovydfrva7NVWMWOOap77KoRgDdnvrWBK2Eb4OT3gKLwBqXBl1fAYew2xhpJHyF5gzXAUjcw07rgOsAumtEoyi2zwG3Kb352Y39tttfwhejxZgGzlmeIzGTyL5XSHJM2gwg9avB1AeQkXb+AXLJTf3yeIohAAAAAElFTkSuQmCCplIh79YDAAA=</data>
+        <length>1328</length>
+        <position>1</position>
+        <sys_attachment display_value="computer.png" sys_id="57aca5e62f4d4110ee00d5f62799b665">57aca5e62f4d4110ee00d5f62799b665</sys_attachment>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-01-17 15:05:28</sys_created_on>
+        <sys_id>1baca5e62f4d4110ee00d5f62799b665</sys_id>
+    </sys_attachment_doc>
+</record_update>

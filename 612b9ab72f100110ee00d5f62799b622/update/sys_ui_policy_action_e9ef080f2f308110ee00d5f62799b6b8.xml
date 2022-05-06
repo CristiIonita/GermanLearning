@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <cleared>false</cleared>
+        <disabled>true</disabled>
+        <field>number</field>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-01-06 11:21:30</sys_created_on>
+        <sys_id>e9ef080f2f308110ee00d5f62799b6b8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>number</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_ui_policy_action_e9ef080f2f308110ee00d5f62799b6b8</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-01-06 11:21:30</sys_updated_on>
+        <table>x_723119_germanlrn_assignment</table>
+        <ui_policy display_value="Number field R\O">2edf400f2f308110ee00d5f62799b67d</ui_policy>
+        <visible>ignore</visible>
+    </sys_ui_policy_action>
+</record_update>

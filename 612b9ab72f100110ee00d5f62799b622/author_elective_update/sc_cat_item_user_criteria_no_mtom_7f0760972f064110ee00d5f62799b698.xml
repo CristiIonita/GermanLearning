@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_user_criteria_no_mtom">
+    <sc_cat_item_user_criteria_no_mtom action="DELETE">
+        <sc_cat_item display_value="Create Homework">3f07e4572f064110ee00d5f62799b6da</sc_cat_item>
+        <sys_class_name>sc_cat_item_user_criteria_no_mtom</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-10 10:59:33</sys_created_on>
+        <sys_id>7f0760972f064110ee00d5f62799b698</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Create Homework.SNC External</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sc_cat_item_user_criteria_no_mtom_7f0760972f064110ee00d5f62799b698</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-10 10:59:33</sys_updated_on>
+        <user_criteria display_value="SNC External">66c1b50e730333009508738234f6a7c9</user_criteria>
+    </sc_cat_item_user_criteria_no_mtom>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sc_cat_item_user_criteria_no_mtom_7f0760972f064110ee00d5f62799b698</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_user_criteria_no_mtom"><sc_cat_item_user_criteria_no_mtom action="INSERT_OR_UPDATE"><sc_cat_item display_value="Create Homework">3f07e4572f064110ee00d5f62799b6da</sc_cat_item><sys_class_name>sc_cat_item_user_criteria_no_mtom</sys_class_name><sys_created_by>mdaniel</sys_created_by><sys_created_on>2022-03-10 10:59:33</sys_created_on><sys_id>7f0760972f064110ee00d5f62799b698</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Create Homework.SNC External</sys_name><sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package><sys_policy/><sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope><sys_update_name>sc_cat_item_user_criteria_no_mtom_7f0760972f064110ee00d5f62799b698</sys_update_name><sys_updated_by>mdaniel</sys_updated_by><sys_updated_on>2022-03-10 10:59:33</sys_updated_on><user_criteria display_value="SNC External">66c1b50e730333009508738234f6a7c9</user_criteria></sc_cat_item_user_criteria_no_mtom></record_update>]]></payload>
+        <payload_hash>1707084276</payload_hash>
+        <record_name>Create Homework.SNC External</record_name>
+        <reverted_from/>
+        <source>1e8249312f010110ee00d5f62799b636</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by/>
+        <sys_created_on>2022-01-15 04:05:56</sys_created_on>
+        <sys_id>fa1e41e82f1e0110ee00d5f62799b6f3</sys_id>
+        <sys_mod_count/>
+        <sys_recorded_at>17e5be9cca00000000</sys_recorded_at>
+        <sys_updated_by/>
+        <sys_updated_on/>
+        <type>Catalog Item Not Available for</type>
+        <update_guid>ba1e41e88d1e011002e000861256fff3</update_guid>
+        <update_guid_history>ba1e41e88d1e011002e000861256fff3:1707084276</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Create Homework.SNC External">ba1e41e82f1e0110ee00d5f62799b6f5</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-14 11:02:33</sys_created_on>
+        <sys_db_object display_value="" name="sc_cat_item_user_criteria_no_mtom">sc_cat_item_user_criteria_no_mtom</sys_db_object>
+        <sys_id>7029d60d07da4dc9978ee00e5ca55079</sys_id>
+        <sys_metadata>7f0760972f064110ee00d5f62799b698</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Create Homework.SNC External</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sc_cat_item_user_criteria_no_mtom_7f0760972f064110ee00d5f62799b698</sys_update_name>
+        <sys_update_version display_value="sc_cat_item_user_criteria_no_mtom_7f0760972f064110ee00d5f62799b698">fa1e41e82f1e0110ee00d5f62799b6f3</sys_update_version>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-14 11:02:33</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

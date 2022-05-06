@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_723119_germanlrn.ExamplesApi</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>ExamplesApi</name>
+        <script><![CDATA[var ExamplesApi = Class.create();
+ExamplesApi.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+    examples: function(word, lang) {
+
+        var url = "https://german-english-dictionary-api.uc.r.appspot.com/translate?term=" + word + "&limit=1";
+
+try{
+        var request = new sn_ws.RESTMessageV2();
+        request.setHttpMethod('get');
+        request.setEndpoint(url);
+        var response = request.execute();
+        var httpResponseStatus = response.getStatusCode();
+        if (httpResponseStatus == 200) {
+            var responseObj = response.getBody();
+            var res = JSON.parse(responseObj);
+			 var examplesArray = [];
+            //german
+            if (lang == "de") {
+               
+                var germanString = res.results[0].german.examples;
+                if (germanString != null) {
+                    var example1 = res.results[0].german.examples[1];
+                    var example2 = res.results[0].german.examples[2];
+
+                    examplesArray.push(example1);
+                    examplesArray.push(example2);
+
+                } else {
+                    examplesArray.push("-");
+                }
+            }
+            // english
+            if (lang == "en") {
+                
+                var englishString = res.results[0].english.examples;
+                if (englishString != null) {
+                    var example1 = res.results[0].english.examples[1];
+                    var example2 = res.results[0].english.examples[2];
+
+                    examplesArray.push(example1);
+                    examplesArray.push(example2);
+
+                } 
+            }
+		}
+		}
+		catch(error)
+			{
+				examplesArray = "-";
+			}
+
+        return examplesArray;
+    
+},
+
+type: 'ExamplesApi'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-02-21 13:22:42</sys_created_on>
+        <sys_id>24b365fd2fb90110ee00d5f62799b612</sys_id>
+        <sys_mod_count>68</sys_mod_count>
+        <sys_name>ExamplesApi</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_script_include_24b365fd2fb90110ee00d5f62799b612</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-02-22 16:00:21</sys_updated_on>
+    </sys_script_include>
+</record_update>

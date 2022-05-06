@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {  /* widget controller */  var c = this;};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.container_1{&#13;
+  &#13;
+  background-color:#FE5339; &#13;
+  text-align: center;&#13;
+  color: white;&#13;
+  font-size:25px;&#13;
+  height:35.2vh;&#13;
+}&#13;
+&#13;
+&#13;
+.center_container{&#13;
+  &#13;
+ padding-top:9vh;&#13;
+}&#13;
+&#13;
+.badge_position{&#13;
+  margin:6px;&#13;
+background-color : white;&#13;
+color:black; &#13;
+float: right;&#13;
+&#13;
+}&#13;
+img{&#13;
+ width:70px;&#13;
+  height:70px;&#13;
+}&#13;
+@media screen and (max-width:913px){&#13;
+  p{&#13;
+  font-size: 24px;&#13;
+  }&#13;
+  img{&#13;
+  width:110px;&#13;
+  height:110px;&#13;
+  }&#13;
+}&#13;
+&#13;
+@media screen and (max-width:913px) and (max-height: 600px){&#13;
+p{&#13;
+  font-size: 18px;&#13;
+  }&#13;
+  img{&#13;
+  width:80px;&#13;
+  height:80px;&#13;
+  }&#13;
+  .container_1{&#13;
+  width:100%;&#13;
+  }&#13;
+}&#13;
+&#13;
+@media screen and (min-width:1024px){&#13;
+.container_1{&#13;
+  background-color:#FE5339;&#13;
+  height:36vh;&#13;
+  width:100%;&#13;
+  text-align: center;&#13;
+  color: white;&#13;
+ &#13;
+}&#13;
+&#13;
+p{&#13;
+  font-size: 26px;&#13;
+  }&#13;
+   img{&#13;
+  width:80px;&#13;
+  height:80px;&#13;
+  }&#13;
+}&#13;
+}&#13;
+&#13;
+@media screen and (min-width: 1024px) and (max-height: 600px){&#13;
+.container_1{&#13;
+  background-color:#FE5339;&#13;
+height:34vh;&#13;
+  width:100%;&#13;
+  text-align: center;&#13;
+  color: white;&#13;
+ &#13;
+}&#13;
+&#13;
+p{&#13;
+  font-size: 24px;&#13;
+  }&#13;
+   img{&#13;
+  width:70px;&#13;
+  height:70px;&#13;
+  }&#13;
+}&#13;
+}&#13;
+&#13;
+@media screen and (min-width:1440px){&#13;
+.container_1{&#13;
+  background-color:#FE5339;&#13;
+  height:37.5vh;&#13;
+  width:100%;&#13;
+  text-align: center;&#13;
+  color: white;&#13;
+  font-size:42px;&#13;
+}&#13;
+  img{&#13;
+  width:120px;&#13;
+  height:120px;&#13;
+  }&#13;
+}&#13;
+&#13;
+@media screen and (min-width:2559px){&#13;
+.container_1{&#13;
+  background-color:#FE5339;&#13;
+    height:39vh;&#13;
+  width:100%;&#13;
+  text-align: center;&#13;
+  color: white;&#13;
+   font-size:54px;&#13;
+}&#13;
+  img{&#13;
+  width:160px;&#13;
+  height:160px;&#13;
+  }&#13;
+  p{&#13;
+  font-size:54px;&#13;
+  }&#13;
+  span{&#13;
+  font-size:22px;&#13;
+  }&#13;
+}&#13;
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>gla_homepage_resources</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>GLA Homepage resources</name>
+        <option_schema>[{"name":"access_type","section":"Behavior","label":"Access type","type":"string"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	
+	var gr=new GlideRecord('x_723119_germanlrn_resource');
+	gr.addQuery('active',true);
+	gr.query();
+	data.resources=gr.getRowCount();
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-01-03 14:14:03</sys_created_on>
+        <sys_id>55aa99022fb00510ee00d5f62799b620</sys_id>
+        <sys_mod_count>141</sys_mod_count>
+        <sys_name>GLA Homepage resources</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_55aa99022fb00510ee00d5f62799b620</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-03-25 09:53:18</sys_updated_on>
+        <template><![CDATA[<a href="https://dev101723.service-now.com/glap?id=gla_resources">
+<div class="container_1">
+	<span class="badge badge_position"  ng-ift=data.resources>{{data.resources}} </span>
+  <div class="center_container">
+	<img src="document.png"/>
+    <p>Resources</p>
+  </div>
+</div>
+</a>]]></template>
+    </sp_widget>
+</record_update>

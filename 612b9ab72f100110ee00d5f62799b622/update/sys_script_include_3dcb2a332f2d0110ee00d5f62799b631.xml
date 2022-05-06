@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_723119_germanlrn.PonsApi</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>PonsApi</name>
+        <script><![CDATA[var PonsApi = Class.create();
+PonsApi.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+    gender: function() {
+
+        
+
+        var url = "https://dictapi.lexicala.com/search?source=global&language=es&text=azul";
+        var request = new sn_ws.RESTMessageV2();
+        request.setHttpMethod('get');
+        request.setEndpoint(url);
+        
+		request.setRequestHeader("danmunteanu","Viscabarca13$%");
+		var s = request.getRequestHeaders().toString();
+        var response = request.execute();
+        var httpResponseStatus = response.getStatusCode();
+        if (httpResponseStatus == 200) {
+            var responseObj = response.getBody();
+            var res = JSON.parse(responseObj);
+
+        }
+			return s;
+			
+			
+    },
+
+    speech: function(word) {
+        try {
+            var secret = "https://random-word-api.herokuapp.com/word?number=10";
+
+            var url = "https://api.pons.com/v1/dictionary?q=" + word + "&l=deen";
+            var request = new sn_ws.RESTMessageV2();
+            request.setHttpMethod('get');
+            request.setEndpoint(url);
+            request.setRequestHeader("X-Secret", secret);
+
+
+            var response = request.execute();
+            var httpResponseStatus = response.getStatusCode();
+            if (httpResponseStatus == 200) {
+                var responseObj = response.getBody();
+                var res = JSON.parse(responseObj);
+
+                var part_of_speech = res[0].hits[0].roms[0].wordclass;
+                return part_of_speech;
+            }
+
+
+
+        } catch (error) {
+            part_of_speech = 'fail';
+            return part_of_speech;
+        }
+
+    },
+
+
+
+    type: 'PonsApi'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-02-15 13:25:35</sys_created_on>
+        <sys_id>3dcb2a332f2d0110ee00d5f62799b631</sys_id>
+        <sys_mod_count>232</sys_mod_count>
+        <sys_name>PonsApi</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_script_include_3dcb2a332f2d0110ee00d5f62799b631</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-02-24 10:06:32</sys_updated_on>
+    </sys_script_include>
+</record_update>

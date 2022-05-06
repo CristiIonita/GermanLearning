@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="DELETE">
+        <category>sc</category>
+        <client_script><![CDATA[function attachMate($scope, nowAttachmentHandler, $rootScope, spUtil, spModal, $log, spAriaUtil,$document) {
+	
+	$scope.errorMessages = [];
+	$scope.attachmentHandler = new nowAttachmentHandler(setAttachments, appendError);
+	$scope.data.action = "";
+	var isReadonlyMode = $scope.data.read_only;
+	spUtil.recordWatch($scope, "sys_attachment", "table_sys_id=" + $scope.data.sys_id, function(response, data) {
+		$scope.attachmentHandler.getAttachmentList();
+		if (response.data) {
+			var options = {};
+			options.operation = response.data.operation;
+			options.filename = response.data.display_value;
+			options.sys_id = $scope.data.sys_id;
+			options.table = $scope.data.table; 
+			options.state = (response.data.record && response.data.record.state) ? response.data.record.state.value : "";
+			//broadcast only if operation is update...we don't need insert and other record updates for now
+			if (options.operation === "update" && options.state === "not_available")
+			$rootScope.$broadcast("attachment.updated",options);
+		}
+	});
+
+	$scope.$evalAsync(function() {
+		$scope.attachmentHandler.setParams($scope.data.table, $scope.data.sys_id, 1024 * 1024 * $scope.data.maxAttachmentSize);
+		$scope.attachmentHandler.getAttachmentList();
+	});
+
+	$scope.hasAttachments = function() {
+		return $scope.attachments && $scope.attachments.length != 0;
+	};
+
+	$scope.canWrite = function() {
+		return $scope.data.canWrite;
+	};
+
+	$scope.dropFiles = function(files) {
+		if (!$scope.data.canDragAndDrop) {
+			spUtil.addInfoMessage(data.noDragDropMsg);
+			return;
+		}
+		$scope.attachmentHandler.onFileSelect(files);
+	}
+	$scope.confirmDeleteAttachment = function(attachment) {
+		var appendTo = $scope.data.appendToId ? $document.find('#'+$scope.data.appendToId) : null;
+		spModal.confirm("${Delete Attachment?}",  appendTo).then(function() {
+				$scope.attachmentHandler.deleteAttachment(attachment);
+		});
+	};
+	$scope.$on('dialog.upload_too_large.show', function(e){
+		$log.error($scope.data.largeAttachmentMsg);
+		spUtil.addErrorMessage($scope.data.largeAttachmentMsg);
+	});
+
+	$scope.$on('added_attachment', function(evt) {
+		$scope.data.action = "added";
+		spUtil.update($scope);
+	});
+	
+	$scope.$on('sn.attachment.scanned', function(evt) {
+		$scope.attachmentHandler.getAttachmentList("list");
+	});
+	
+	$scope.$on('sp.record.can_write', function(evt, answer) {
+		$scope.data.canWrite = answer;
+	});
+
+	function appendError(error) {
+		$scope.errorMessages.push(error);
+		spUtil.addErrorMessage(error.msg + error.fileName);
+		spAriaUtil.sendLiveMessage(error.msg);
+	}
+
+	function setAttachments(attachments, action) {
+		if ($scope.submitting == true)
+			return;
+		
+		if (isReadonlyMode) {
+			attachments.forEach(function(attachment) {
+				attachment.canDelete = false;
+				attachment.canWrite = false;
+			});
+		}
+		
+		$scope.attachments = attachments;
+		if (!action)
+			return;
+		
+		if (action === "added") {
+			spAriaUtil.sendLiveMessage($scope.data.attachmentSuccessMsg);
+		}
+		if (action === "renamed") {
+			spAriaUtil.sendLiveMessage($scope.data.renameSuccessMsg);
+		}
+		if (action === "deleted") {
+			spAriaUtil.sendLiveMessage($scope.data.deleteSuccessMsg);
+		}
+		
+		$scope.data.action = action;
+		spUtil.update($scope);
+	}
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.sp-drop-area {
+  display: block;
+  padding: 30px;
+  width: 100%;
+  border: 1px dashed $panel-default-border;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id/>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Copy of Standard Ticket Attachments</name>
+        <option_schema>[{"hint":"ID of referenced record","name":"record_id","section":"Data","label":"Record ID","type":"string"},{"hint":"Table name of referenced record","name":"record_table","section":"Data","default_value":"x_723119_germanlrn_resource","label":"Record Table","type":"string"}]</option_schema>
+        <public>false</public>
+        <roles>snc_external,snc_internal</roles>
+        <script><![CDATA[(function() {
+	
+	data.sys_id = options.record_id || $sp.getParameter("sys_id");
+	data.table = options.record_table || $sp.getParameter("table");
+	data.read_only = options.read_only || false;
+	if (input) {
+		data.sys_id = input.sys_id;
+		data.table = input.table;
+	}
+	data.appendToId = options.appendToId;
+	data.maxAttachmentSize = parseInt(gs.getProperty("com.glide.attachment.max_size", 1024));
+	if (isNaN(data.maxAttachmentSize))
+		data.maxAttachmentSize = 24;
+	data.largeAttachmentMsg = gs.getMessage("Attached files must be smaller than {0} MB - please try again", data.maxAttachmentSize);
+	data.attachmentSuccessMsg = gs.getMessage("Attachment successfully uploaded");
+	data.noDragDropMsg = gs.getMessage("Attachment drap-and-drop not enabled - use attachment button");
+	data.noAttachmentsMsg = gs.getMessage("There are no attachments");
+	data.renameSuccessMsg = gs.getMessage("Attachment renamed successfully");
+	data.deleteSuccessMsg = gs.getMessage("Attachment deleted successfully");
+	if (!data.table || !data.sys_id)
+		return;
+
+	var gr = sn_std_tkt_api.TicketConfig.getTicketRecord(data.table, data.sys_id);
+	
+	if (gr == null)
+		return;
+
+	if (input && input.action == "deleted") {
+		gr.comments = input.action + " an attachment";
+		gr.update();
+	}
+
+	data.canWrite = gr.canWrite() && !data.read_only;
+	data.canAttach = gs.hasRole(gs.getProperty("glide.attachment.role")) && gr.getAttribute("no_attachment") != "true" && !data.read_only;
+	data.canRead = gr.canRead();
+	data.canDragAndDrop = gs.getProperty('glide.ui.attachment_drag_and_drop', 'true') === 'true' && !data.read_only;
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-07 08:25:35</sys_created_on>
+        <sys_id>028a94d52f690110ee00d5f62799b68b</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>Copy of Standard Ticket Attachments</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_028a94d52f690110ee00d5f62799b68b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-07 11:50:18</sys_updated_on>
+        <template><![CDATA[<div ng-if="data.canRead" class="panel panel-{{options.color}} b">
+  <div class="panel-heading padder-b-none">
+    <div ng-if="::(data.canWrite && data.canAttach && !data.read_only)">
+      <sp-attachment-button></sp-attachment-button>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+
+  <!-- small device - hide body unless there are attachments -->
+  <div class="panel-body" ng-class="{'hidden-xs': !hasAttachments()}">
+    <div ng-if="data.canWrite && data.canAttach" ng-file-drop="dropFiles($files)" ng-multiple="true" class="sp-attachments">
+      <div ng-if="::data.canDragAndDrop" class="sp-no-attachments text-center text-italic text-muted" ng-show="!hasAttachments()">
+        <em class="sp-drop-area">${Drop files here}</em>
+      </div>
+      <div ng-if="::!data.canDragAndDrop" class="sp-no-attachments text-center text-muted" ng-show="!hasAttachments()">
+        <em>{{::data.noAttachmentsMsg}}</em>
+      </div>
+      <now-attachments-list template="sp_attachment"></now-attachments-list>
+    </div>
+
+    <div ng-if="!data.canWrite || !data.canAttach" class="sp-attachments">
+      <div class="sp-no-attachments text-center text-muted" ng-show="!hasAttachments()">
+        <em>{{::data.noAttachmentsMsg}}</em>
+      </div>
+      <now-attachments-list template="sp_attachment"></now-attachments-list>
+    </div>
+  </div>
+
+  <!-- no attachments msg at phone size when can't write -->
+  <div class="panel-body visible-xs-block">
+    <div class="sp-no-attachments text-center text-muted">
+      <em>{{::data.noAttachmentsMsg}}</em>
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sp_widget_028a94d52f690110ee00d5f62799b68b</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_widget"&gt;&lt;sp_widget action="INSERT_OR_UPDATE"&gt;&lt;category&gt;sc&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function attachMate($scope, nowAttachmentHandler, $rootScope, spUtil, spModal, $log, spAriaUtil,$document) {
+	
+	$scope.errorMessages = [];
+	$scope.attachmentHandler = new nowAttachmentHandler(setAttachments, appendError);
+	$scope.data.action = "";
+	var isReadonlyMode = $scope.data.read_only;
+	spUtil.recordWatch($scope, "sys_attachment", "table_sys_id=" + $scope.data.sys_id, function(response, data) {
+		$scope.attachmentHandler.getAttachmentList();
+		if (response.data) {
+			var options = {};
+			options.operation = response.data.operation;
+			options.filename = response.data.display_value;
+			options.sys_id = $scope.data.sys_id;
+			options.table = $scope.data.table; 
+			options.state = (response.data.record &amp;&amp; response.data.record.state) ? response.data.record.state.value : "";
+			//broadcast only if operation is update...we don't need insert and other record updates for now
+			if (options.operation === "update" &amp;&amp; options.state === "not_available")
+			$rootScope.$broadcast("attachment.updated",options);
+		}
+	});
+
+	$scope.$evalAsync(function() {
+		$scope.attachmentHandler.setParams($scope.data.table, $scope.data.sys_id, 1024 * 1024 * $scope.data.maxAttachmentSize);
+		$scope.attachmentHandler.getAttachmentList();
+	});
+
+	$scope.hasAttachments = function() {
+		return $scope.attachments &amp;&amp; $scope.attachments.length != 0;
+	};
+
+	$scope.canWrite = function() {
+		return $scope.data.canWrite;
+	};
+
+	$scope.dropFiles = function(files) {
+		if (!$scope.data.canDragAndDrop) {
+			spUtil.addInfoMessage(data.noDragDropMsg);
+			return;
+		}
+		$scope.attachmentHandler.onFileSelect(files);
+	}
+	$scope.confirmDeleteAttachment = function(attachment) {
+		var appendTo = $scope.data.appendToId ? $document.find('#'+$scope.data.appendToId) : null;
+		spModal.confirm("${Delete Attachment?}",  appendTo).then(function() {
+				$scope.attachmentHandler.deleteAttachment(attachment);
+		});
+	};
+	$scope.$on('dialog.upload_too_large.show', function(e){
+		$log.error($scope.data.largeAttachmentMsg);
+		spUtil.addErrorMessage($scope.data.largeAttachmentMsg);
+	});
+
+	$scope.$on('added_attachment', function(evt) {
+		$scope.data.action = "added";
+		spUtil.update($scope);
+	});
+	
+	$scope.$on('sn.attachment.scanned', function(evt) {
+		$scope.attachmentHandler.getAttachmentList("list");
+	});
+	
+	$scope.$on('sp.record.can_write', function(evt, answer) {
+		$scope.data.canWrite = answer;
+	});
+
+	function appendError(error) {
+		$scope.errorMessages.push(error);
+		spUtil.addErrorMessage(error.msg + error.fileName);
+		spAriaUtil.sendLiveMessage(error.msg);
+	}
+
+	function setAttachments(attachments, action) {
+		if ($scope.submitting == true)
+			return;
+		
+		if (isReadonlyMode) {
+			attachments.forEach(function(attachment) {
+				attachment.canDelete = false;
+				attachment.canWrite = false;
+			});
+		}
+		
+		$scope.attachments = attachments;
+		if (!action)
+			return;
+		
+		if (action === "added") {
+			spAriaUtil.sendLiveMessage($scope.data.attachmentSuccessMsg);
+		}
+		if (action === "renamed") {
+			spAriaUtil.sendLiveMessage($scope.data.renameSuccessMsg);
+		}
+		if (action === "deleted") {
+			spAriaUtil.sendLiveMessage($scope.data.deleteSuccessMsg);
+		}
+		
+		$scope.data.action = action;
+		spUtil.update($scope);
+	}
+}]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;.sp-drop-area {
+  display: block;
+  padding: 30px;
+  width: 100%;
+  border: 1px dashed $panel-default-border;
+}&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;true&lt;/has_preview&gt;&lt;id/&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function link(scope, element, attrs, controller) {  }]]&gt;&lt;/link&gt;&lt;name&gt;Copy of Standard Ticket Attachments&lt;/name&gt;&lt;option_schema&gt;[{"hint":"ID of referenced record","name":"record_id","section":"Data","label":"Record ID","type":"string"},{"hint":"Table name of referenced record","name":"record_table","section":"Data","default_value":"x_723119_germanlrn_resource","label":"Record Table","type":"string"}]&lt;/option_schema&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles&gt;snc_external,snc_internal&lt;/roles&gt;&lt;script&gt;&lt;![CDATA[(function() {
+	
+	data.sys_id = options.record_id || $sp.getParameter("sys_id");
+	data.table = options.record_table || $sp.getParameter("table");
+	data.read_only = options.read_only || false;
+	if (input) {
+		data.sys_id = input.sys_id;
+		data.table = input.table;
+	}
+	data.appendToId = options.appendToId;
+	data.maxAttachmentSize = parseInt(gs.getProperty("com.glide.attachment.max_size", 1024));
+	if (isNaN(data.maxAttachmentSize))
+		data.maxAttachmentSize = 24;
+	data.largeAttachmentMsg = gs.getMessage("Attached files must be smaller than {0} MB - please try again", data.maxAttachmentSize);
+	data.attachmentSuccessMsg = gs.getMessage("Attachment successfully uploaded");
+	data.noDragDropMsg = gs.getMessage("Attachment drap-and-drop not enabled - use attachment button");
+	data.noAttachmentsMsg = gs.getMessage("There are no attachments");
+	data.renameSuccessMsg = gs.getMessage("Attachment renamed successfully");
+	data.deleteSuccessMsg = gs.getMessage("Attachment deleted successfully");
+	if (!data.table || !data.sys_id)
+		return;
+
+	var gr = sn_std_tkt_api.TicketConfig.getTicketRecord(data.table, data.sys_id);
+	
+	if (gr == null)
+		return;
+
+	if (input &amp;&amp; input.action == "deleted") {
+		gr.comments = input.action + " an attachment";
+		gr.update();
+	}
+
+	data.canWrite = gr.canWrite() &amp;&amp; !data.read_only;
+	data.canAttach = gs.hasRole(gs.getProperty("glide.attachment.role")) &amp;&amp; gr.getAttribute("no_attachment") != "true" &amp;&amp; !data.read_only;
+	data.canRead = gr.canRead();
+	data.canDragAndDrop = gs.getProperty('glide.ui.attachment_drag_and_drop', 'true') === 'true' &amp;&amp; !data.read_only;
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-02-07 08:25:35&lt;/sys_created_on&gt;&lt;sys_id&gt;028a94d52f690110ee00d5f62799b68b&lt;/sys_id&gt;&lt;sys_mod_count&gt;7&lt;/sys_mod_count&gt;&lt;sys_name&gt;Copy of Standard Ticket Attachments&lt;/sys_name&gt;&lt;sys_package display_value="German Learning" source="x_723119_germanlrn"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="German Learning"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_028a94d52f690110ee00d5f62799b68b&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-02-07 11:50:18&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div ng-if="data.canRead" class="panel panel-{{options.color}} b"&gt;
+  &lt;div class="panel-heading padder-b-none"&gt;
+    &lt;div ng-if="::(data.canWrite &amp;&amp; data.canAttach &amp;&amp; !data.read_only)"&gt;
+      &lt;sp-attachment-button&gt;&lt;/sp-attachment-button&gt;
+    &lt;/div&gt;
+    &lt;div class="clearfix"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- small device - hide body unless there are attachments --&gt;
+  &lt;div class="panel-body" ng-class="{'hidden-xs': !hasAttachments()}"&gt;
+    &lt;div ng-if="data.canWrite &amp;&amp; data.canAttach" ng-file-drop="dropFiles($files)" ng-multiple="true" class="sp-attachments"&gt;
+      &lt;div ng-if="::data.canDragAndDrop" class="sp-no-attachments text-center text-italic text-muted" ng-show="!hasAttachments()"&gt;
+        &lt;em class="sp-drop-area"&gt;${Drop files here}&lt;/em&gt;
+      &lt;/div&gt;
+      &lt;div ng-if="::!data.canDragAndDrop" class="sp-no-attachments text-center text-muted" ng-show="!hasAttachments()"&gt;
+        &lt;em&gt;{{::data.noAttachmentsMsg}}&lt;/em&gt;
+      &lt;/div&gt;
+      &lt;now-attachments-list template="sp_attachment"&gt;&lt;/now-attachments-list&gt;
+    &lt;/div&gt;
+
+    &lt;div ng-if="!data.canWrite || !data.canAttach" class="sp-attachments"&gt;
+      &lt;div class="sp-no-attachments text-center text-muted" ng-show="!hasAttachments()"&gt;
+        &lt;em&gt;{{::data.noAttachmentsMsg}}&lt;/em&gt;
+      &lt;/div&gt;
+      &lt;now-attachments-list template="sp_attachment"&gt;&lt;/now-attachments-list&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- no attachments msg at phone size when can't write --&gt;
+  &lt;div class="panel-body visible-xs-block"&gt;
+    &lt;div class="sp-no-attachments text-center text-muted"&gt;
+      &lt;em&gt;{{::data.noAttachmentsMsg}}&lt;/em&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1224623130</payload_hash>
+        <record_name>Copy of Standard Ticket Attachments</record_name>
+        <reverted_from/>
+        <source>a52b9ab72f100110ee00d5f62799b624</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-07 11:50:18</sys_created_on>
+        <sys_id>4d6989512f2d0110ee00d5f62799b6a7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ed40536bc0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-07 11:50:18</sys_updated_on>
+        <type>Widget</type>
+        <update_guid>45698951d42d0110320dbfbeab9c63a7</update_guid>
+        <update_guid_history>45698951d42d0110320dbfbeab9c63a7:-1224623130,afc734d1f8e9011094745b2d13e26488:1656170407,ca9774d14fe90110545c61c45d156d7e:-1745959913,3bfdec99a5a90110d59bcbe8c9e8ec6c:1829206661,27ad64d9f5a90110b5d789535161ce77:1502021792,65add85de869011061c62fddb4ae8182:301064839,94addc1d29690110a8e7e0cc3ed89c26:1805696966,1a8a1c99f56901107fbdcc82af00a9ec:-1489418029</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Copy of Standard Ticket Attachments">2aad45552f2d0110ee00d5f62799b60b</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-07 12:08:59</sys_created_on>
+        <sys_db_object display_value="" name="sp_widget">sp_widget</sys_db_object>
+        <sys_id>8a5f143011474749a8afef579f8b5549</sys_id>
+        <sys_metadata>028a94d52f690110ee00d5f62799b68b</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Copy of Standard Ticket Attachments</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sp_widget_028a94d52f690110ee00d5f62799b68b</sys_update_name>
+        <sys_update_version display_value="sp_widget_028a94d52f690110ee00d5f62799b68b">4d6989512f2d0110ee00d5f62799b6a7</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-07 12:08:59</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

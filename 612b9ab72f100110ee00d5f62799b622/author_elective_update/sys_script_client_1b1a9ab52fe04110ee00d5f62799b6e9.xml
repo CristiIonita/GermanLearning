@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="DELETE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>active</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>Response min length</name>
+        <order/>
+        <script><![CDATA[function onSubmit() {
+  var html = g_form.getValue('response');
+	var txtStr = html.replace(/<(?:.|\n)*?>/gm, '');
+     
+        if (g_form.isMandatory('response')){
+        if (txtStr.length < 20) {
+
+           // g_form.setValue('response', '');
+            alert('Response should be minimum 20 characters');
+			return false;
+
+
+		}
+		}
+   
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2021-12-21 13:57:32</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>1b1a9ab52fe04110ee00d5f62799b6e9</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Response min length</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_script_client_1b1a9ab52fe04110ee00d5f62799b6e9</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2021-12-21 13:58:58</sys_updated_on>
+        <table>x_723119_germanlrn_user_assignment</table>
+        <type>onSubmit</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sys_script_client_1b1a9ab52fe04110ee00d5f62799b6e9</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_script_client"&gt;&lt;sys_script_client action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;applies_extended&gt;false&lt;/applies_extended&gt;&lt;condition/&gt;&lt;description/&gt;&lt;field&gt;active&lt;/field&gt;&lt;global&gt;true&lt;/global&gt;&lt;isolate_script&gt;true&lt;/isolate_script&gt;&lt;messages/&gt;&lt;name&gt;Response min length&lt;/name&gt;&lt;order/&gt;&lt;script&gt;&lt;![CDATA[function onSubmit() {
+  var html = g_form.getValue('response');
+	var txtStr = html.replace(/&lt;(?:.|\n)*?&gt;/gm, '');
+     
+        if (g_form.isMandatory('response')){
+        if (txtStr.length &lt; 20) {
+
+           // g_form.setValue('response', '');
+            alert('Response should be minimum 20 characters');
+			return false;
+
+
+		}
+		}
+   
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_client&lt;/sys_class_name&gt;&lt;sys_created_by&gt;mdaniel&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2021-12-21 13:57:32&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;1b1a9ab52fe04110ee00d5f62799b6e9&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name&gt;Response min length&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="German Learning" source="x_723119_germanlrn"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="German Learning"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_client_1b1a9ab52fe04110ee00d5f62799b6e9&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;mdaniel&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2021-12-21 13:58:58&lt;/sys_updated_on&gt;&lt;table&gt;x_723119_germanlrn_user_assignment&lt;/table&gt;&lt;type&gt;onSubmit&lt;/type&gt;&lt;ui_type&gt;10&lt;/ui_type&gt;&lt;view/&gt;&lt;/sys_script_client&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1762562022</payload_hash>
+        <record_name>Response min length</record_name>
+        <reverted_from/>
+        <source>a52b9ab72f100110ee00d5f62799b624</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2021-12-21 13:58:58</sys_created_on>
+        <sys_id>798adab52fe04110ee00d5f62799b635</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ddd49c14f0000001</sys_recorded_at>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2021-12-21 13:58:58</sys_updated_on>
+        <type>Client Script</type>
+        <update_guid>b18adab589e04110e061a925b8d39f35</update_guid>
+        <update_guid_history>b18adab589e04110e061a925b8d39f35:1762562022,f56a9e7547e04110fa7cc2a94bb1cf46:-1983320250,453a96b531e04110f6b896415a6d64e6:658036853</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2021-12-21 14:03:01</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_client">sys_script_client</sys_db_object>
+        <sys_id>0dafc755955e4b549f3d4eb432001c10</sys_id>
+        <sys_metadata>1b1a9ab52fe04110ee00d5f62799b6e9</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Response min length</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent display_value="User assignment">bcc13e3f2f500110ee00d5f62799b6d6</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sys_script_client_1b1a9ab52fe04110ee00d5f62799b6e9</sys_update_name>
+        <sys_update_version display_value="sys_script_client_1b1a9ab52fe04110ee00d5f62799b6e9">798adab52fe04110ee00d5f62799b635</sys_update_version>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2021-12-21 14:03:01</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

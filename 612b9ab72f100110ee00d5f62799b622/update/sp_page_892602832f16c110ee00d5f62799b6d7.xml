@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page">
+    <sp_page action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <css>html{&#13;
+height:100vh;&#13;
+}&#13;
+body .padding-top {&#13;
+&#13;
+padding-top: 0rem;&#13;
+margin:0;&#13;
+padding:0;&#13;
+  width:100%;&#13;
+  &#13;
+}&#13;
+body .padding-bottom { &#13;
+&#13;
+padding-bottom : 0rem;&#13;
+&#13;
+}&#13;
+&#13;
+.col-md-12{&#13;
+margin:0;&#13;
+  padding:0;&#13;
+  width:100%;&#13;
+}</css>
+        <draft>false</draft>
+        <dynamic_title_structure/>
+        <id>copy_of_gla_homepage</id>
+        <internal>false</internal>
+        <omit_watcher>false</omit_watcher>
+        <public>true</public>
+        <roles/>
+        <seo_script/>
+        <short_description/>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-03-22 09:32:56</sys_created_on>
+        <sys_id>892602832f16c110ee00d5f62799b6d7</sys_id>
+        <sys_mod_count>23</sys_mod_count>
+        <sys_name>copy_of_gla_homepage</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_page_892602832f16c110ee00d5f62799b6d7</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-03-23 11:57:37</sys_updated_on>
+        <title>Copy_of_gla_homepage</title>
+        <use_seo_script>false</use_seo_script>
+    </sp_page>
+    <sys_translated_text action="delete_multiple" query="documentkey=892602832f16c110ee00d5f62799b6d7"/>
+</record_update>

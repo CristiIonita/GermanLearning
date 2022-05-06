@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="DELETE">
+        <active>false</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>active</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>Hide field (Group || User)</name>
+        <order/>
+        <script><![CDATA[function onLoad() {
+    //Type appropriate comment here, and begin script below
+    if (g_form.getValue('user') != '') {
+        g_form.setMandatory('group', false);
+		g_form.setVisible('group',false);
+    }
+    if (g_form.getValue('group') != '') {
+        g_form.setMandatory('user', false);
+		g_form.setVisible('user',false);
+    }
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-12-17 08:58:15</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>c2ce2ca82f204110ee00d5f62799b62c</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Hide field (Group || User)</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_script_client_c2ce2ca82f204110ee00d5f62799b62c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-12-17 09:41:13</sys_updated_on>
+        <table>x_723119_germanlrn_assignment</table>
+        <type>onLoad</type>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_script_client>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sys_script_client_c2ce2ca82f204110ee00d5f62799b62c</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_script_client"&gt;&lt;sys_script_client action="INSERT_OR_UPDATE"&gt;&lt;active&gt;false&lt;/active&gt;&lt;applies_extended&gt;false&lt;/applies_extended&gt;&lt;condition/&gt;&lt;description/&gt;&lt;field&gt;active&lt;/field&gt;&lt;global&gt;true&lt;/global&gt;&lt;isolate_script&gt;true&lt;/isolate_script&gt;&lt;messages/&gt;&lt;name&gt;Hide field (Group || User)&lt;/name&gt;&lt;order/&gt;&lt;script&gt;&lt;![CDATA[function onLoad() {
+    //Type appropriate comment here, and begin script below
+    if (g_form.getValue('user') != '') {
+        g_form.setMandatory('group', false);
+		g_form.setVisible('group',false);
+    }
+    if (g_form.getValue('group') != '') {
+        g_form.setMandatory('user', false);
+		g_form.setVisible('user',false);
+    }
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_client&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2021-12-17 08:58:15&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;c2ce2ca82f204110ee00d5f62799b62c&lt;/sys_id&gt;&lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;&lt;sys_name&gt;Hide field (Group || User)&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="German Learning" source="x_723119_germanlrn"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="German Learning"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_client_c2ce2ca82f204110ee00d5f62799b62c&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2021-12-17 09:41:13&lt;/sys_updated_on&gt;&lt;table&gt;x_723119_germanlrn_assignment&lt;/table&gt;&lt;type&gt;onLoad&lt;/type&gt;&lt;ui_type&gt;0&lt;/ui_type&gt;&lt;view/&gt;&lt;/sys_script_client&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1337250373</payload_hash>
+        <record_name>Hide field (Group || User)</record_name>
+        <reverted_from/>
+        <source>70e750d82fe00110ee00d5f62799b691</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-12-17 09:41:13</sys_created_on>
+        <sys_id>0b297c242f604110ee00d5f62799b673</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17dc7c459ad0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-12-17 09:41:13</sys_updated_on>
+        <type>Client Script</type>
+        <update_guid>8b29f4246f60411097bc1435a6fd862e</update_guid>
+        <update_guid_history>8b29f4246f60411097bc1435a6fd862e:-1337250373,aac63c6093604110351f0f372b9d7b25:1785157934,2371b06c782041101ad49fafa1c0cf22:-1337250373,6d5fa8a8de2041107e1573f1ab5cec15:1785157934</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-12-21 09:18:50</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_client">sys_script_client</sys_db_object>
+        <sys_id>6f71053b81484a44b26ec39525f1cd90</sys_id>
+        <sys_metadata>c2ce2ca82f204110ee00d5f62799b62c</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Hide field (Group || User)</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent display_value="Assignment">87a7e6732f500110ee00d5f62799b661</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sys_script_client_c2ce2ca82f204110ee00d5f62799b62c</sys_update_name>
+        <sys_update_version display_value="sys_script_client_c2ce2ca82f204110ee00d5f62799b62c">0b297c242f604110ee00d5f62799b673</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-12-21 09:18:50</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

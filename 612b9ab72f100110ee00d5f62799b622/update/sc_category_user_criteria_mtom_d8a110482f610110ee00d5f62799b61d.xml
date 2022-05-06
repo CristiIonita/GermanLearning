@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_category_user_criteria_mtom">
+    <sc_category_user_criteria_mtom action="INSERT_OR_UPDATE">
+        <sc_category display_value="Resources">27e0537f2f490110ee00d5f62799b697</sc_category>
+        <sys_class_name>sc_category_user_criteria_mtom</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-03 10:35:04</sys_created_on>
+        <sys_id>d8a110482f610110ee00d5f62799b61d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Resources.GLA Teachers</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sc_category_user_criteria_mtom_d8a110482f610110ee00d5f62799b61d</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-03 10:35:04</sys_updated_on>
+        <user_criteria display_value="GLA Teachers">67f0d5ca2f700510ee00d5f62799b60d</user_criteria>
+    </sc_category_user_criteria_mtom>
+</record_update>

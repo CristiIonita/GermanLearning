@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function($scope) {
+  /* widget controller */
+  var c = this;
+
+   $scope.loadingIndicator = true;
+		var a=document.getElementsByClassName('ytContentEx');
+		if(a){
+			c.data.classTest=true;
+			c.server.update();
+		}
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.name_style{&#13;
+color: #484649;&#13;
+text-align: center;&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id/>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>German pronunciation</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+// add 5 points per search for badge system
+	if(input && input.classTest){
+			var grU= new GlideRecord('sys_user');
+							grU.addQuery('sys_id',gs.getUserID());
+							grU.query();
+							if(grU.next()){
+							grU.u_points=parseFloat(grU.u_points)+5;
+							grU.update();
+							}}
+		//end of adding points
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-11 09:14:42</sys_created_on>
+        <sys_id>e29819ef2f068110ee00d5f62799b692</sys_id>
+        <sys_mod_count>55</sys_mod_count>
+        <sys_name>German pronunciation</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_e29819ef2f068110ee00d5f62799b692</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-04-21 10:54:23</sys_updated_on>
+        <template><![CDATA[<div >
+  <h2 class="name_style">Pronunciation Practice </h2>
+</div>
+<body>
+    <!-- 1. The widget will replace this <div> tag. -->
+    <div id="widget-1"></div>
+
+
+
+    <script>
+      // 2. This code loads the widget API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://youglish.com/public/emb/widget.js";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates a widget after the API code downloads.
+      var widget;
+      function onYouglishAPIReady(){
+        widget = new YG.Widget("widget-1", {
+          width: 640,
+          components:9, //search box & caption 
+          events: {
+            'onFetchDone': onFetchDone,
+            'onVideoChange': onVideoChange,
+            'onCaptionConsumed': onCaptionConsumed
+          }          
+        });
+        // 4. process the query
+        widget.fetch("","german");
+      }
+
+     
+      var views = 0, curTrack = 0, totalTracks = 0;
+    
+      // 5. The API will call this method when the search is done
+      function onFetchDone(event){
+      
+         totalTracks = event.totalResult; 
+      }
+         
+      // 6. The API will call this method when switching to a new video. 
+      function onVideoChange(event){
+        curTrack = event.trackNumber;
+        views = 0;
+      }
+         
+      // 7. The API will call this method when a caption is consumed. 
+      function onCaptionConsumed(event){
+        if (++views < 1)
+          widget.replay();
+        else 
+          if (curTrack < totalTracks)  
+            widget.next();
+      }
+    </script>
+  </body>]]></template>
+    </sp_widget>
+</record_update>

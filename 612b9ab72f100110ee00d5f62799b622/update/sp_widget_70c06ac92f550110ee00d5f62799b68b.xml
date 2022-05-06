@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope, spUtil, $uibModal, $rootScope) {
+    /* widget controller */
+    var c = this;
+    $scope.isDisabled = "";
+    $scope.Next = function() {
+        c.data.displayInfo = '';
+        c.data.gender = "";
+        c.data.plural = "";
+        c.data.example1 = "";
+        c.data.example2 = "";
+		$scope.loadingIndicator = true;
+		$scope.clicked = "";
+		c.data.word = "";
+		c.data.translated = "";
+		c.data.speech = "";
+        c.server.update().then(function(r) {
+               $scope.loadingIndicator = false;
+            });
+
+    };
+
+    $scope.Info = function() {
+        c.data.displayInfo = 'yes';
+		$scope.loadingIndicator = true;
+		$scope.clicked = "clicked";
+        c.data.w = c.data.word;
+        c.data.s = c.data.speech;
+        c.server.update().then(function(r) {
+               $scope.loadingIndicator = false;
+            });
+		
+
+
+    };
+
+    $scope.checked = function() {
+		if($scope.isDisabled == ""){
+        $scope.isDisabled = "display";
+		}
+		else
+			{
+				$scope.isDisabled = "";
+			}
+
+    };
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.flip-card {&#13;
+  background-color: transparent;&#13;
+  width: 300px;&#13;
+  height: 200px;&#13;
+  margin: 0 auto;&#13;
+  border: 1px solid #fff;&#13;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */&#13;
+}&#13;
+&#13;
+/* This container is needed to position the front and back side */&#13;
+.flip-card-inner {&#13;
+  position: relative;&#13;
+  width: 100%;&#13;
+  height: 100%;&#13;
+  text-align: center;&#13;
+  transition: transform 0.8s;&#13;
+  transform-style: preserve-3d;&#13;
+}&#13;
+&#13;
+/* Do an horizontal flip when you click the mouse over the flip box container */&#13;
+:checked + .flip-card .flip-card-inner {&#13;
+     transform: rotateY(180deg);&#13;
+    &#13;
+}&#13;
+input {&#13;
+    display: none;&#13;
+}&#13;
+&#13;
+&#13;
+&#13;
+/* Position the front and back side */&#13;
+.flip-card-front, .flip-card-back {&#13;
+  position: absolute;&#13;
+  width: 100%;&#13;
+  height: 100%;&#13;
+  -webkit-backface-visibility: hidden; /* Safari */&#13;
+  backface-visibility: hidden;&#13;
+}&#13;
+&#13;
+/* Style the front side (fallback if image is missing) */&#13;
+.flip-card-front {&#13;
+  background-color: #444343;&#13;
+  color: white;&#13;
+}&#13;
+&#13;
+/* Style the back side */&#13;
+.flip-card-back {&#13;
+  background-color: #FF6639;&#13;
+  color: white;&#13;
+  transform: rotateY(180deg);&#13;
+}&#13;
+&#13;
+.infoButton{&#13;
+&#13;
+  background-color: #484649;&#13;
+  border: none;&#13;
+  border-radius:5px;&#13;
+  color: white;&#13;
+  margin-right: 20px;&#13;
+  padding: 12px 26px;&#13;
+  text-align: center;&#13;
+  opacity:0.6;&#13;
+  font-size: 16px;&#13;
+  transition: 0.3s;&#13;
+  display: inline-block;&#13;
+  text-decoration: none;&#13;
+  &#13;
+&#13;
+}&#13;
+ .infoButton:hover&#13;
+{&#13;
+opacity: 1;&#13;
+}&#13;
+&#13;
+.nextButton{&#13;
+&#13;
+ &#13;
+  background-color: #484649;&#13;
+  border: none;&#13;
+  border-radius:5px;&#13;
+  color: white;&#13;
+  padding: 12px 26px;&#13;
+  text-align: center;&#13;
+  opacity:0.6;&#13;
+  font-size: 16px;&#13;
+  transition: 0.3s;&#13;
+  display: inline-block;&#13;
+  text-decoration: none;&#13;
+ &#13;
+&#13;
+}&#13;
+ .nextButton:hover&#13;
+{&#13;
+opacity: 1;&#13;
+}&#13;
+&#13;
+.flex-parent {&#13;
+  display: flex;&#13;
+}&#13;
+&#13;
+.jc-center {&#13;
+  justify-content: center;&#13;
+}&#13;
+&#13;
+.name_style{&#13;
+color: #484649;&#13;
+text-align: center;&#13;
+}&#13;
+&#13;
+.container1{&#13;
+&#13;
+text-align: center;&#13;
+}&#13;
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>gla_flashcard</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Flashcard</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+
+
+    if (!input) {
+        data.word = words();
+        data.translated = dictionary(data.word);
+        data.displayInfo = '';
+    } else {
+        if (input.displayInfo) {
+            data.word = input.w;
+            var speech = input.s;
+
+            var s = new LexicalaApi();
+            var detailsObj = s.details(data.word, speech);
+            if (speech == "noun") {
+                data.gender = detailsObj.gender;
+                data.example1 = detailsObj.example1;
+                data.example2 = detailsObj.example2;
+                data.plural = detailsObj.plural;
+            } else {
+
+                data.example1 = detailsObj.example1;
+                data.example2 = detailsObj.example2;
+            }
+								var grU= new GlideRecord('sys_user');
+							grU.get(gs.getUserID());
+							grU.u_points=parseFloat(grU.u_points)+5;
+							grU.update();
+
+        } else {
+            data.word = words();
+            data.translated = dictionary(data.word);
+        }
+
+    }
+
+    function words() {
+        var word = ["nett", "sauber", "Apfel", "Katze", "Hund", "hallo", "danke", "nein", "lecker", "Woche", "Morgen", "gestern", "machen", "gut", "Kaffee", "Bier", "Tee", "Wein", "Lamm", "Fisch", "fein", "lieb", "Liebe", "komisch", "stark", "lang", "hell", "kurz", "klein", "wunderbar", "Ratte", "tschüss"];
+        var n = 30;
+        var x = Math.floor(Math.random() * n);
+        return word[x];
+
+    }
+
+    function randomWord() {
+        var requestWord = new sn_ws.RESTMessageV2();
+        requestWord.setHttpMethod('get');
+        requestWord.setEndpoint("https://random-word-api.herokuapp.com/word?lang=de");
+        var responseWord = requestWord.execute();
+        var responseObjWord = responseWord.getBody();
+        var resWord = JSON.parse(responseObjWord);
+        return resWord.toString();
+    }
+
+
+
+
+    function dictionary(word) {
+
+
+        var s = new LexicalaApi();
+         data.speech ="("+s.partOfSpeech(word)+")";
+
+		var t = new Translate();
+
+		return t.translateText("de-en",word);
+
+    }
+
+
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-01-25 13:18:27</sys_created_on>
+        <sys_id>70c06ac92f550110ee00d5f62799b68b</sys_id>
+        <sys_mod_count>579</sys_mod_count>
+        <sys_name>Flashcard</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_70c06ac92f550110ee00d5f62799b68b</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-04-13 07:33:04</sys_updated_on>
+        <template><![CDATA[<div>
+  <h2 class="name_style">Vocabulary Practice </h2>
+</div>
+ 
+<div class="container1">
+  <label>
+<input class="checkbox" type="checkbox" ng-click="checked()"/>
+  
+<div class="flip-card">
+
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <h1> {{data.word}} </h1>
+        <div class="spinner" ng-show="loadingIndicator">
+
+           <img src="spinner-front.svg" class="loading-spinner"/>
+
+       </div>
+      <h2>
+        {{data.speech}}
+      </h2>
+    </div>
+    <div class="flip-card-back">
+      <h1>{{data.translated}}</h1>
+     
+        <div class="spinner" ng-show="loadingIndicator">
+
+           <img src="spinner-back.svg" class="loading-spinner"/>
+
+       </div>
+
+      
+      <div class="back" ng-if="data.displayInfo">
+        <div  ng-if="data.plural">
+          Plural: {{data.plural}}
+        </div>
+         <div  ng-if="data.gender">
+          Gender:{{data.gender}}
+        </div>
+  	 <div  ng-if="data.example1">
+         Example:
+        {{data.example1}}
+     <br>{{data.example2}}
+        </div>
+      
+   
+    
+      </div>
+    </div>
+    </div>
+  </div>
+  </label>
+  <br>
+  		<div class="flex-parent jc-center">
+			<button  ng-if="isDisabled" type="submit" ng-disabled = "clicked" ng-click="Info()" class="infoButton">Info</button>
+<button type="submit" ng-click="Next()" class="nextButton">Next</button>
+  			
+  		</div>
+	</div>
+]]></template>
+    </sp_widget>
+</record_update>

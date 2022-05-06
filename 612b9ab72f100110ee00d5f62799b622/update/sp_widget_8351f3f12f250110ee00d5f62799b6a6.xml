@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+	c.update = function() {
+		c.server.update();
+		
+	}
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: normal;
+  align-content: normal;
+  width : calc(90vw);
+}
+.flex-items {
+display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: normal;
+  align-content: normal;
+
+}
+
+.flex-items:nth-child(0) {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+}
+
+.flex-items:nth-child(1) {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+}
+
+.flex-items:nth-child(2) {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+}
+
+.flex-items:nth-child(3) {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+}
+
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+ 
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>clonetaskssearch</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>CloneTasksSearch</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+if(input && input.filterText) {
+	console.log(input.filterText);
+	
+}
+	data.test1 = true;
+	data.test2 = true;
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-09 13:21:08</sys_created_on>
+        <sys_id>8351f3f12f250110ee00d5f62799b6a6</sys_id>
+        <sys_mod_count>35</sys_mod_count>
+        <sys_name>CloneTasksSearch</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_8351f3f12f250110ee00d5f62799b6a6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-09 14:00:45</sys_updated_on>
+        <template><![CDATA[<div class="text-center" style="padding-bottom : 10px">
+    <button ng-click="c.showFilters()">
+        Add Filters
+    </button>
+    <input placeholder="Search for a record" ng-model="c.data.filterText" ng-change="c.update()" style="align: center;" />
+</div>
+<div class="flex-container text-center">
+   <div class="flex-items">
+   <p>
+                Type :
+            </p>
+					<div style = "margin-right : 3px;">
+            
+     	<input ng-model="c.data.homew" class="filterInput" type="checkbox" name="homew" value="Homeworks" />
+            <label for="homew">Homeworks</label>
+</div><div style = "margin-left : 29px";>
+     
+     
+            <input ng-model="c.data.userAss" class="filterInput" type="checkbox" name="userAss" value="User Assignments" />
+            <label for="userAss">User Assignments</label>
+</div><div>
+     
+     
+            <input ng-model="c.data.assig" class="filterInput" type="checkbox" name="assig" value="Assignments" />
+            <label for="assig">Assignments</label>
+     </div>
+  </div>
+   <div class="flex-items">
+  <p>
+                Active :
+            </p>
+
+            <input ng-model="c.data.active" class="filterInput" type="checkbox" name="active" value="Active" />
+            <label for="active">Active</label>
+  </div>
+   <div class="flex-items">
+  <p>
+                Order :
+            </p>
+<div style = "margin-left : 38px ">
+  
+    
+            <input ng-model="c.data.ordAlph" class="filterInput" type="checkbox" name="Alphabetically" value="Alpha" />
+            <label for="Alphabetically">Alphabetically</label>
+   </div><div>
+     
+     
+      <input ng-model="c.data.ordCreated" class="filterInput" type="checkbox" name="Created" value="Created" />
+            <label for="Created">Created</label>
+     </div>
+  </div>
+   <div class="flex-items">
+  <button ng-click="c.update()">
+                Apply Filters
+            </button></div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

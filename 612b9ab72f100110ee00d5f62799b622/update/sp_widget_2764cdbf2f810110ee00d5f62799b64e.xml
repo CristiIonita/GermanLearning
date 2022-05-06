@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.myTable{&#13;
+background-color: #e3e3e3;&#13;
+height:230px;&#13;
+width:180px;&#13;
+margin-left:auto;&#13;
+margin-right:auto;&#13;
+}&#13;
+.container{&#13;
+border: 10px white solid; &#13;
+  border-radius: 25px;&#13;
+  background-color:#e3e3e3;&#13;
+}&#13;
+a{&#13;
+color:black;&#13;
+}&#13;
+&#13;
+.head_container{&#13;
+font-size:18px;&#13;
+padding-left:10px;&#13;
+}&#13;
+.row_container{&#13;
+font-size:14px; &#13;
+padding-left:10px&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>gla_homeworks</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>GLA Homeworks</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+    var currentUser = gs.getUserID();
+    var userChecker = new GLAUtils();
+    data.display = [];
+    if (userChecker.usersCheck('8e4a55ec2fa04110ee00d5f62799b63a').search(currentUser) !== -1) {
+        //if student
+        var gr = new GlideRecord('x_723119_germanlrn_homework');
+        gr.addQuery('active', true);
+        gr.query();
+        while (gr.next()) {
+            var homework_data = {};
+            homework_data.number = gr.getValue('number');
+            homework_data.name = gr.getValue('name');
+            homework_data.link = "https://dev101723.service-now.com/glap?id=gla_homework&sys_id=" + gr.getUniqueValue();
+            if (gr.active == true) {
+                homework_data.isActive = "background-color:green; color:green; float: right;";
+            } else {
+                homework_data.isActive = "background-color:red; color:red; float: right;";
+            }
+            data.display.push(homework_data);
+        }
+    }
+
+    if (userChecker.usersCheck('446ad56c2fa04110ee00d5f62799b64f').search(currentUser) !== -1) {
+        //if teacher
+        var gr = new GlideRecord('x_723119_germanlrn_homework');
+        gr.query();
+        while (gr.next()) {
+            var homework_data = {};
+            homework_data.number = gr.getValue('number');
+            homework_data.name = gr.getValue('name');
+            homework_data.link = "https://dev101723.service-now.com/glap?id=gla_homework&sys_id=" + gr.getUniqueValue();
+            if (gr.active == true) {
+                homework_data.isActive = "background-color:green; color:green; float: right;";
+            } else {
+                homework_data.isActive = "background-color:red; color:red; float: right;";
+            }
+            data.display.push(homework_data);
+
+        }
+    }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-01-21 09:22:48</sys_created_on>
+        <sys_id>2764cdbf2f810110ee00d5f62799b64e</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>GLA Homeworks</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_2764cdbf2f810110ee00d5f62799b64e</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-03-09 09:08:55</sys_updated_on>
+        <template><![CDATA[<div>
+	<div class="row">
+    <div ng-repeat='homework_data in data.display'>
+      
+    	<div class="col-sm-4 container">
+ 
+        <a href={{homework_data.link}}> 
+          <br>
+          <span class="badge" style={{homework_data.isActive}}>0</span>
+            <table class="myTable">
+      
+              <tr><td class="head_container">Name:</td><td class="head_container">{{homework_data.name}}</td></tr>
+      				<tr><td class="row_container">Number:</td><td class="row_container">{{homework_data.number}}</td></tr>
+ 			
+          	</table>
+           
+        </a>
+       
+      </div>
+        
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time/>
+        <name>User assignment - teacher notification</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <run_as display_value="Cristi Ionita">5d6816772f100110ee00d5f62799b61b</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2022-01-28 09:07:12</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>daily</run_type>
+        <script><![CDATA[var parm1 = [];
+var a = new GLAUtils();
+var teachersGR = new GlideRecord('sys_user_grmember');
+teachersGR.addQuery('group', 'ae4b9dec2fa04110ee00d5f62799b62e');
+teachersGR.query();
+while (teachersGR.next()) {
+    var teacherid = teachersGR.user;
+    var teacherName = teachersGR.user.getDisplayValue();
+    var userAssignmentGR = new GlideRecord('x_723119_germanlrn_user_assignment');
+    userAssignmentGR.addEncodedQuery('active=true^state=3');
+    userAssignmentGR.query();
+    var teacher = {};
+	var parm2 = teacherid;
+    teacher.name = teacherName;
+    teacher.assignment = [];
+    while (userAssignmentGR.next()) {
+        if (a.whoIsTheManager(userAssignmentGR.user) == teacherid) {
+
+
+            var details = {};
+            details.number = userAssignmentGR.number.getDisplayValue();
+            details.assignNr = userAssignmentGR.assignment.number.getDisplayValue();
+            details.homework = userAssignmentGR.assignment.homework.getDisplayValue();
+            details.dueDate = userAssignmentGR.assignment.due_date.getDisplayValue();
+            details.state = userAssignmentGR.state.getDisplayValue();
+            details.user = userAssignmentGR.user.getDisplayValue();
+            teacher.assignment.push(details);
+        }
+
+    }
+    if (teacher.assignment != "") {
+        parm1.push(teacher);
+        var result = JSON.stringify(teacher);
+        gs.eventQueue('x_723119_germanlrn.teacherNotification', teachersGR, result,parm2);
+    }
+}]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-01-28 12:25:20</sys_created_on>
+        <sys_id>1a2409c22fdd0110ee00d5f62799b6d9</sys_id>
+        <sys_mod_count>16</sys_mod_count>
+        <sys_name>User assignment - teacher notification</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sysauto_script_1a2409c22fdd0110ee00d5f62799b6d9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-01 10:58:59</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

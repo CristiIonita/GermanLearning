@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+	c.show = "";
+	c.update = function() {
+		c.server.update();
+	}
+	c.updateAndClose = function() {
+		c.server.update();
+		c.show = false;
+	}
+	c.showFilters = function(){
+		
+			if(c.show){
+				c.show = false;
+			}
+		else{
+			c.show = true;
+		}
+		
+		
+			
+		
+	}
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.table{&#13;
+background-color: #484649;&#13;
+width:200px;&#13;
+margin-left:auto;&#13;
+margin-right:auto;&#13;
+  &#13;
+}&#13;
+tr , td {&#13;
+&#13;
+border-style : hidden;&#13;
+}&#13;
+#applyButton{&#13;
+margin-bottom : 20px;&#13;
+}&#13;
+&#13;
+a:hover{&#13;
+  color:#fff;&#13;
+}&#13;
+&#13;
+.flex-container {&#13;
+  height : 200px;&#13;
+  display: flex;&#13;
+  flex-direction: row;&#13;
+  flex-wrap: nowrap;&#13;
+  justify-content: space-between;&#13;
+  align-items: normal;&#13;
+  align-content: normal;&#13;
+  width : calc(90vw);&#13;
+}&#13;
+.flex-items {&#13;
+display: flex;&#13;
+  flex-direction: column;&#13;
+  flex-wrap: nowrap;&#13;
+  justify-content: flex-start;&#13;
+  align-items: normal;&#13;
+  align-content: normal;&#13;
+&#13;
+}&#13;
+&#13;
+.flex-items:nth-child(0) {&#13;
+  display: block;&#13;
+  flex-grow: 0;&#13;
+  flex-shrink: 1;&#13;
+  flex-basis: auto;&#13;
+  align-self: auto;&#13;
+  order: 0;&#13;
+}&#13;
+&#13;
+.flex-items:nth-child(1) {&#13;
+  display: block;&#13;
+  flex-grow: 0;&#13;
+  flex-shrink: 1;&#13;
+  flex-basis: auto;&#13;
+  align-self: auto;&#13;
+  order: 0;&#13;
+}&#13;
+&#13;
+.flex-items:nth-child(2) {&#13;
+  display: block;&#13;
+  flex-grow: 0;&#13;
+  flex-shrink: 1;&#13;
+  flex-basis: auto;&#13;
+  align-self: auto;&#13;
+  order: 0;&#13;
+}&#13;
+&#13;
+/*.flex-items:nth-child(3) {&#13;
+  display: block;&#13;
+  flex-grow: 0;&#13;
+  flex-shrink: 1;&#13;
+  flex-basis: auto;&#13;
+  align-self: auto;&#13;
+  order: 0;&#13;
+}*/&#13;
+&#13;
+@media (max-width: 800px) {&#13;
+  .flex-container {&#13;
+    flex-direction: column;&#13;
+    height : 350px;&#13;
+     &#13;
+  }&#13;
+  #applyButton {&#13;
+  margin-top : 10px;&#13;
+  }&#13;
+&#13;
+}&#13;
+&#13;
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>tasksclone</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>TasksClone</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+ data.userAss_show = true;
+	data.homework_show = true;
+	data.assig_show = true;
+	var currentUser = gs.getUserID(); 
+	var userChecker = new GLAUtils();
+	if(input && (input.homew || input.userAss || input.assig)){
+		if(!input.homew){
+			data.homework_show = false;
+		}
+		if(!input.userAss){
+			data.userAss_show = false;
+		}
+		if(!input.assig){
+			data.assig_show = false;
+		}
+	}
+	
+	
+	data.display=[];
+	
+		var gr = new GlideRecord('x_723119_germanlrn_homework');
+	if(input && input.filterText){
+		gr.addEncodedQuery('numberLIKE' + input.filterText);
+	}
+	if(input && input.active){
+		gr.addQuery('active',true);
+	}
+	if(input && input.ordAlph){
+		gr.orderBy('number');
+	}
+	if(input && input.ordCreated){
+		gr.orderByDesc('sys_created_on');
+	}
+		gr.query();
+		while(gr.next()){
+			var homework_data={};
+			homework_data.number=gr.getValue('number');
+			homework_data.name = gr.getValue('name');
+			homework_data.link="https://dev101723.service-now.com/glap?id=gla_homework&sys_id="+gr.getUniqueValue();
+			if(gr.active==true){homework_data.isActive="background-color:#54BC69; color:#54BC69; float: right;";}else{homework_data.isActive="background-color:#FE5339; color:#FE5339; float: right;";}
+			data.display.push(homework_data);
+		}
+	data.userAssignments = [];
+	if (userChecker.usersCheck('8e4a55ec2fa04110ee00d5f62799b63a').search(currentUser) !== -1) {
+        //if student
+        var gr = new GlideRecord('x_723119_germanlrn_user_assignment');
+		if(input && input.filterText){
+		gr.addEncodedQuery('active=true^numberLIKE' + input.filterText);
+	}
+		else{
+			gr.addQuery('active', true);
+		}
+		if(input && input.ordAlph){
+		gr.orderBy('number');
+	}
+	if(input && input.ordCreated){
+		gr.orderByDesc('sys_created_on');
+	}
+        
+        gr.query();
+        while (gr.next()) {
+            var user_assignment_data = {};
+					var due_date = gr.assignment.due_date + "";
+            user_assignment_data.number = gr.getValue('number');
+		
+           	user_assignment_data.due_date = due_date;
+            user_assignment_data.link = "https://dev101723.service-now.com/glap?id=gla_user_assignment&sys_id=" + gr.getUniqueValue();
+            if (gr.active == true) {
+                user_assignment_data.isActive = "background-color:#54BC69; color:#54BC69; float: right;";
+            } else {
+                user_assignment_data.isActive = "background-color:#FE5339; color:#FE5339; float: right;";
+            }
+            data.userAssignments.push(user_assignment_data);
+        }
+    }
+
+    if (userChecker.usersCheck('446ad56c2fa04110ee00d5f62799b64f').search(currentUser) !== -1) {
+        //if teacher
+        var gr = new GlideRecord('x_723119_germanlrn_user_assignment');
+				if(input && input.filterText){
+		gr.addEncodedQuery('numberLIKE' + input.filterText);
+	}
+			if(input && input.active){
+		gr.addQuery('active',true);
+	}
+			if(input && input.ordAlph){
+		gr.orderBy('number');
+	}
+	if(input && input.ordCreated){
+		gr.orderByDesc('sys_created_on');
+	}
+        gr.query();
+        while (gr.next()) {
+            var user_assignment_data = {};
+					var due_date = gr.assignment.due_date + "";
+            user_assignment_data.number = gr.getValue('number');
+           user_assignment_data.due_date = due_date;
+            user_assignment_data.link = "https://dev101723.service-now.com/glap?id=gla_user_assignment&sys_id=" + gr.getUniqueValue();
+            if (gr.active == true) {
+                user_assignment_data.isActive = "background-color:#54BC69; color:#54BC69; float: right;";
+            } else {
+                user_assignment_data.isActive = "background-color:#FE5339; color:#FE5339; float: right;";
+            }
+           data.userAssignments.push(user_assignment_data);
+
+        }
+    }
+	data.assignments=[];
+		var gr = new GlideRecord('x_723119_germanlrn_assignment');
+		if(input && input.filterText){
+		gr.addEncodedQuery('numberLIKE' + input.filterText);
+	}
+	if(input && input.active){
+		gr.addQuery('active',true);
+	}
+	if(input && input.ordAlph){
+		gr.orderBy('number');
+	}
+	if(input && input.ordCreated){
+		gr.orderByDesc('sys_created_on');
+	}
+		gr.query();
+		while(gr.next()){
+			var assignment_data={};
+			
+			assignment_data.due_date = gr.getValue('due_date');
+			assignment_data.number=gr.getValue('number');
+				
+			assignment_data.link="https://dev101723.service-now.com/glap?id=gla_assignment&sys_id="+gr.getUniqueValue();
+			if(gr.active==true){assignment_data.isActive="background-color:#54BC69; color:#54BC69; float: right;";}else{assignment_data.isActive="background-color:#FE5339; color:#FE5339; float: right;";}
+			data.assignments.push(assignment_data);
+		}
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-03-05 16:14:21</sys_created_on>
+        <sys_id>2e2fbf252f420110ee00d5f62799b698</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>TasksClone</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_2e2fbf252f420110ee00d5f62799b698</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-03-05 16:16:43</sys_updated_on>
+        <template><![CDATA[<div class="text-center" style="padding-bottom : 10px">
+    <button ng-click="c.showFilters()">
+        Add Filters
+    </button>
+    <input placeholder="Search for a record" ng-model="c.data.filterText" ng-change="c.update()" style="align: center;" />
+</div>
+<div class="flex-container text-center" ng-show="c.show">
+   <div class="flex-items">
+   <p>
+                Type :
+            </p>
+					<div style = "margin-right : 3px;">
+            
+     	<input ng-model="c.data.homew" class="filterInput" type="checkbox" name="homew" value="Homeworks" />
+            <label for="homew">Homeworks</label>
+</div><div style = "margin-left : 29px";>
+     
+     
+            <input ng-model="c.data.userAss" class="filterInput" type="checkbox" name="userAss" value="User Assignments" />
+            <label for="userAss">User Assignments</label>
+</div><div>
+     
+     
+            <input ng-model="c.data.assig" class="filterInput" type="checkbox" name="assig" value="Assignments" />
+            <label for="assig">Assignments</label>
+     </div>
+  </div>
+   <div id = " activeDiv" class="flex-items">
+  
+     <p>
+                Active :
+            </p>
+          <div style = " margin-right : 39px">
+            <input ng-click="c.updateAndClose()" ng-model="c.data.active" class="filterInput" type="checkbox" name="active" value="Active" />
+            <label for="active">Active</label>
+     </div>
+     
+  </div>
+   <div class="flex-items">
+  <p>
+                Order :
+            </p>
+<div style = "margin-left : 38px ; margin-right : 24px; ">
+  
+    
+            <input ng-model="c.data.ordAlph" class="filterInput" type="checkbox" name="Alphabetically" value="Alpha" />
+            <label for="Alphabetically">Alphabetically</label>
+   </div><div style =" margin-right : 24px;">
+     
+     
+      <input ng-model="c.data.ordCreated" class="filterInput" type="checkbox" name="Created" value="Created" />
+            <label for="Created">Created</label>
+     </div>
+  </div>
+ 
+</div>
+    <div ng-show ="c.show" id ="applyButton" class="text-center">
+  <button ng-click="c.updateAndClose()">
+                Apply Filters
+            </button></div>
+
+    <div class="row">
+        <div ng-if="c.data.homework_show" ng-repeat="homework_data in data.display">
+            <div class="col-sm-4" style="border: 10px white solid; border-radius: 25px; background-color: #484649;">
+                <a href="{{homework_data.link}}">
+                    <br />
+                    <span class="badge" style="{{homework_data.isActive}}">0</span>
+                    <table class="table">
+                        <tr>
+                           
+                            <td style="font-size: 18px; padding-left: 10px;">{{homework_data.name}}</td>
+                        </tr>
+                        <tr>
+                            
+                            <td style="font-size: 14px; padding-left: 10px;">{{homework_data.number}}</td>
+                        </tr>
+                    </table>
+                </a>
+            </div>
+        </div>
+        <div ng-if="c.data.userAss_show" ng-repeat="user_assignment_data in data.userAssignments">
+            <div class="col-sm-4" style="border: 10px white solid; border-radius: 25px; background-color: #484649;">
+                <a href="{{user_assignment_data.link}}">
+                    <br />
+                    <span class="badge" style="{{user_assignment_data.isActive}}">0</span>
+                    <table class="table">
+                        <tr>
+                           <td style="font-size: 18px; padding-left: 10px;">{{user_assignment_data.number}}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td style="font-size: 14px; padding-left: 10px;">Due date :</td>
+                            <td class="text-muted" style="font-size: 14px; padding-left: 10px;">{{user_assignment_data.due_date}}</td>
+                        </tr>
+                    </table>
+                </a>
+            </div>
+        </div>
+        <div ng-if="c.data.assig_show" ng-repeat="assignment_data in data.assignments">
+            <div class="col-sm-4" style="border: 10px white solid; border-radius: 25px; background-color: #484649;">
+                <a href="{{assignment_data.link}}">
+                    <br />
+                    <span class="badge" style="{{assignment_data.isActive}}">0</span>
+                    <table class="table">
+                        <tr>
+                            
+                            <td style="font-size: 18px; padding-left: 10px;">{{assignment_data.number}}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td style="font-size: 14px; padding-left: 10px;">Due date :</td>
+                            <td class="text-muted" style="font-size: 14px; padding-left: 10px;">{{assignment_data.due_date}}</td>
+                        </tr>
+                    </table>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

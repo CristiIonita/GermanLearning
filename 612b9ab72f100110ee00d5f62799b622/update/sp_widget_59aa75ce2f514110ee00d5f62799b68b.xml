@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope, spUtil, $uibModal, $rootScope) {
+    /* widget controller */
+    var c = this;
+
+
+    var g_form = $scope.page.g_form;
+    c.valueSelected = function(selectedValue) {
+        $scope.isDisabled = false;
+		$scope.isEnabled = true;
+		c.data.op = 1;
+		
+        c.data.state = selectedValue;
+		c.data.stateBackup = '';
+
+    };
+
+c.data.op = 0;
+  
+    $scope.isDisabled = true;
+	$scope.isEnabled = false;
+
+
+    c.data.text = c.data.comment;
+    c.data.commentsField = {
+        "isVisible": function() {
+            return true;
+        },
+        "sys_mandatory": false,
+        "visible": true,
+        "color": "transparent",
+        "dbType": -1,
+        "label": "Comments",
+        "sys_readonly": false,
+        "type": "string",
+        "mandatory": false,
+        "displayValue": "",
+        "readonly": false,
+        "hint": "",
+        "name": "comments",
+        "attributes": {
+            "edge_encryption_enabled": "true"
+        },
+        "choice": 0,
+        "value": "",
+        "max_length": 4000,
+        "ed": {
+            "name": "comments"
+        },
+        "originalValue": ""
+    };
+    c.data.rtext = c.data.response;
+    c.data.responseField = {
+        "isVisible": function() {
+            return true;
+        },
+        "sys_mandatory": false,
+        "visible": true,
+        "color": "transparent",
+        "dbType": -1,
+        "label": "Response",
+        "sys_readonly": false,
+        "type": "string",
+        "mandatory": false,
+        "displayValue": "",
+        "readonly": false,
+        "hint": "",
+        "name": "response",
+        "attributes": {
+            "edge_encryption_enabled": "true"
+        },
+        "choice": 0,
+        "value": "",
+        "max_length": 4000,
+        "ed": {
+            "name": "response"
+        },
+        "originalValue": ""
+    };
+
+    c.data.newAss = '';
+
+    $scope.assignment = {
+
+
+        displayValue: c.data.assignment,
+
+
+        value: c.data.assignmentID,
+
+
+        name: 'assignment'
+
+
+    };
+    c.data.newAss = '';
+    c.data.changed = '';
+
+    $scope.$on("field.change", function(evt, parms) {
+        console.log("parms.field.name: " + parms.field.name);
+        if (parms.field.name == 'assignment' && parms.displayValue != "") {
+            c.data.assignment = parms.displayValue;
+            c.data.newAss = $scope.assignment.value;
+            c.data.changed = 'yes';
+            $scope.isDisabled = false;
+			$scope.isEnabled = true;
+			
+            c.server.update().then(function(r) {
+                c.data.changed = '';
+            });
+        }
+
+        if (parms.field.name == 'comments') {
+            $scope.isDisabled = false;
+			$scope.isEnabled = true;
+        }
+
+
+    });
+
+
+
+
+
+
+    c.mychoiceoptions = [{
+            myChoiceDisplay: "New",
+            myChoiceValue: '1'
+        },
+        {
+            myChoiceDisplay: "In Progress",
+            myChoiceValue: '2'
+        },
+        {
+            myChoiceDisplay: "Ready for review",
+            myChoiceValue: '3'
+        }
+    ];
+
+    c.mychoicelistoption = {
+        hideSearch: true
+    };
+
+    c.mychoice = c.data.stateNr;
+
+
+    c.state = {
+
+
+        label: c.data.state,
+
+
+        value: c.data.stateNr,
+
+
+        name: 'state'
+
+
+    };
+
+    c.state = c.data.stateNr;
+
+    c.change = function() {
+        $scope.isDisabled = false;
+		$scope.isEnabled = true;
+    };
+
+
+
+    $scope.Save = function() {
+			//	c.data.grade=c.data.grade1;
+        c.data.comment = c.data.text;
+        c.data.response = c.data.rtext;
+		
+		if(c.data.state == 3 && c.data.response.length < 27)
+			{
+		    spUtil.addErrorMessage('Response field is mandatory. Minimum 20 characters');     
+			return; 
+}               
+			if(c.data.state == 4 || c.data.state == 5)
+			{
+				 if (c.data.response.length < 27) // html tags
+            {
+				spUtil.addErrorMessage('Response field is mandatory. Minimum 20 characters');     
+                return;
+            }
+            if (c.data.comment.length < 27) // html tags
+            {
+               spUtil.addErrorMessage('Comments field is mandatory. Minimum 20 characters');  
+				return;
+            }
+		
+}              
+		
+       if (confirm("Are you sure you want to update the record?")) {
+            c.server.update().then(function(r) {
+                spUtil.addInfoMessage("Successful!");
+				$scope.isDisabled = true;
+				$scope.isEnabled = false;
+            });
+
+
+        }
+
+    };
+
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.leftbox{&#13;
+  float:left;&#13;
+  margin-top:8px;&#13;
+}&#13;
+.rightbox{&#13;
+float:left;&#13;
+&#13;
+ width:50%;&#13;
+  margin-left:60px;&#13;
+}&#13;
+&#13;
+.row{&#13;
+  margin-left:auto;&#13;
+  margin-right:auto;&#13;
+  margin-top:12px;&#13;
+ &#13;
+ }&#13;
+.dot {&#13;
+  height: 15px;&#13;
+  width: 15px;&#13;
+  position: absolute;&#13;
+  right:5px;&#13;
+  top: 5px;&#13;
+  border-radius: 50%;&#13;
+  &#13;
+}&#13;
+&#13;
+.b{&#13;
+  height:70px;&#13;
+  background-color:#484649;&#13;
+  border-radius:5px;&#13;
+  color:black;&#13;
+  text-align:center;&#13;
+}&#13;
+&#13;
+&#13;
+&#13;
+.button {&#13;
+  background-color: #484649;&#13;
+  border: none;&#13;
+  border-radius:5px;&#13;
+  float: right;&#13;
+  color: white;&#13;
+  padding: 12px 26px;&#13;
+  text-align: center;&#13;
+  opacity:0.6;&#13;
+  font-size: 16px;&#13;
+  margin: 4px 2px;&#13;
+  transition: 0.3s;&#13;
+  display: inline-block;&#13;
+  text-decoration: none;&#13;
+ &#13;
+}&#13;
+&#13;
+.buttonEnabled {&#13;
+  background-color: #484649;&#13;
+  border: none;&#13;
+  border-radius:5px;&#13;
+  float: right;&#13;
+  color: white;&#13;
+  padding: 12px 26px;&#13;
+  text-align: center;&#13;
+  opacity:0.6;&#13;
+  font-size: 16px;&#13;
+  margin: 4px 2px;&#13;
+  transition: 0.3s;&#13;
+  display: inline-block;&#13;
+  text-decoration: none;&#13;
+ &#13;
+}&#13;
+&#13;
+.buttonEnabled:hover&#13;
+{&#13;
+opacity: 1;&#13;
+}&#13;
+&#13;
+&#13;
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>gla_user_assignment</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>User Assignment</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+    data.student = false;
+    data.profesor = false;
+    var currentUser = gs.getUserID();
+    var userChecker = new GLAUtils();
+
+    if (userChecker.usersCheck('8e4a55ec2fa04110ee00d5f62799b63a').search(currentUser) !== -1) {
+        //if student
+        data.student = true;
+    }
+
+    if (userChecker.usersCheck('446ad56c2fa04110ee00d5f62799b64f').search(currentUser) !== -1) {
+        data.profesor = true;
+    }
+var a = gs.getProperty("glide.servlet.uri") + gs.action.getGlideURI();
+        a = a + '';
+
+        a = a.split("sys_id=");
+        var recordSysId = a[1].split('&')[0] + '';
+
+    if (!input) {
+        
+
+        var gr = new GlideRecord('x_723119_germanlrn_user_assignment');
+        gr.get(recordSysId);
+        gr.query();
+        if (gr.next()) {
+
+            data.user = gr.getDisplayValue('user');
+            data.assignment = gr.getDisplayValue('assignment');
+            data.assignmentID = gr.getValue('assignment');
+            data.homework = gr.assignment.homework.getDisplayValue();
+            data.resources = gr.assignment.homework.resources.getDisplayValue();
+            data.due_date = gr.assignment.due_date.toString();
+            data.stateNr = gr.getValue('state');
+            data.state = gr.getDisplayValue('state');
+						data.grade=gr.getDisplayValue('grade');
+			if(data.stateNr == 4 || data.stateNr == 5)
+				{
+					data.stateBackup = data.state;
+				}
+			
+            data.instructions = gr.assignment.homework.instructions.toString();
+            data.response = gr.getDisplayValue('response');
+
+            data.comment = gr.getDisplayValue('comments');
+            data.number = '#' + gr.getValue('number').split('USE')[1];
+            data.resourceID = gr.assignment.homework.resources.toString();
+            data.assignmentID = gr.assignment.toString();
+            data.homeworkID = gr.assignment.homework.toString();
+            // 		data.userID = gr.user.toString();
+
+            if (gr.active == true) {
+                data.active = "background-color:#54BC69; color:#54BC69;";
+            } else {
+                data.active = "background-color:#FE5339; color:#FE5339;";
+            }
+
+        }
+
+    }
+
+    if (input) {
+        if (input.changed != '') {
+            data.assignmentID = input.newAss;
+            var gr = new GlideRecord("x_723119_germanlrn_assignment");
+            gr.get(input.newAss);
+            if (gr.next) {
+                data.due_date = gr.due_date.toString();
+                data.homework = gr.homework.getDisplayValue();
+                data.homeworkID = gr.homework.toString();
+            }
+            var grr = new GlideRecord("x_723119_germanlrn_homework");
+            grr.get(data.homeworkID);
+            if (grr.next) {
+                data.resourceID = grr.resources.toString();
+                data.resources = grr.resources.getDisplayValue();
+                data.instructions = grr.instructions.toString();
+
+            }
+        } else {
+
+            var record = new GlideRecord('x_723119_germanlrn_user_assignment');
+            record.get(recordSysId);
+            record.query();
+            if (record.next()) {
+
+                record.setValue('comments', input.comment);
+				record.setValue('response', input.response);
+				record.setValue('assignment', input.assignmentID);
+				record.setValue('state', input.state);
+							record.setValue('grade', input.grade);
+                record.update();
+
+            }
+        }
+
+    }
+
+
+
+
+    //create a place in the data object to hold your values
+    data.states = [];
+
+
+    var inc_states = new GlideRecord('sys_choice');
+    inc_states.addEncodedQuery('GOTOname>=x_723119_germanlrn_user_assignment');
+    inc_states.query();
+
+    while (inc_states.next()) {
+        //push your values to the data object
+        var stateObj = {};
+        stateObj.label = inc_states.label.toString();
+        stateObj.value = inc_states.value.toString();
+        data.states.push(stateObj);
+
+    }
+
+
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-01-28 13:05:32</sys_created_on>
+        <sys_id>59aa75ce2f514110ee00d5f62799b68b</sys_id>
+        <sys_mod_count>622</sys_mod_count>
+        <sys_name>User Assignment</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_59aa75ce2f514110ee00d5f62799b68b</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-04-12 13:41:13</sys_updated_on>
+        <template><![CDATA[<div>
+<div class="row b">
+    <div class="col-sm-12">
+      
+      		<div ng-if="data.active">
+  				<span class="dot" style={{data.active}}></span>
+ 				</div>
+ 			
+      <div>
+         		<p ng-if="data.user" style="font-size:16px; color:#fff; font-weight: bolder;text-align:center;">User assignment {{data.user}}</p> 
+     		</div>
+              	<div>
+      	   	<p ng-if="data.number" style="font-size:13px;color:#fff;text-align:center;">{{data.number}}</p>  
+      	</div>
+ 					
+  	</div>
+  </div>
+
+ <br>
+  			 
+     <div ng-if="data.assignment">
+        <p style="font-size:25px;text-align:left;">Assignment</p>
+         </div>
+    
+        <div class="leftbox">
+          <a href="glap?id=gla_assignment&sys_id={{data.assignmentID}}">{{data.assignment}}</a>
+  		
+      </div>
+      	
+       <div ng-if="data.profesor" class="rightbox">
+        <sn-record-picker field = "assignment" table = "'x_723119_germanlrn_assignment'"  display-field="'number'" value-field = "'sys_id'" search-fields = "'number'" page-size = "100"></sn-record-picker>
+       </div>
+       
+     
+    <div ng-if="data.homework">
+      <br>
+      <br>
+           <p  style="font-size:25px">Homework</p>
+         <a href="glap?id=gla_homework&sys_id={{data.homeworkID}}">{{data.homework}}</a>
+  		</div>
+      	
+      
+      
+      
+
+      	<div ng-if="data.resources">
+          <p style="font-size:25px">Resources</p>
+         <a href="glap?id=gla_resource&sys_id={{data.resourceID}}">{{data.resources}}</a>
+  		</div>
+      
+      
+      	<div ng-if="data.due_date">
+        <p  style="font-size:25px">Due Date</p>
+       <p  style="font-size:13px">{{data.due_date}}</p>   
+    </div>
+      <p style="font-size:25px">State</p>
+
+      
+<div ng-if="data.profesor">
+<sn-choice-list sn-model="c.state"  
+                field="c.state"  
+                sn-options="data.states" 
+                sn-value-field="value" 
+                sn-text-field="label" 
+                sn-on-change="c.valueSelected(selectedValue)"
+                sn-items="data.states"></sn-choice-list>
+
+      </div>
+      
+      <div ng-if="data.student">
+        <div>
+          <p ng-if="data.stateBackup"> {{data.stateBackup}}</p>
+      </div>
+<sn-choice-list 
+  field="c.mychoice" 
+  sn-model="c.mychoice" 
+  sn-options="c.mychoicelistoption" 
+  sn-on-change="c.valueSelected(selectedValue)"
+  sn-value-field="myChoiceValue" 
+  sn-text-field="myChoiceDisplay" 
+  sn-items="c.mychoiceoptions">
+</sn-choice-list>
+      </div>
+     
+     
+
+      <div ng-if="data.instructions">
+        	<p  style="font-size:25px">Instructions</p>
+           <p ng-bind-html="data.instructions"> {{data.instructions}}</p>
+      </div>
+        <div >
+        	<p style="font-size:25px">Response</p>
+        <sp-tinymce-editor
+     auto-focus="true"
+     record-table-name="'incident'"
+     aria-label="Test"
+     ng-change="c.change()"                   
+     ng-model-options="{}"
+     attachment-guid = "-1"
+     ng-model="c.data.rtext"
+      
+     field="c.data.responseField"
+     ng-model-options="{getterSetter: true}">
+  </sp-tinymce-editor>
+    
+      </div>
+       <div>
+        	<p  style="font-size:25px">Comments</p>
+     <div ng-if="data.profesor">
+       
+<sp-tinymce-editor
+     auto-focus="true"
+     record-table-name="'incident'"
+     aria-label="Test"
+     ng-change="c.change()"
+     ng-model-options="{}"
+     attachment-guid = "-1"
+     ng-model="c.data.text"
+     field="c.data.commentsField"
+     ng-model-options="{getterSetter: true}">
+  </sp-tinymce-editor>
+       
+</div>
+         <div ng-if="data.student">
+            <p ng-bind-html="data.comment"> {{data.comment}}</p>
+         </div>
+    <br>
+          
+     <!-- grade add-on below-->
+         <div ng-if="data.profesor">
+           <p style="font-size:25px">
+             Grade
+           </p>
+           <input type="text" name="grade"  ng-model="c.data.grade" ng-change="c.change()" class="form-control">
+         </div>
+         
+         <div ng-if="data.student">
+           <p style="font-size:25px">
+             Grade
+           </p>
+           <p>
+             {{data.grade}}
+           </p>
+         </div>
+      <!-- ^^ grade add-on on top-->   
+         
+   <div ng-if="isDisabled">
+
+  <button type="submit" class = "button" ng-disabled="isDisabled"  ng-click="Save()">Submit</button>
+  
+</div>
+            
+             <div ng-if="isEnabled">
+
+  <button type="submit" class = "buttonEnabled"  ng-click="Save()">Submit</button>
+  
+</div>
+            
+
+            
+            
+   
+      
+  </div>
+ 
+
+
+]]></template>
+    </sp_widget>
+</record_update>

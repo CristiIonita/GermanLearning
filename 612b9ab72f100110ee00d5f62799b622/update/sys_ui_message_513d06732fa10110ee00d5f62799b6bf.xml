@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_message">
+    <sys_ui_message action="INSERT_OR_UPDATE">
+        <application>GLA</application>
+        <code/>
+        <commented_message/>
+        <key>gla_phrase_4</key>
+        <language>en</language>
+        <message>Do you know any good coffee shops nearby?</message>
+        <sys_class_name>sys_ui_message</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-15 11:11:55</sys_created_on>
+        <sys_id>513d06732fa10110ee00d5f62799b6bf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>gla_phrase_4</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_ui_message_513d06732fa10110ee00d5f62799b6bf</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-15 11:11:55</sys_updated_on>
+    </sys_ui_message>
+</record_update>

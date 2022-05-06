@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category">
+    <sc_cat_item_category action="DELETE">
+        <sc_cat_item display_value="Create Homework">3f07e4572f064110ee00d5f62799b6da</sc_cat_item>
+        <sc_category display_value="Homework">15801f3f2f490110ee00d5f62799b658</sc_category>
+        <sys_class_name>sc_cat_item_category</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-10 10:59:36</sys_created_on>
+        <sys_id>1817a0972f064110ee00d5f62799b61b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Homework.Create Homework</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sc_cat_item_category_1817a0972f064110ee00d5f62799b61b</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-10 10:59:36</sys_updated_on>
+    </sc_cat_item_category>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sc_cat_item_category_1817a0972f064110ee00d5f62799b61b</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category"><sc_cat_item_category action="INSERT_OR_UPDATE"><sc_cat_item display_value="Create Homework">3f07e4572f064110ee00d5f62799b6da</sc_cat_item><sc_category display_value="Homework">15801f3f2f490110ee00d5f62799b658</sc_category><sys_class_name>sc_cat_item_category</sys_class_name><sys_created_by>mdaniel</sys_created_by><sys_created_on>2022-03-10 10:59:36</sys_created_on><sys_id>1817a0972f064110ee00d5f62799b61b</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Homework.Create Homework</sys_name><sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package><sys_policy/><sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope><sys_update_name>sc_cat_item_category_1817a0972f064110ee00d5f62799b61b</sys_update_name><sys_updated_by>mdaniel</sys_updated_by><sys_updated_on>2022-03-10 10:59:36</sys_updated_on></sc_cat_item_category></record_update>]]></payload>
+        <payload_hash>1922059934</payload_hash>
+        <record_name>Homework.Create Homework</record_name>
+        <reverted_from/>
+        <source>a52b9ab72f100110ee00d5f62799b624</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-10 10:59:36</sys_created_on>
+        <sys_id>a417a0972f064110ee00d5f62799b61f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17f737beecd0000001</sys_recorded_at>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-10 10:59:36</sys_updated_on>
+        <type>Catalog Item Category</type>
+        <update_guid>2c17a0977006411047665c1668d0e51e</update_guid>
+        <update_guid_history>2c17a0977006411047665c1668d0e51e:1922059934</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Homework.Create Homework">be1e41e82f1e0110ee00d5f62799b6ed</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-14 11:02:33</sys_created_on>
+        <sys_db_object display_value="" name="sc_cat_item_category">sc_cat_item_category</sys_db_object>
+        <sys_id>60d967cba40c4b898f1ea287d8a831b1</sys_id>
+        <sys_metadata>1817a0972f064110ee00d5f62799b61b</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Homework.Create Homework</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sc_cat_item_category_1817a0972f064110ee00d5f62799b61b</sys_update_name>
+        <sys_update_version display_value="sc_cat_item_category_1817a0972f064110ee00d5f62799b61b">a417a0972f064110ee00d5f62799b61f</sys_update_version>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-14 11:02:33</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

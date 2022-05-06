@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="catalog_script_client">
+    <catalog_script_client action="DELETE">
+        <active>false</active>
+        <applies_catalog>true</applies_catalog>
+        <applies_extended>false</applies_extended>
+        <applies_req_item>false</applies_req_item>
+        <applies_sc_task>false</applies_sc_task>
+        <applies_target_record>false</applies_target_record>
+        <applies_to>item</applies_to>
+        <cat_item display_value="Create Resource">450df1172f300110ee00d5f62799b64f</cat_item>
+        <cat_variable/>
+        <condition/>
+        <description/>
+        <field/>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>Prevent submit if notes || attachment </name>
+        <order/>
+        <script><![CDATA[function onSubmit() {
+    var catID = g_form.getUniqueValue();
+    var util = new GlideAjax('GLAUtils');
+    util.addParam('sysparm_name', 'attachCheck');
+    util.addParam('sysparm_catID', catID);
+    util.getXML(function checkAttachment(response) {
+        var answer = response.responseXML.documentElement.getAttribute("answer");
+        if (answer) {
+			answer = JSON.parse(answer);
+		}
+           if(answer.hasAttach == false && !g_form.getValue('notes')){
+			g_form.addErrorMessage("You must attach a file or add notes to submit");
+			
+			return false;
+			
+		
+        }
+		
+
+
+    });
+
+
+
+
+}]]></script>
+        <sys_class_name>catalog_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-01-10 06:57:57</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>2eb5f7402f410110ee00d5f62799b6f7</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>Prevent submit if notes || attachment </sys_name>
+        <sys_overrides/>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>catalog_script_client_2eb5f7402f410110ee00d5f62799b6f7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-01-11 06:44:22</sys_updated_on>
+        <table/>
+        <type>onSubmit</type>
+        <ui_type>0</ui_type>
+        <variable_set/>
+        <view/>
+    </catalog_script_client>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>catalog_script_client_2eb5f7402f410110ee00d5f62799b6f7</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="catalog_script_client"&gt;&lt;catalog_script_client action="INSERT_OR_UPDATE"&gt;&lt;active&gt;false&lt;/active&gt;&lt;applies_catalog&gt;true&lt;/applies_catalog&gt;&lt;applies_extended&gt;false&lt;/applies_extended&gt;&lt;applies_req_item&gt;false&lt;/applies_req_item&gt;&lt;applies_sc_task&gt;false&lt;/applies_sc_task&gt;&lt;applies_target_record&gt;false&lt;/applies_target_record&gt;&lt;applies_to&gt;item&lt;/applies_to&gt;&lt;cat_item display_value="Create Resource"&gt;450df1172f300110ee00d5f62799b64f&lt;/cat_item&gt;&lt;cat_variable/&gt;&lt;condition/&gt;&lt;description/&gt;&lt;field/&gt;&lt;global&gt;true&lt;/global&gt;&lt;isolate_script&gt;true&lt;/isolate_script&gt;&lt;messages/&gt;&lt;name&gt;Prevent submit if notes || attachment &lt;/name&gt;&lt;order/&gt;&lt;script&gt;&lt;![CDATA[function onSubmit() {
+    var catID = g_form.getUniqueValue();
+    var util = new GlideAjax('GLAUtils');
+    util.addParam('sysparm_name', 'attachCheck');
+    util.addParam('sysparm_catID', catID);
+    util.getXML(function checkAttachment(response) {
+        var answer = response.responseXML.documentElement.getAttribute("answer");
+        if (answer) {
+			answer = JSON.parse(answer);
+		}
+           if(answer.hasAttach == false &amp;&amp; !g_form.getValue('notes')){
+			g_form.addErrorMessage("You must attach a file or add notes to submit");
+			
+			return false;
+			
+		
+        }
+		
+
+
+    });
+
+
+
+
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;catalog_script_client&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-01-10 06:57:57&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;2eb5f7402f410110ee00d5f62799b6f7&lt;/sys_id&gt;&lt;sys_mod_count&gt;9&lt;/sys_mod_count&gt;&lt;sys_name&gt;Prevent submit if notes || attachment &lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="German Learning" source="x_723119_germanlrn"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="German Learning"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_scope&gt;&lt;sys_update_name&gt;catalog_script_client_2eb5f7402f410110ee00d5f62799b6f7&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-01-11 06:44:22&lt;/sys_updated_on&gt;&lt;table/&gt;&lt;type&gt;onSubmit&lt;/type&gt;&lt;ui_type&gt;0&lt;/ui_type&gt;&lt;variable_set/&gt;&lt;view/&gt;&lt;/catalog_script_client&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1149159540</payload_hash>
+        <record_name>Prevent submit if notes || attachment </record_name>
+        <reverted_from/>
+        <source>1b057ab72fb84110ee00d5f62799b620</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-01-11 06:44:22</sys_created_on>
+        <sys_id>987049e42f010110ee00d5f62799b62c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17e47e16cdc0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-01-11 06:44:22</sys_updated_on>
+        <type>Catalog Client Scripts</type>
+        <update_guid>d07049e450010110304a0643e2883b2c</update_guid>
+        <update_guid_history>d07049e450010110304a0643e2883b2c:1149159540,90cd74641a01011081ad5bbc65360b3a:-1988502249,518db024a1010110cb3f3b1ee69637c6:-452144517,666d30643901011094ce93d1bf1d802b:-130480206,270bf8a04201011039f654edc2461cea:1810882740,46b9382043010110c4bfd0a76196b74e:1734056609,180b41d08d450110f4a4ca1914901076:-416361920,2e7448d83241011075d2fbf5f734ece7:-1705606876,cf5c3b041e4101105b232e5d53e2e8fd:184241328,a1f9fb0411410110f2761d988ff46b0f:-817190406</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Prevent submit if notes || attachment ">4931c5282f010110ee00d5f62799b67d</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-01-11 06:47:42</sys_created_on>
+        <sys_db_object display_value="" name="catalog_script_client">catalog_script_client</sys_db_object>
+        <sys_id>06570df4c13d425f9908984d1cc5fd29</sys_id>
+        <sys_metadata>2eb5f7402f410110ee00d5f62799b6f7</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Prevent submit if notes || attachment </sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>catalog_script_client_2eb5f7402f410110ee00d5f62799b6f7</sys_update_name>
+        <sys_update_version display_value="catalog_script_client_2eb5f7402f410110ee00d5f62799b6f7">987049e42f010110ee00d5f62799b62c</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-01-11 06:47:42</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

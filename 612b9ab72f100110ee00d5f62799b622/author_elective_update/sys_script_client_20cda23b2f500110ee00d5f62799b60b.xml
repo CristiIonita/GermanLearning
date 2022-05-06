@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="DELETE">
+        <active>false</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>If the user adds a value to the Group column, the User column value should be cleared and the column should not be displayed.&#13;
+</description>
+        <field>group</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>Hide user field when group selected</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+    if (isLoading) {
+        return;
+    }
+        if (g_form.getValue('group') == '' && g_form.isMandatory('user') == false) {
+        g_form.setVisible('user', true);
+        g_form.setMandatory('user', true);
+        } 
+
+
+else{
+    if (g_form.getValue('group') != '') {
+        g_form.setValue('user', '');
+        g_form.setMandatory('user', false);
+        g_form.setDisplay('user', false);
+
+    } 
+}
+
+
+    //Type appropriate comment here, and begin script below
+
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-12-15 10:18:13</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>20cda23b2f500110ee00d5f62799b60b</sys_id>
+        <sys_mod_count>19</sys_mod_count>
+        <sys_name>Hide user field when group selected</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_script_client_20cda23b2f500110ee00d5f62799b60b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-12-17 09:41:13</sys_updated_on>
+        <table>x_723119_germanlrn_assignment</table>
+        <type>onChange</type>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_script_client>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sys_script_client_20cda23b2f500110ee00d5f62799b60b</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_script_client"&gt;&lt;sys_script_client action="INSERT_OR_UPDATE"&gt;&lt;active&gt;false&lt;/active&gt;&lt;applies_extended&gt;false&lt;/applies_extended&gt;&lt;condition/&gt;&lt;description&gt;If the user adds a value to the Group column, the User column value should be cleared and the column should not be displayed.&amp;#13;
+&lt;/description&gt;&lt;field&gt;group&lt;/field&gt;&lt;global&gt;true&lt;/global&gt;&lt;isolate_script&gt;true&lt;/isolate_script&gt;&lt;messages/&gt;&lt;name&gt;Hide user field when group selected&lt;/name&gt;&lt;order/&gt;&lt;script&gt;&lt;![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+    if (isLoading) {
+        return;
+    }
+        if (g_form.getValue('group') == '' &amp;&amp; g_form.isMandatory('user') == false) {
+        g_form.setVisible('user', true);
+        g_form.setMandatory('user', true);
+        } 
+
+
+else{
+    if (g_form.getValue('group') != '') {
+        g_form.setValue('user', '');
+        g_form.setMandatory('user', false);
+        g_form.setDisplay('user', false);
+
+    } 
+}
+
+
+    //Type appropriate comment here, and begin script below
+
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_client&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2021-12-15 10:18:13&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;20cda23b2f500110ee00d5f62799b60b&lt;/sys_id&gt;&lt;sys_mod_count&gt;19&lt;/sys_mod_count&gt;&lt;sys_name&gt;Hide user field when group selected&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="German Learning" source="x_723119_germanlrn"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="German Learning"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_client_20cda23b2f500110ee00d5f62799b60b&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2021-12-17 09:41:13&lt;/sys_updated_on&gt;&lt;table&gt;x_723119_germanlrn_assignment&lt;/table&gt;&lt;type&gt;onChange&lt;/type&gt;&lt;ui_type&gt;0&lt;/ui_type&gt;&lt;view/&gt;&lt;/sys_script_client&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1267484791</payload_hash>
+        <record_name>Hide user field when group selected</record_name>
+        <reverted_from/>
+        <source>70e750d82fe00110ee00d5f62799b691</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-12-17 09:41:13</sys_created_on>
+        <sys_id>c729f4242f604110ee00d5f62799b627</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17dc7c458e30000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-12-17 09:41:13</sys_updated_on>
+        <type>Client Script</type>
+        <update_guid>0329f424ea604110de205bcb370e2f27</update_guid>
+        <update_guid_history>0329f424ea604110de205bcb370e2f27:1267484791,492767c0306001108947960acab82f6e:-1682467484,a1e6a3c0ce6001104a7b374c71afc008:1289141373,edc66380e66001107a85a91e92099f94:-154287113,5b866b40866001102a6d68d8758b4bae:1608535489,edb46740be600110bdf18b930b972678:902680663,3334e700db6001104d097fff4a9ef0a4:-737623499,38f3a70087600110fb416b6aa5c394b1:1382985221,1b73e300dc6001107ddbaff0d2e8c4a5:775572965,27bc537b3bd001100a4b49e2493f912c:929077496,f948433335d00110d1026b72331d32ba:2059797522,82b1473bc0900110fe2d7458e7b3dd52:1707274951,1e7f363b34900110140aef83d26f0ecd:-1870386572,33feb63be89001102f2c3a4556650dc2:-2098774008,a630b2fb4b50011034b6e8e89fba35af:-598398524,f3ef2abbcc500110dad4b4dfe0d5c636:-728496258,dccfe2bb3450011061d863ca279aa455:-103076825,ab7fea7b1f50011080bc5007e1c46c66:-691273433,7e4fa67b51500110e21184e6f4d7aad3:770728527,217e2e3b1b5001103904bc3ccc207c8c:1245025108</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-12-21 09:18:50</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_client">sys_script_client</sys_db_object>
+        <sys_id>2ea935508cbf41f491fb278ed4c7cbe4</sys_id>
+        <sys_metadata>20cda23b2f500110ee00d5f62799b60b</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Hide user field when group selected</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent display_value="Assignment">87a7e6732f500110ee00d5f62799b661</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sys_script_client_20cda23b2f500110ee00d5f62799b60b</sys_update_name>
+        <sys_update_version display_value="sys_script_client_20cda23b2f500110ee00d5f62799b60b">c729f4242f604110ee00d5f62799b627</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-12-21 09:18:50</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_topic">
+    <sys_cb_topic action="INSERT_OR_UPDATE">
+        <applicability/>
+        <applicability_mode>query</applicability_mode>
+        <autopilot_topic>false</autopilot_topic>
+        <category/>
+        <channels/>
+        <connect_queue/>
+        <description/>
+        <expose_on_palette>false</expose_on_palette>
+        <flexible_conversation_switching>true</flexible_conversation_switching>
+        <graph>{"graph_api_version":"1.0.36","variables":{},"goals":{"primary":{"id":"primary","trigger":{"type":"primary"},"name":"primary","applicability":"","description":"","nodes":{"c5b3a521b0044c8b8ac66bccc27ca675":{"id":"c5b3a521b0044c8b8ac66bccc27ca675","stepType":"Start","name":"Start","greetingResponse":{"mode":"simple","value":""}},"cb5a512792244bf482bcb9e6f8a2ca2b":{"id":"cb5a512792244bf482bcb9e6f8a2ca2b","stepType":"TerminateGoal","name":"End","confirmationMessage":{"mode":"simple","value":""}}},"edges":[{"id":"99b0899e79994583a42d469eddcacf5f","edgeType":"Edge","source":"c5b3a521b0044c8b8ac66bccc27ca675","target":"cb5a512792244bf482bcb9e6f8a2ca2b","sourcePort":"","targetPort":""}]}}}</graph>
+        <key_phrases>SmallTalkTest</key_phrases>
+        <library>false</library>
+        <live_agent>false</live_agent>
+        <name>SmallTalkTest</name>
+        <nlu_intent/>
+        <nlu_intent_label/>
+        <nlu_model/>
+        <nlu_model_label/>
+        <nlu_provider/>
+        <palette_label/>
+        <roles/>
+        <source_topic_id/>
+        <sys_class_name>sys_cb_topic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-03-03 11:53:32</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>da40388d2f820110ee00d5f62799b63a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>SmallTalkTest</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_cb_topic_da40388d2f820110ee00d5f62799b63a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-03-03 11:53:32</sys_updated_on>
+        <triggerable_by_notification>false</triggerable_by_notification>
+        <type>SMALL_TALK</type>
+        <variables/>
+    </sys_cb_topic>
+    <sys_variable_value action="delete_multiple" query="document_key=da40388d2f820110ee00d5f62799b63a"/>
+</record_update>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function(spUtil,$scope,$window) {
+  /* widget controller */
+  var c = this;
+	
+c.onload = function (){
+if (!c.data.user) {
+	 $window.location.href = '/glap?id=gla_404';
+}
+}
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>#firstContainer {
+  height : calc(70vh - 35px) ;
+  width : 99.9%;
+}
+#secondContainer {
+  height : calc(30vh - 35px);
+  width : 99.9%;
+  margin-top : 3px;
+  display : flex ;
+  flex-direction : row;
+  justify-content : space-between;
+
+
+}
+
+.item {
+  height : calc(30vh - 30px);
+  flex-grow : 1;
+}
+
+
+@media (max-width: 800px) {
+  #secondContainer {
+    flex-direction: column;
+  }
+  .item {
+    margin-top : 5px;
+  }
+  #midItem {
+    margin-left : 0 !important;
+    margin-right : 0 !important;
+  }
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>testareWidget</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>TestareWidget</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+		
+	if (gs.getUser().isMemberOf("45ea11202fe04110ee00d5f62799b64f")){
+
+data.user= true;
+
+}
+	else{
+		data.user = false;
+	}
+  
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-01-19 09:44:02</sys_created_on>
+        <sys_id>673632832fc10110ee00d5f62799b6fe</sys_id>
+        <sys_mod_count>321</sys_mod_count>
+        <sys_name>TestareWidget</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_673632832fc10110ee00d5f62799b6fe</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-01-25 11:59:53</sys_updated_on>
+        <template><![CDATA[
+<div ng-init="c.onload()" id="firstContainer">
+    <widget id="test123"></widget>
+</div>
+<div id="secondContainer">
+  <div class = "item">
+     <widget id="gla_homepage_homework"></widget>
+  </div>
+   <div class = "item"  id ="midItem" style = "margin-left : 3px ; margin-right : 3px">
+   <widget id="gla_homepage_resources"></widget>
+  </div>
+   <div class = "item">
+     <widget id="gla_homepage_practice"></widget>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

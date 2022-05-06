@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="catalog_ui_policy_action">
+    <catalog_ui_policy_action action="DELETE">
+        <catalog_item display_value="Create Homework">3f07e4572f064110ee00d5f62799b6da</catalog_item>
+        <catalog_variable>IO:881760972f064110ee00d5f62799b6bf</catalog_variable>
+        <cleared>false</cleared>
+        <disabled>ignore</disabled>
+        <field/>
+        <mandatory>true</mandatory>
+        <order>100</order>
+        <sys_class_name>catalog_ui_policy_action</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-10 10:59:35</sys_created_on>
+        <sys_id>d417a0972f064110ee00d5f62799b602</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>instructions</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>catalog_ui_policy_action_d417a0972f064110ee00d5f62799b602</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-10 10:59:35</sys_updated_on>
+        <table/>
+        <ui_policy display_value="Makes Name and Instructions Mandatory">501760972f064110ee00d5f62799b6fd</ui_policy>
+        <variable>instructions</variable>
+        <variable_set/>
+        <visible>ignore</visible>
+    </catalog_ui_policy_action>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>catalog_ui_policy_action_d417a0972f064110ee00d5f62799b602</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="catalog_ui_policy_action"><catalog_ui_policy_action action="INSERT_OR_UPDATE"><catalog_item display_value="Create Homework">3f07e4572f064110ee00d5f62799b6da</catalog_item><catalog_variable>IO:881760972f064110ee00d5f62799b6bf</catalog_variable><cleared>false</cleared><disabled>ignore</disabled><field/><mandatory>true</mandatory><order>100</order><sys_class_name>catalog_ui_policy_action</sys_class_name><sys_created_by>mdaniel</sys_created_by><sys_created_on>2022-03-10 10:59:35</sys_created_on><sys_id>d417a0972f064110ee00d5f62799b602</sys_id><sys_mod_count>1</sys_mod_count><sys_name>instructions</sys_name><sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package><sys_policy/><sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope><sys_update_name>catalog_ui_policy_action_d417a0972f064110ee00d5f62799b602</sys_update_name><sys_updated_by>mdaniel</sys_updated_by><sys_updated_on>2022-03-10 10:59:35</sys_updated_on><table/><ui_policy display_value="Makes Name and Instructions Mandatory">501760972f064110ee00d5f62799b6fd</ui_policy><variable>instructions</variable><variable_set/><visible>ignore</visible></catalog_ui_policy_action></record_update>]]></payload>
+        <payload_hash>-1975148487</payload_hash>
+        <record_name>instructions</record_name>
+        <reverted_from/>
+        <source>a52b9ab72f100110ee00d5f62799b624</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-10 10:59:35</sys_created_on>
+        <sys_id>9817a0972f064110ee00d5f62799b60d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17f737bed300000001</sys_recorded_at>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-10 10:59:35</sys_updated_on>
+        <type>Catalog UI Policy Action</type>
+        <update_guid>1017a097b7064110661759328d6bbd0d</update_guid>
+        <update_guid_history>1017a097b7064110661759328d6bbd0d:-1975148487,d417a09765064110a00c8e2873b0d106:-127628665</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="instructions">651e8da82f1e0110ee00d5f62799b668</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-14 11:02:29</sys_created_on>
+        <sys_db_object display_value="" name="catalog_ui_policy_action">catalog_ui_policy_action</sys_db_object>
+        <sys_id>3e28bbb78ec14b6181fd2a7c92921429</sys_id>
+        <sys_metadata>d417a0972f064110ee00d5f62799b602</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>instructions</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>catalog_ui_policy_action_d417a0972f064110ee00d5f62799b602</sys_update_name>
+        <sys_update_version display_value="catalog_ui_policy_action_d417a0972f064110ee00d5f62799b602">9817a0972f064110ee00d5f62799b60d</sys_update_version>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-14 11:02:29</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

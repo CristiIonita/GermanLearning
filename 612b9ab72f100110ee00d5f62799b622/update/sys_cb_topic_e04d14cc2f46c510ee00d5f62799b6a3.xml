@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_topic">
+    <sys_cb_topic action="INSERT_OR_UPDATE">
+        <applicability/>
+        <applicability_mode>query</applicability_mode>
+        <autopilot_topic>false</autopilot_topic>
+        <category/>
+        <channels/>
+        <connect_queue/>
+        <description>Enables users to request a live agent.</description>
+        <expose_on_palette>false</expose_on_palette>
+        <flexible_conversation_switching>true</flexible_conversation_switching>
+        <graph>{
+  "graph_api_version": "1.0.36",
+  "goals": {
+    "primary": {
+      "id": "primary",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "2453f9ebdf96463cb7a797e964739e99": {
+          "id": "2453f9ebdf96463cb7a797e964739e99",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "5a8f10b6b976432797f079bb38b23c47": {
+          "id": "5a8f10b6b976432797f079bb38b23c47",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "b1b4622e0d6b4cc4891b40538ec2b9e9": {
+          "id": "b1b4622e0d6b4cc4891b40538ec2b9e9",
+          "name": "Connect To Agent",
+          "script": "(function execute() {\n    vaSystem.connectToAgent();\n})()\n",
+          "stepType": "ScriptAction",
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "d2da7a180d5e415e839f6b8e7b69337b": {
+          "id": "d2da7a180d5e415e839f6b8e7b69337b",
+          "stepType": "Decision",
+          "name": "Decision"
+        },
+        "2dc119184fa24b9883a2afa9f4c8b532": {
+          "id": "2dc119184fa24b9883a2afa9f4c8b532",
+          "stepType": "Prompt",
+          "name": "User chooses an option",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": ""
+                  },
+                  {
+                    "text": "Let's see if I got this right. Do you want me to connect you to an agent?"
+                  },
+                  {
+                    "text": ""
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "optional": false,
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "entity": "",
+          "variableId": "c6d4b7d9824342fd80398fcab6970bfa",
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "ea85dbf8fd84425da135e5babff2adaf": {
+          "id": "ea85dbf8fd84425da135e5babff2adaf",
+          "stepType": "TextOutput",
+          "name": "Response",
+          "secure": false,
+          "value": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Okay then , have a nice day"
+                  },
+                  {
+                    "type": "datapill",
+                    "dataPill": {
+                      "value": "{{vaInputs.user.first_name}}",
+                      "displayValue": "Input Variables➛User➛First name"
+                    },
+                    "children": [
+                      {
+                        "text": ""
+                      }
+                    ]
+                  },
+                  {
+                    "text": ""
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        }
+      },
+      "edges": [
+        {
+          "id": "efa79f61a84f49d2966d2c054c151d7a",
+          "edgeType": "Edge",
+          "source": "2453f9ebdf96463cb7a797e964739e99",
+          "target": "2dc119184fa24b9883a2afa9f4c8b532",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "4ea54e9314b945b6acd613490fa9eceb",
+          "edgeType": "Branch",
+          "source": "d2da7a180d5e415e839f6b8e7b69337b",
+          "target": "b1b4622e0d6b4cc4891b40538ec2b9e9",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "user_chooses_an_option=true",
+            "mode": "query"
+          },
+          "label": "Yes"
+        },
+        {
+          "id": "5ac50ba354b246fa966b26baae1e71c7",
+          "edgeType": "Edge",
+          "source": "b1b4622e0d6b4cc4891b40538ec2b9e9",
+          "target": "5a8f10b6b976432797f079bb38b23c47",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "0452d85301b347dab2551802559c156d",
+          "edgeType": "Edge",
+          "source": "2dc119184fa24b9883a2afa9f4c8b532",
+          "target": "d2da7a180d5e415e839f6b8e7b69337b",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "c72a4ec1e12d4d6b94ad8541ccf554db",
+          "edgeType": "Branch",
+          "source": "d2da7a180d5e415e839f6b8e7b69337b",
+          "target": "ea85dbf8fd84425da135e5babff2adaf",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "user_chooses_an_option=",
+            "mode": "query"
+          },
+          "label": "No"
+        },
+        {
+          "id": "3319916bb3c64234a3d15f7e16e1b8fb",
+          "edgeType": "Edge",
+          "source": "ea85dbf8fd84425da135e5babff2adaf",
+          "target": "5a8f10b6b976432797f079bb38b23c47",
+          "sourcePort": "",
+          "targetPort": ""
+        }
+      ]
+    }
+  },
+  "variables": {
+    "c6d4b7d9824342fd80398fcab6970bfa": {
+      "id": "c6d4b7d9824342fd80398fcab6970bfa",
+      "name": "user_chooses_an_option",
+      "label": "User Chooses An Option",
+      "varType": "boolean",
+      "category": "vaInputs"
+    },
+    "3cd482d33c8440c89676fff36e1d5ef6": {
+      "category": "vaInputs",
+      "id": "3cd482d33c8440c89676fff36e1d5ef6",
+      "label": "User",
+      "name": "user",
+      "table": "sys_user",
+      "varType": "reference"
+    }
+  }
+}</graph>
+        <key_phrases/>
+        <library>true</library>
+        <live_agent>false</live_agent>
+        <name>TransferTesting</name>
+        <nlu_intent/>
+        <nlu_intent_label/>
+        <nlu_model/>
+        <nlu_model_label/>
+        <nlu_provider/>
+        <palette_label/>
+        <roles/>
+        <source_topic_id>2ad78361b3633300dbbf6030c6a8dc14</source_topic_id>
+        <sys_class_name>sys_cb_topic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-28 07:56:28</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>e04d14cc2f46c510ee00d5f62799b6a3</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>TransferTesting</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_cb_topic_e04d14cc2f46c510ee00d5f62799b6a3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-28 08:02:30</sys_updated_on>
+        <triggerable_by_notification>false</triggerable_by_notification>
+        <type>TOPIC_BLOCK</type>
+        <variables/>
+    </sys_cb_topic>
+    <sys_variable_value action="delete_multiple" query="document_key=e04d14cc2f46c510ee00d5f62799b6a3"/>
+</record_update>

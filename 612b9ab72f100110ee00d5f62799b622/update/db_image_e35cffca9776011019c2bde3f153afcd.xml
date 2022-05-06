@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="db_image">
+    <db_image action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <category/>
+        <format>png</format>
+        <height>384</height>
+        <image>b36cffca9776011019c2bde3f153af03</image>
+        <name>flag.png</name>
+        <size_bytes>893</size_bytes>
+        <sys_class_name>db_image</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-04-13 12:06:22</sys_created_on>
+        <sys_id>e35cffca9776011019c2bde3f153afcd</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>flag.png</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>db_image_e35cffca9776011019c2bde3f153afcd</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-04-13 12:06:29</sys_updated_on>
+        <thumbnail/>
+        <width>640</width>
+    </db_image>
+    <sys_attachment action="INSERT_OR_UPDATE">
+        <average_image_color>#666666</average_image_color>
+        <chunk_size_bytes>700000</chunk_size_bytes>
+        <compressed>true</compressed>
+        <content_type>image/png</content_type>
+        <file_name>image</file_name>
+        <hash>39a4080af58fa74613086ef1c329c5ea0fd315fc0e5776a8ea3d58011e6800b7</hash>
+        <image_height>384</image_height>
+        <image_width>640</image_width>
+        <size_bytes>893</size_bytes>
+        <size_compressed>340</size_compressed>
+        <state>available</state>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-04-13 12:06:29</sys_created_on>
+        <sys_id>b36cffca9776011019c2bde3f153af03</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-04-13 12:06:29</sys_updated_on>
+        <table_name>ZZ_YYdb_image</table_name>
+        <table_sys_id>e35cffca9776011019c2bde3f153afcd</table_sys_id>
+    </sys_attachment>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAAAA==</data>
+        <length>16</length>
+        <position>0</position>
+        <sys_attachment display_value="image" sys_id="b36cffca9776011019c2bde3f153af03">b36cffca9776011019c2bde3f153af03</sys_attachment>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-04-13 12:06:29</sys_created_on>
+        <sys_id>f36cffca9776011019c2bde3f153af03</sys_id>
+    </sys_attachment_doc>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>6wzwc+flkuJiYGDg9fRwCWJgYGpgYGBs4GAGinD9Vu4BUn4BPiGu/6/q/L+i8/+yzr8LOv/O6/w7p/PnmO49e4uHppZ3zC3vA0kzyzumlrdNLW8BSSPL24aWtw0sL5pYmGhpaWtqammCgJqmpoqmprKmRotEYiPQqleeLo4hFbfeXgoUa2QQcb3YLqIaKPR5/grOL/W1b2xbNvvtVVyhcqBBQoCng/EgqZShgoQAcxM5FBsLc5KDAakUDwfbkYYEoqkN5g9+Nc3Yuo3/SM7WGsW0lT+ZDIu/Kk24fL2ifcbGPIEUB3L8DKLI8zOQIsPPQOpIgxCxnn7yn11mnYDxlS8tM1buYj9SclVOYdnaZMczG2cZHzEpbVIgPRChFHkJhPzAYpvCQFIw3fjM7MzotN1oeWYmMD8xeLr6uaxzSmgCAIb+Qvd9AwAA</data>
+        <length>440</length>
+        <position>1</position>
+        <sys_attachment display_value="image" sys_id="b36cffca9776011019c2bde3f153af03">b36cffca9776011019c2bde3f153af03</sys_attachment>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-04-13 12:06:29</sys_created_on>
+        <sys_id>776cffca9776011019c2bde3f153af03</sys_id>
+    </sys_attachment_doc>
+</record_update>

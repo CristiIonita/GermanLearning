@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function($scope,$rootScope) {
+  /* widget controller */
+  var c = this;
+	c.test = true;
+	c.isVisible = "test";
+	c.template = '{"record_id" : "03b8323b2fb84110ee00d5f62799b6b3"},{"record_table" : "x_723119_germanlrn_resource"}';
+	console.log(template);
+		
+
+	
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>embAttach</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>EmbedAttach</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-11 15:13:57</sys_created_on>
+        <sys_id>cb4e5e2e2f254110ee00d5f62799b670</sys_id>
+        <sys_mod_count>15</sys_mod_count>
+        <sys_name>EmbedAttach</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_cb4e5e2e2f254110ee00d5f62799b670</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-11 15:30:26</sys_updated_on>
+        <template><![CDATA[<div ng-show = "c.test">
+  {{c.isVisible}}
+  {{c.template}}
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

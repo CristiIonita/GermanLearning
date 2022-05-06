@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="DELETE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_723119_germanlrn.GLAUtils</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>GLAUtils</name>
+        <script><![CDATA[var GLAUtils = Class.create();
+GLAUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	/**
+	  * @function myFunction
+	  * @param  <Object> input - allows for additional calling from Server side script, e.g. (new myScriptIncludeAjax()).myFunction({'sysparm_sys_id'})
+	  * @return {String} {stringified object}
+	  */
+	myFunction: function(input) {
+		var ciSysId = input.sysparm_sys_id || this.getParameter('sysparm_sys_id');
+		//...add more sysparm variables as required in the same manner
+
+		var retObj = {
+			"error": false,
+			"errorMsg": gs.getMessage("Some error occured."),
+			"result": ""
+		};
+
+		//do some logic and put the result into retObj.result (or add new keys with more information)
+		//on error, set retObj.error to true
+
+		return JSON.stringify(retObj);
+	},
+
+    type: 'GLAUtils'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-12-27 12:37:39</sys_created_on>
+        <sys_id>9cd005732fe04110ee00d5f62799b6ca</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>GLAUtils</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_script_include_9cd005732fe04110ee00d5f62799b6ca</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-12-27 12:37:39</sys_updated_on>
+    </sys_script_include>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sys_script_include_9cd005732fe04110ee00d5f62799b6ca</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;x_723119_germanlrn.GLAUtils&lt;/api_name&gt;&lt;caller_access/&gt;&lt;client_callable&gt;true&lt;/client_callable&gt;&lt;description/&gt;&lt;name&gt;GLAUtils&lt;/name&gt;&lt;script&gt;&lt;![CDATA[var GLAUtils = Class.create();
+GLAUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	/**
+	  * @function myFunction
+	  * @param  &lt;Object&gt; input - allows for additional calling from Server side script, e.g. (new myScriptIncludeAjax()).myFunction({'sysparm_sys_id'})
+	  * @return {String} {stringified object}
+	  */
+	myFunction: function(input) {
+		var ciSysId = input.sysparm_sys_id || this.getParameter('sysparm_sys_id');
+		//...add more sysparm variables as required in the same manner
+
+		var retObj = {
+			"error": false,
+			"errorMsg": gs.getMessage("Some error occured."),
+			"result": ""
+		};
+
+		//do some logic and put the result into retObj.result (or add new keys with more information)
+		//on error, set retObj.error to true
+
+		return JSON.stringify(retObj);
+	},
+
+    type: 'GLAUtils'
+});]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2021-12-27 12:37:39&lt;/sys_created_on&gt;&lt;sys_id&gt;9cd005732fe04110ee00d5f62799b6ca&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;GLAUtils&lt;/sys_name&gt;&lt;sys_package display_value="German Learning" source="x_723119_germanlrn"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_package&gt;&lt;sys_policy&gt;read&lt;/sys_policy&gt;&lt;sys_scope display_value="German Learning"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_9cd005732fe04110ee00d5f62799b6ca&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2021-12-27 12:37:39&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1539154306</payload_hash>
+        <record_name>GLAUtils</record_name>
+        <reverted_from/>
+        <source>1960cd332fe04110ee00d5f62799b6e2</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-12-27 12:37:39</sys_created_on>
+        <sys_id>857149732fe04110ee00d5f62799b6c5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17dfbe578380000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-12-27 12:37:39</sys_updated_on>
+        <type>Script Include</type>
+        <update_guid>cd71497347e041100f0777a7ea00d8c4</update_guid>
+        <update_guid_history>cd71497347e041100f0777a7ea00d8c4:1539154306</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-12-27 12:42:42</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_include">sys_script_include</sys_db_object>
+        <sys_id>1960856d01544547873f7a2d36aad6f1</sys_id>
+        <sys_metadata>9cd005732fe04110ee00d5f62799b6ca</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>GLAUtils</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sys_script_include_9cd005732fe04110ee00d5f62799b6ca</sys_update_name>
+        <sys_update_version display_value="sys_script_include_9cd005732fe04110ee00d5f62799b6ca">857149732fe04110ee00d5f62799b6c5</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-12-27 12:42:42</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

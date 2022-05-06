@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_723119_germanlrn.GLAUtils</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>GLAUtils</name>
+        <script><![CDATA[var GLAUtils = Class.create();
+GLAUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+    /**
+     * @function myFunction
+     * @param  <Object> input - allows for additional calling from Server side script, e.g. (new myScriptIncludeAjax()).myFunction({'sysparm_sys_id'})
+     * @return {String} {stringified object}
+     */
+    groups: function() {
+        var groupsForRef = "";
+        var groupGR = new GlideRecord('sys_user_group');
+        groupGR.addEncodedQuery('typeLIKE8e4a55ec2fa04110ee00d5f62799b63a^ORtypeLIKE446ad56c2fa04110ee00d5f62799b64f');
+
+        groupGR.query();
+        while (groupGR.next()) {
+
+            groupsForRef += groupGR.sys_id + ",";
+        }
+       var newStr = groupsForRef.substring(0,groupsForRef.length - 1);
+		return newStr;
+    },
+    teachers: function() {
+        var teachers = "";
+        var teachersGR = new GlideRecord('sys_user_grmember');
+        teachersGR.addQuery('group', 'ae4b9dec2fa04110ee00d5f62799b62e');
+        teachersGR.query();
+        while (teachersGR.next()) {
+            teachers += teachersGR.user + ",";
+        }
+        var newStr = teachers.substring(0, teachers.length - 1);
+        // return "sys_idIN" + newStr;
+        return newStr;
+    },
+    whoIsTheManager: function(user) {
+        user = user ? user : this.getParameter('sysparm_user');
+        var gr = new GlideRecord('sys_user_grmember');
+        gr.addQuery('user', user);
+        gr.query();
+        if (gr.next()) {
+            return gr.group.manager;
+        }
+    },
+
+
+    typeCheck: function(type) {
+        type = type ? type : this.getParameter('sysparm_type');
+        var typeForQuery = "typeLIKE" + type;
+        return typeForQuery;
+
+
+
+
+
+    },
+    usersCheck: function(type) {
+        type = type ? type : this.getParameter('sysparm_type');
+        var userArr = [];
+        var typeForQuery = "group.typeLIKE" + type;
+        var userGR = new GlideRecord('sys_user_grmember');
+        userGR.addEncodedQuery(typeForQuery);
+		
+        userGR.query();
+        while (userGR.next()) {
+            var user = userGR.getValue('user');
+            userArr.push(user);
+
+        }
+        return 'sys_idIN' + userArr;
+    },
+    managerCheck: function(type) {
+        type = type ? type : this.getParameter('sysparm_type');
+        var userArr = [];
+        var typeForQuery = "typeLIKE" + type;
+        var groupGR = new GlideRecord('sys_user_group');
+        groupGR.addEncodedQuery(typeForQuery);
+        groupGR.query();
+        while (groupGR.next()) {
+            if (groupGR.manager == gs.getUserID()) {
+                var groupName = groupGR.name;
+                var userTypeForQuery = "group.typeLIKE" + type + "^groupLIKE" + groupName;
+                var userGR = new GlideRecord('sys_user_grmember');
+                userGR.addEncodedQuery(userTypeForQuery);
+                userGR.query();
+                while (userGR.next()) {
+                    var user = userGR.getValue('user');
+                    userArr.push(user);
+
+                }
+                return 'sys_idIN' + userArr;
+            }
+            // 			else {
+
+            //     return 'sys_idIN1234';
+            // }
+        }
+    },
+
+    appAccess: function() {
+        var GLAusers = '7290d9ca2f700510ee00d5f62799b672';
+        var GLAteachers = '67f0d5ca2f700510ee00d5f62799b60d';
+        var GLAstudents = '7bd0d5ca2f700510ee00d5f62799b60a';
+        var criteria = new sn_uc.UserCriteriaLoader.getAllUserCriteria();
+        var user = false;
+        var teacher = false;
+        var student = false;
+        var i = 0;
+        while (criteria[i]) {
+            if (criteria[i] == GLAusers) {
+                user = true;
+            }
+            i += 1;
+        }
+        if (user) {
+            var j = 0;
+            while (criteria[j]) {
+                if (criteria[j] == GLAteachers) {
+                    teacher = true;
+                }
+                if (criteria[j] == GLAstudents) {
+                    student = true;
+                }
+                j += 1;
+            }
+            if (teacher) {
+                return "User is a teacher";
+            }
+            if (student) {
+                return "User is a student";
+            }
+            if (!teacher && !student) {
+                return "User is not a student nor a teacher";
+            }
+        } else {
+            return "User is not a member of GLAUsers";
+        }
+    },
+    type: 'GLAUtils'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-12-28 12:16:00</sys_created_on>
+        <sys_id>1f54c6042f300110ee00d5f62799b6a0</sys_id>
+        <sys_mod_count>25</sys_mod_count>
+        <sys_name>GLAUtils</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_script_include_1f54c6042f300110ee00d5f62799b6a0</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-03-25 13:20:25</sys_updated_on>
+    </sys_script_include>
+</record_update>

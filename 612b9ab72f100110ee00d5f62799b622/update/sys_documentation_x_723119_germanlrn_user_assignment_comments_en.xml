@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="comments" label="Comments" language="en" table="x_723119_germanlrn_user_assignment">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>comments</element>
+            <help/>
+            <hint/>
+            <label>Comments</label>
+            <language>en</language>
+            <name>x_723119_germanlrn_user_assignment</name>
+            <plural>Comments</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>mdaniel</sys_created_by>
+            <sys_created_on>2021-12-15 10:47:21</sys_created_on>
+            <sys_id>2025faff2f500110ee00d5f62799b637</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Comments</sys_name>
+            <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+            <sys_update_name>sys_documentation_x_723119_germanlrn_user_assignment_comments_en</sys_update_name>
+            <sys_updated_by>mdaniel</sys_updated_by>
+            <sys_updated_on>2021-12-15 10:47:21</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

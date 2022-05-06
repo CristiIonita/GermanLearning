@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>Incomplete and Completed options for field state are visible only for teachers</description>
+        <field>active</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>Restrict State Options</name>
+        <order/>
+        <script><![CDATA[function onLoad() {
+   
+   if (g_scratchpad.grp) {
+		g_form.removeOption('state', '4'); //closed complete
+        g_form.removeOption('state', '5'); //closed incomplete
+    }
+
+
+
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2021-12-20 14:52:27</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>8e7b51e52f240110ee00d5f62799b68b</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>Restrict State Options</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_script_client_8e7b51e52f240110ee00d5f62799b68b</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2021-12-20 15:36:11</sys_updated_on>
+        <table>x_723119_germanlrn_user_assignment</table>
+        <type>onLoad</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

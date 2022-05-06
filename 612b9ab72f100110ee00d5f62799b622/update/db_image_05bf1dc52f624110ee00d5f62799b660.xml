@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="db_image">
+    <db_image action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <category/>
+        <format/>
+        <height/>
+        <image>f3bf9dc52f624110ee00d5f62799b684</image>
+        <name>spinner-back.svg</name>
+        <size_bytes>3418</size_bytes>
+        <sys_class_name>db_image</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-28 11:52:12</sys_created_on>
+        <sys_id>05bf1dc52f624110ee00d5f62799b660</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>spinner-back.svg</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>db_image_05bf1dc52f624110ee00d5f62799b660</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-28 11:52:17</sys_updated_on>
+        <thumbnail/>
+        <width/>
+    </db_image>
+    <sys_attachment action="INSERT_OR_UPDATE">
+        <average_image_color/>
+        <chunk_size_bytes>700000</chunk_size_bytes>
+        <compressed>true</compressed>
+        <content_type>image/svg+xml</content_type>
+        <file_name>image</file_name>
+        <hash>7a089263dcd31cf0b5e2070b3447ed0e5d4293b944debd391d4c95b5cee59b40</hash>
+        <image_height/>
+        <image_width/>
+        <size_bytes>3418</size_bytes>
+        <size_compressed>533</size_compressed>
+        <state>available</state>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-28 11:52:17</sys_created_on>
+        <sys_id>f3bf9dc52f624110ee00d5f62799b684</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2022-03-28 11:52:17</sys_updated_on>
+        <table_name>ZZ_YYdb_image</table_name>
+        <table_sys_id>05bf1dc52f624110ee00d5f62799b660</table_sys_id>
+    </sys_attachment>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAAAA==</data>
+        <length>16</length>
+        <position>0</position>
+        <sys_attachment display_value="image" sys_id="f3bf9dc52f624110ee00d5f62799b684">f3bf9dc52f624110ee00d5f62799b684</sys_attachment>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-28 11:52:17</sys_created_on>
+        <sys_id>37bf9dc52f624110ee00d5f62799b684</sys_id>
+    </sys_attachment_doc>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>1ZdNj5swEIbv+yum08uutAQbAvl0Vm3P7aHaS1X1YIJDrICNjAnh33eS3XaVak8VOWCB0GiG8bwPNjDrp1NVwlG5RlsjkE8YgjJbm2tTCGz9Lpjj0+Zu3RwLoEjTCNx7Xy/DsOu6SRdPrCvCiDEWUgS+hCxPpTaH9wL5YrEIL16ExvelElhJV2izBNl6u4JMbg+Fs63Jl+CK7D5KkkfgLHqEZPawglw3dSn7JWSl3R5W0OxlrQKnTK4cFfyaBaHTud8LTFh9QtgrXez9H+uoVffZngQyYJT5ciLUTjXKHdWnplZb/116bQWevur8B51I+gvwTppmZ10l0FkvvbpnkJyPB/IDrB3dCJR3OkPoBUZTBEdmTBcy079FpW8V8Qhhp8tS4MfdZVwyUS5pdEUzgPTe6az16pusiJWt5Vb7nkTIslX0KPiKaj+o/llXZ5OtOELeOnI0CJkisAIDNlnw9GqQ06laSf+FSFMdmvjttNFe4WYdvk5+ERWeVZH8sNi8iyAeDYN5fDWmwzFIR8NglgynejEa1Wl6q9XPo9FASOa3Wv48GQ+EAVXPR6N6ev32nw0HIeKjgRD/MwaEMB0NhGjADRDNRiOb3+4LELPRUGDzm22BeCS/gey/JN+tPwQB/CxzbX9BoYxyFJRD1sO5wWmowymtPPdLE21DCALKRL3Q5jfhmK8GWg0AAA==</data>
+        <length>700</length>
+        <position>1</position>
+        <sys_attachment display_value="image" sys_id="f3bf9dc52f624110ee00d5f62799b684">f3bf9dc52f624110ee00d5f62799b684</sys_attachment>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-28 11:52:17</sys_created_on>
+        <sys_id>b7bf9dc52f624110ee00d5f62799b684</sys_id>
+    </sys_attachment_doc>
+</record_update>

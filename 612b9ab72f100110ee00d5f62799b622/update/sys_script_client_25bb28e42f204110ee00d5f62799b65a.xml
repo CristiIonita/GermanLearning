@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>state</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>User Assignment State flow</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+    if (isLoading || newValue === '') {
+        return;
+    }
+
+ 
+    var choiceValue = g_form.getValue('state');
+    var choiceLabel = g_form.getOption('state', choiceValue).text;
+ 
+	if (choiceLabel == 'In Progress' || choiceLabel == 'New') {
+		g_form.setMandatory('user', true);
+        g_form.setMandatory('assignment', true);
+        g_form.setMandatory('response', false);
+		g_form.setMandatory('comments', false);
+		
+
+    }
+
+
+    if (choiceLabel == 'Ready for review') {
+        g_form.setMandatory('response', true);
+    }
+  
+    if (choiceLabel == 'Incomplete' || choiceLabel == 'Completed') {
+        g_form.setMandatory('comments', true);
+		g_form.setMandatory('response', true);
+    }
+    if (choiceLabel == 'Completed') {
+        g_form.setValue('active', false);
+    }
+
+    if (choiceLabel == 'Ready for review') {
+        if (g_form.getValue('user') == '' || g_form.getValue('assignment') == '') {
+            g_form.setValue('state', 2);
+            g_form.setMandatory('response', false);
+            alert('Please complete the mandatory fields.');
+        }
+    }
+
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2021-12-17 08:43:37</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>25bb28e42f204110ee00d5f62799b65a</sys_id>
+        <sys_mod_count>27</sys_mod_count>
+        <sys_name>User Assignment State flow</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_script_client_25bb28e42f204110ee00d5f62799b65a</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2021-12-27 11:15:03</sys_updated_on>
+        <table>x_723119_germanlrn_user_assignment</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

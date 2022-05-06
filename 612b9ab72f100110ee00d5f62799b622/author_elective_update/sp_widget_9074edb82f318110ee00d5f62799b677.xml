@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="DELETE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope, spUtil, $uibModal, $rootScope) {
+    /* widget controller */
+    var c = this;
+
+    $scope.Next = function() {
+        c.data.displayInfo = '';
+        c.data.gender = "";
+        c.data.plural = "";
+        c.data.example1 = "";
+        c.data.example2 = "";
+        c.server.update();
+
+    };
+
+    $scope.Info = function() {
+        c.data.displayInfo = 'yes';
+        c.data.w = c.data.word;
+        c.data.s = c.data.speech;
+        c.server.update();
+
+
+    };
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>body {
+    background: #F17563;
+    
+    font-size: 50px;
+  	color: #222;
+}
+label {
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    display: block;
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.card {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: all 600ms;
+    transition: all 600ms;
+    z-index: 20;
+}
+
+    .card div {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: #444343;
+        text-align: center;
+        line-height: 200px;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 2px;
+    }
+
+    .card .back {
+        background: #222;
+        color: #FFF;
+        -webkit-transform: rotateX(180deg);
+        transform: rotateX(180deg);
+    }
+
+label:hover .card {
+    -webkit-transform: rotateX(20deg);
+    transform: rotateX(20deg);
+    box-shadow: 0 20px 20px rgba(50,50,50,.2);
+}
+
+input {
+    display: none;
+}
+
+:checked + .card {
+    transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg);
+}
+
+label:hover :checked + .card {
+    transform: rotateX(160deg);
+    -webkit-transform: rotateX(160deg);
+    box-shadow: 0 20px 20px rgba(255,255,255,.2);
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>flashcard_clone</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>FLASHCARD CLONE</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+
+
+    if (!input) {
+        data.word = words();
+        data.translated = dictionary(data.word);
+        data.displayInfo = '';
+    } else {
+        if (input.displayInfo) {
+            data.word = input.w;
+            var speech = input.s;
+
+            var s = new LexicalaApi();
+            var detailsObj = s.details(data.word, speech);
+            if (speech == "noun") {
+                data.gender = detailsObj.gender;
+                data.example1 = detailsObj.example1;
+                data.example2 = detailsObj.example2;
+                data.plural = detailsObj.plural;
+            } else {
+
+                data.example1 = detailsObj.example1;
+                data.example2 = detailsObj.example2;
+            }
+
+
+        } else {
+            data.word = words();
+            data.translated = dictionary(data.word);
+        }
+
+    }
+
+    function words() {
+        var word = ["nett", "sauber", "Apfel", "Katze", "Heute", "Hund", "hallo", "danke", "nein", "lecker", "Woche", "Morgen", "gestern", "machen", "gut", "Kaffee", "Bier", "Tee", "Wein", "Lamm", "Fisch", "fein", "lieb", "Liebe", "komisch", "hoch", "stark", "lang", "hell", "kurz", "klein", "wunderbar", "Ratte", "tschüss"];
+        var n = 32;
+        var x = Math.floor(Math.random() * n);
+        return word[x];
+
+    }
+
+    function randomWord() {
+        var requestWord = new sn_ws.RESTMessageV2();
+        requestWord.setHttpMethod('get');
+        requestWord.setEndpoint("https://random-word-api.herokuapp.com/word?lang=de");
+        var responseWord = requestWord.execute();
+        var responseObjWord = responseWord.getBody();
+        var resWord = JSON.parse(responseObjWord);
+        return resWord.toString();
+    }
+
+
+
+
+    function dictionary(word) {
+
+
+        var s = new LexicalaApi();
+         data.speech =s.partOfSpeech(word);
+
+		var t = new Translate();
+
+		return t.translateText("de-en",word);
+
+    }
+
+
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-18 10:47:13</sys_created_on>
+        <sys_id>9074edb82f318110ee00d5f62799b677</sys_id>
+        <sys_mod_count>34</sys_mod_count>
+        <sys_name>FLASHCARD CLONE</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_9074edb82f318110ee00d5f62799b677</sys_update_name>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-11 09:07:15</sys_updated_on>
+        <template><![CDATA[<label>
+    <input type="checkbox"  />
+    <div class="card">
+        <div class="front">
+      <h1> {{data.word}} </h1>
+      <h2>
+        ({{data.speech}})
+      </h2>
+      </div>
+        <div class="back">
+       <h1>{{data.translated}}</h1>
+      </div>
+      <div class="back" ng-if="data.displayInfo">
+        <div  ng-if="data.plural">
+          Plural: {{data.plural}}
+        </div>
+         <div  ng-if="data.gender">
+          Gender:{{data.gender}}
+        </div>
+  	 <div  ng-if="data.example1">
+         Example:
+        {{data.example1}}
+     <br>{{data.example2}}
+      
+      </div>
+    </div>
+  </div>
+</label>]]></template>
+    </sp_widget>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sp_widget_9074edb82f318110ee00d5f62799b677</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_widget"&gt;&lt;sp_widget action="INSERT_OR_UPDATE"&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[api.controller = function($scope, spUtil, $uibModal, $rootScope) {
+    /* widget controller */
+    var c = this;
+
+    $scope.Next = function() {
+        c.data.displayInfo = '';
+        c.data.gender = "";
+        c.data.plural = "";
+        c.data.example1 = "";
+        c.data.example2 = "";
+        c.server.update();
+
+    };
+
+    $scope.Info = function() {
+        c.data.displayInfo = 'yes';
+        c.data.w = c.data.word;
+        c.data.s = c.data.speech;
+        c.server.update();
+
+
+    };
+};]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;body {
+    background: #F17563;
+    
+    font-size: 50px;
+  	color: #222;
+}
+label {
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    display: block;
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.card {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: all 600ms;
+    transition: all 600ms;
+    z-index: 20;
+}
+
+    .card div {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: #444343;
+        text-align: center;
+        line-height: 200px;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 2px;
+    }
+
+    .card .back {
+        background: #222;
+        color: #FFF;
+        -webkit-transform: rotateX(180deg);
+        transform: rotateX(180deg);
+    }
+
+label:hover .card {
+    -webkit-transform: rotateX(20deg);
+    transform: rotateX(20deg);
+    box-shadow: 0 20px 20px rgba(50,50,50,.2);
+}
+
+input {
+    display: none;
+}
+
+:checked + .card {
+    transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg);
+}
+
+label:hover :checked + .card {
+    transform: rotateX(160deg);
+    -webkit-transform: rotateX(160deg);
+    box-shadow: 0 20px 20px rgba(255,255,255,.2);
+}&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;true&lt;/has_preview&gt;&lt;id&gt;flashcard_clone&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]&gt;&lt;/link&gt;&lt;name&gt;FLASHCARD CLONE&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+
+
+    if (!input) {
+        data.word = words();
+        data.translated = dictionary(data.word);
+        data.displayInfo = '';
+    } else {
+        if (input.displayInfo) {
+            data.word = input.w;
+            var speech = input.s;
+
+            var s = new LexicalaApi();
+            var detailsObj = s.details(data.word, speech);
+            if (speech == "noun") {
+                data.gender = detailsObj.gender;
+                data.example1 = detailsObj.example1;
+                data.example2 = detailsObj.example2;
+                data.plural = detailsObj.plural;
+            } else {
+
+                data.example1 = detailsObj.example1;
+                data.example2 = detailsObj.example2;
+            }
+
+
+        } else {
+            data.word = words();
+            data.translated = dictionary(data.word);
+        }
+
+    }
+
+    function words() {
+        var word = ["nett", "sauber", "Apfel", "Katze", "Heute", "Hund", "hallo", "danke", "nein", "lecker", "Woche", "Morgen", "gestern", "machen", "gut", "Kaffee", "Bier", "Tee", "Wein", "Lamm", "Fisch", "fein", "lieb", "Liebe", "komisch", "hoch", "stark", "lang", "hell", "kurz", "klein", "wunderbar", "Ratte", "tschüss"];
+        var n = 32;
+        var x = Math.floor(Math.random() * n);
+        return word[x];
+
+    }
+
+    function randomWord() {
+        var requestWord = new sn_ws.RESTMessageV2();
+        requestWord.setHttpMethod('get');
+        requestWord.setEndpoint("https://random-word-api.herokuapp.com/word?lang=de");
+        var responseWord = requestWord.execute();
+        var responseObjWord = responseWord.getBody();
+        var resWord = JSON.parse(responseObjWord);
+        return resWord.toString();
+    }
+
+
+
+
+    function dictionary(word) {
+
+
+        var s = new LexicalaApi();
+         data.speech =s.partOfSpeech(word);
+
+		var t = new Translate();
+
+		return t.translateText("de-en",word);
+
+    }
+
+
+
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;icristi&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-02-18 10:47:13&lt;/sys_created_on&gt;&lt;sys_id&gt;9074edb82f318110ee00d5f62799b677&lt;/sys_id&gt;&lt;sys_mod_count&gt;34&lt;/sys_mod_count&gt;&lt;sys_name&gt;FLASHCARD CLONE&lt;/sys_name&gt;&lt;sys_package display_value="German Learning" source="x_723119_germanlrn"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="German Learning"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_9074edb82f318110ee00d5f62799b677&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;mdaniel&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-03-11 09:07:15&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;label&gt;
+    &lt;input type="checkbox"  /&gt;
+    &lt;div class="card"&gt;
+        &lt;div class="front"&gt;
+      &lt;h1&gt; {{data.word}} &lt;/h1&gt;
+      &lt;h2&gt;
+        ({{data.speech}})
+      &lt;/h2&gt;
+      &lt;/div&gt;
+        &lt;div class="back"&gt;
+       &lt;h1&gt;{{data.translated}}&lt;/h1&gt;
+      &lt;/div&gt;
+      &lt;div class="back" ng-if="data.displayInfo"&gt;
+        &lt;div  ng-if="data.plural"&gt;
+          Plural: {{data.plural}}
+        &lt;/div&gt;
+         &lt;div  ng-if="data.gender"&gt;
+          Gender:{{data.gender}}
+        &lt;/div&gt;
+  	 &lt;div  ng-if="data.example1"&gt;
+         Example:
+        {{data.example1}}
+     &lt;br&gt;{{data.example2}}
+      
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/label&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>715623412</payload_hash>
+        <record_name>FLASHCARD CLONE</record_name>
+        <reverted_from/>
+        <source>a52b9ab72f100110ee00d5f62799b624</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-11 09:07:15</sys_created_on>
+        <sys_id>68f6956f2f068110ee00d5f62799b6b5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17f783b6fef0000001</sys_recorded_at>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-11 09:07:15</sys_updated_on>
+        <type>Widget</type>
+        <update_guid>a0f6956fd4068110994312882342c7b5</update_guid>
+        <update_guid_history>a0f6956fd4068110994312882342c7b5:715623412,ea16956f6b0681105425c50ef635d438:-365519978,17b5dd6bfc06811052018d2469acc597:1052347125,f200112b9a0681103ac1218f21bfcfe3:246871141,d7ff49e7cc068110ff145abe3c117754:-2090372737,26cf4de75f06811087074ac4572d175a:1052347125,767f05e7ed0681109f80ba405e7c7934:1261302857,fa6f05e7f506811009889228dc842460:-1293691832,c72f05e78d068110166e60abe2a3b8c2:1261302857,582fc1e78d0681100092f968f9d534ed:-1345092186,550f81e7c1068110e850bc3b9c879751:1261302857,93fe0da71a06811046bc50e04c01bea7:954760889,99eecda7d70681106b219cd859f8c860:977343688,b3ce0da7f8068110f3ac86fd16c1f762:-228416080,1cc1b1b4067181100fb55366b22b5ece:1826938579,7461fd341071811050402e502b206ed5:195785863,cf417d74347181106c5643cfb38f6977:-1071581237,2ecf29344a718110a3e76a72a4a75ca6:-1617188061,deaf2934087181103e66d459eab9999e:-1284072961,ae0f6df01e718110c9533c58ea7a706c:-2117238137,fdeeedf01471811032dfd57c6956e84c:89663766,1e3e21f06a718110a443494d384aef29:2023095867,fd1eedb0e5718110ee30e854ef996e86:919109499,760ee1f038718110b3996eb9931e86ed:821998449,2dcd2d70c77181100bc472010c562255:-731505789,55bdedb09f7181104b7b75fd30a14dd7:-1250463709,e1adadb0df7181105d7f15a1b83fc6c9:848299851,1ec7a1bca3318110efbdd610b04cb75d:1341639349,ac776d7c4b318110a424cc12b626e8aa:98621336,7927e97c6331811095f547d30d6c86cd:-1379954398,edb5a93c2e3181103a1f3cb7779c9499:-1100422472,73a529f84f318110b3dc671611bedff9:979805012,0a252df8513181103a02aaa9e18e7352:301037966,8805a13c66318110f3abc94477fe5915:182847510,dc74e9f8af318110661c16e95b3b1409:1717103573</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="FLASHCARD CLONE">f03755af2f068110ee00d5f62799b605</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>mdaniel</sys_created_by>
+        <sys_created_on>2022-03-11 09:08:22</sys_created_on>
+        <sys_db_object display_value="" name="sp_widget">sp_widget</sys_db_object>
+        <sys_id>10380792708744008d0052b05cc40000</sys_id>
+        <sys_metadata>9074edb82f318110ee00d5f62799b677</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>FLASHCARD CLONE</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sp_widget_9074edb82f318110ee00d5f62799b677</sys_update_name>
+        <sys_update_version display_value="sp_widget_9074edb82f318110ee00d5f62799b677">68f6956f2f068110ee00d5f62799b6b5</sys_update_version>
+        <sys_updated_by>mdaniel</sys_updated_by>
+        <sys_updated_on>2022-03-11 09:08:22</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

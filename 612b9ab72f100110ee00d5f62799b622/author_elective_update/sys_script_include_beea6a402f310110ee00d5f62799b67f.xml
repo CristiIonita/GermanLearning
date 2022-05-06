@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="DELETE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_723119_germanlrn.Similarity</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>Similarity</name>
+        <script><![CDATA[var Similarity = Class.create();
+Similarity.prototype = {
+    initialize: function() {},
+    similarity: function(s1, s2) {
+        s1 = s1 ? s1 : this.getParameter('sysparm_s1');
+        s2 = s2 ? s2 : this.getParameter('sysparm_s2');
+        var longer = s1;
+        var shorter = s2;
+        if (s1.length < s2.length) {
+            longer = s2;
+            shorter = s1;
+        }
+        var longerLength = longer.length;
+        if (longerLength == 0) {
+            return 1.0;
+        }
+        return (longerLength - this.editDistance(longer, shorter)) / parseFloat(longerLength);
+    },
+    editDistance: function(s1, s2) {
+        s1 = s1 ? s1 : this.getParameter('sysparm_s1');
+        s2 = s2 ? s2 : this.getParameter('sysparm_s2');
+
+        s1 = s1.toLowerCase();
+        s2 = s2.toLowerCase();
+
+        var costs = new Array();
+        for (var i = 0; i <= s1.length; i++) {
+            var lastValue = i;
+            for (var j = 0; j <= s2.length; j++) {
+                if (i == 0)
+                    costs[j] = j;
+                else {
+                    if (j > 0) {
+                        var newValue = costs[j - 1];
+                        if (s1.charAt(i - 1) != s2.charAt(j - 1))
+                            newValue = Math.min(Math.min(newValue, lastValue),
+                                costs[j]) + 1;
+                        costs[j - 1] = lastValue;
+                        lastValue = newValue;
+                    }
+                }
+            }
+            if (i > 0)
+                costs[s2.length] = lastValue;
+        }
+        return costs[s2.length];
+    },
+    type: 'Similarity'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-16 08:04:15</sys_created_on>
+        <sys_id>beea6a402f310110ee00d5f62799b67f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Similarity</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sys_script_include_beea6a402f310110ee00d5f62799b67f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-16 08:04:15</sys_updated_on>
+    </sys_script_include>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sys_script_include_beea6a402f310110ee00d5f62799b67f</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;x_723119_germanlrn.Similarity&lt;/api_name&gt;&lt;caller_access/&gt;&lt;client_callable&gt;false&lt;/client_callable&gt;&lt;description/&gt;&lt;name&gt;Similarity&lt;/name&gt;&lt;script&gt;&lt;![CDATA[var Similarity = Class.create();
+Similarity.prototype = {
+    initialize: function() {},
+    similarity: function(s1, s2) {
+        s1 = s1 ? s1 : this.getParameter('sysparm_s1');
+        s2 = s2 ? s2 : this.getParameter('sysparm_s2');
+        var longer = s1;
+        var shorter = s2;
+        if (s1.length &lt; s2.length) {
+            longer = s2;
+            shorter = s1;
+        }
+        var longerLength = longer.length;
+        if (longerLength == 0) {
+            return 1.0;
+        }
+        return (longerLength - this.editDistance(longer, shorter)) / parseFloat(longerLength);
+    },
+    editDistance: function(s1, s2) {
+        s1 = s1 ? s1 : this.getParameter('sysparm_s1');
+        s2 = s2 ? s2 : this.getParameter('sysparm_s2');
+
+        s1 = s1.toLowerCase();
+        s2 = s2.toLowerCase();
+
+        var costs = new Array();
+        for (var i = 0; i &lt;= s1.length; i++) {
+            var lastValue = i;
+            for (var j = 0; j &lt;= s2.length; j++) {
+                if (i == 0)
+                    costs[j] = j;
+                else {
+                    if (j &gt; 0) {
+                        var newValue = costs[j - 1];
+                        if (s1.charAt(i - 1) != s2.charAt(j - 1))
+                            newValue = Math.min(Math.min(newValue, lastValue),
+                                costs[j]) + 1;
+                        costs[j - 1] = lastValue;
+                        lastValue = newValue;
+                    }
+                }
+            }
+            if (i &gt; 0)
+                costs[s2.length] = lastValue;
+        }
+        return costs[s2.length];
+    },
+    type: 'Similarity'
+};]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-02-16 08:04:15&lt;/sys_created_on&gt;&lt;sys_id&gt;beea6a402f310110ee00d5f62799b67f&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;Similarity&lt;/sys_name&gt;&lt;sys_package display_value="German Learning" source="x_723119_germanlrn"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_package&gt;&lt;sys_policy&gt;read&lt;/sys_policy&gt;&lt;sys_scope display_value="German Learning"&gt;612b9ab72f100110ee00d5f62799b622&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_beea6a402f310110ee00d5f62799b67f&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-02-16 08:04:15&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>839014390</payload_hash>
+        <record_name>Similarity</record_name>
+        <reverted_from/>
+        <source>a52b9ab72f100110ee00d5f62799b624</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-16 08:04:15</sys_created_on>
+        <sys_id>5dfbe6802f310110ee00d5f62799b639</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17f018f7d390000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-16 08:04:15</sys_updated_on>
+        <type>Script Include</type>
+        <update_guid>55fbe680f93101108bd5d22f7a09b739</update_guid>
+        <update_guid_history>55fbe680f93101108bd5d22f7a09b739:839014390</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-16 13:09:18</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_include">sys_script_include</sys_db_object>
+        <sys_id>4580326586874576881baf3c3f1f91c4</sys_id>
+        <sys_metadata>beea6a402f310110ee00d5f62799b67f</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Similarity</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent/>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sys_script_include_beea6a402f310110ee00d5f62799b67f</sys_update_name>
+        <sys_update_version display_value="sys_script_include_beea6a402f310110ee00d5f62799b67f">5dfbe6802f310110ee00d5f62799b639</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-16 13:09:18</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

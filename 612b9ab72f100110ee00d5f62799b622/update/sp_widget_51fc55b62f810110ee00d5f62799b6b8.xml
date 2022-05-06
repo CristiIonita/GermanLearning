@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.row{&#13;
+  margin-left:auto;&#13;
+  margin-right:auto;&#13;
+  margin-top:12px;&#13;
+ &#13;
+ }&#13;
+&#13;
+.b{&#13;
+  height:70px;&#13;
+  background-color:#484649;&#13;
+  border-radius:5px;&#13;
+  color:white;&#13;
+  text-align:center;&#13;
+}&#13;
+&#13;
+.c{&#13;
+  min-height: 200px;&#13;
+  max-height: 600px;&#13;
+  border: 1px #484649 solid;&#13;
+  border-radius:5px;&#13;
+  text-align:left;&#13;
+}&#13;
+.dot {&#13;
+  height: 15px;&#13;
+  width: 15px;&#13;
+  position: absolute;&#13;
+  right:5px;&#13;
+  top: 5px;&#13;
+  border-radius: 50%;&#13;
+  &#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>gla_homework</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Homework</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+    var a = gs.getProperty("glide.servlet.uri") + gs.action.getGlideURI();
+    a = a + '';
+
+    a = a.split("sys_id=");
+    var recordSysId = a[1].split('&')[0] + '';
+
+
+    var gr = new GlideRecord('x_723119_germanlrn_homework');
+    gr.addQuery('sys_id', recordSysId);
+    gr.query();
+    if (gr.next()) {
+        data.name = gr.getValue('name');
+        data.number = '#' + gr.getValue('number').split('HOM')[1];
+        data.resources = gr.getDisplayValue('resources');
+        data.resourceID = gr.resources.toString();
+        if (gr.active == true) {
+            data.active = "background-color:#54BC69; color:#54BC69;";
+        } else {
+            data.active = "background-color:#FE5339; color:#FE5339;";
+        }
+
+        var instructions = gr.getValue('instructions');
+        data.instructions = instructions; // html tag to bind the string with html tags ng-bind-html="data.notes"
+    }
+
+    var gr2 = new GlideRecord('sys_attachment');
+    gr2.addQuery('table_name', 'x_723119_germanlrn_homework');
+    gr2.addQuery('table_sys_id', recordSysId);
+    gr2.query();
+    if (gr2.next()) {
+
+        data.attachments = "sys_attachment.do?sys_id=" + gr2.sys_id;
+    }
+
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-01-18 08:36:08</sys_created_on>
+        <sys_id>51fc55b62f810110ee00d5f62799b6b8</sys_id>
+        <sys_mod_count>160</sys_mod_count>
+        <sys_name>Homework</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_51fc55b62f810110ee00d5f62799b6b8</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-03-23 15:17:37</sys_updated_on>
+        <template><![CDATA[<div>
+<div class="row b">
+    <div class="col-sm-12">
+      
+      	<div ng-if="data.active">
+  				<span class="dot" style={{data.active}}></span>
+ 				</div>
+      
+ 				
+  			<div>
+         		<p ng-if="data.name" style="font-size:16px; color:#fff; font-weight: bolder; text-align:center;">{{data.name}}</p> 
+     		</div>
+  				
+   			<div>
+      	   	<p ng-if="data.number" style="font-size:13px; color:#fff; text-align:center;">{{data.number}}</p>  
+      	</div>
+ 					
+  	</div>
+  </div>
+  
+  <div class="row c">
+    <div class="col-sm-12">
+  			
+      <div>
+        	<p ng-if="data.instructions" style="font-size:25px">Instructions</p>
+           <p ng-bind-html="data.instructions"> {{data.instructions}}</p>
+      </div>
+      
+      <p ng-if="data.resources" style="font-size:25px"><br>Resources</p>
+      	<div ng-if="data.resources">
+         <a href="glap?id=gla_resource&sys_id={{data.resourceID}}">{{data.resources}}</a>
+  		</div>
+
+       <p ng-if="data.attachments" style="font-size:25px"><br>Attachments</p>
+     <div ng-if="data.attachments" style="float:left; padding-bottom:1.5rem;">
+    			<a href={{data.attachments}} target="_blank">Download Attachments</a>
+  			</div>
+     
+    </div>
+  </div>
+ 
+</div>
+
+]]></template>
+    </sp_widget>
+</record_update>

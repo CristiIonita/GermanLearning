@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_catalog">
+    <sc_cat_item_catalog action="DELETE">
+        <sc_cat_item display_value="Create Group 2-TEST">8b0c854c2f250110ee00d5f62799b6d7</sc_cat_item>
+        <sc_catalog display_value="GLA Catalog">d2dd8bbb2f490110ee00d5f62799b657</sc_catalog>
+        <sys_class_name>sc_cat_item_catalog</sys_class_name>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-03 15:04:16</sys_created_on>
+        <sys_id>0b6f81002f650110ee00d5f62799b65a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>GLA Catalog.Create Group 2-TEST</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sc_cat_item_catalog_0b6f81002f650110ee00d5f62799b65a</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-03 15:04:16</sys_updated_on>
+    </sc_cat_item_catalog>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="German Learning">612b9ab72f100110ee00d5f62799b622</application>
+        <file_path/>
+        <instance_id>7549a605db5f049442b321c4059619e1</instance_id>
+        <instance_name>dev101723</instance_name>
+        <name>sc_cat_item_catalog_0b6f81002f650110ee00d5f62799b65a</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_catalog"><sc_cat_item_catalog action="INSERT_OR_UPDATE"><sc_cat_item display_value="Create Group 2-TEST">8b0c854c2f250110ee00d5f62799b6d7</sc_cat_item><sc_catalog display_value="GLA Catalog">d2dd8bbb2f490110ee00d5f62799b657</sc_catalog><sys_class_name>sc_cat_item_catalog</sys_class_name><sys_created_by>icristi</sys_created_by><sys_created_on>2022-02-03 15:04:16</sys_created_on><sys_id>0b6f81002f650110ee00d5f62799b65a</sys_id><sys_mod_count>0</sys_mod_count><sys_name>GLA Catalog.Create Group 2-TEST</sys_name><sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package><sys_policy/><sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope><sys_update_name>sc_cat_item_catalog_0b6f81002f650110ee00d5f62799b65a</sys_update_name><sys_updated_by>icristi</sys_updated_by><sys_updated_on>2022-02-03 15:04:16</sys_updated_on></sc_cat_item_catalog></record_update>]]></payload>
+        <payload_hash>-259202316</payload_hash>
+        <record_name>GLA Catalog.Create Group 2-TEST</record_name>
+        <reverted_from/>
+        <source>ddf81ff32f890110ee00d5f62799b6e1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>icristi</sys_created_by>
+        <sys_created_on>2022-02-03 15:04:16</sys_created_on>
+        <sys_id>db6f81002f650110ee00d5f62799b65d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ec01d5bea0000001</sys_recorded_at>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-02-03 15:04:16</sys_updated_on>
+        <type>Catalog Items Catalog</type>
+        <update_guid>176f8100506501103362f996c37b165d</update_guid>
+        <update_guid_history>176f8100506501103362f996c37b165d:-259202316</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="GLA Catalog.Create Group 2-TEST">cbebf5052fa10110ee00d5f62799b6ea</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-06 20:52:36</sys_created_on>
+        <sys_db_object display_value="" name="sc_cat_item_catalog">sc_cat_item_catalog</sys_db_object>
+        <sys_id>0a9ff43d9aca415ebe2481817b9fee51</sys_id>
+        <sys_metadata>0b6f81002f650110ee00d5f62799b65a</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>GLA Catalog.Create Group 2-TEST</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_parent display_value="Create Group 2-TEST">8b0c854c2f250110ee00d5f62799b6d7</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_scope_delete display_value="">0512347fbadb48889a058a15e6fdcaa4</sys_scope_delete>
+        <sys_update_name>sc_cat_item_catalog_0b6f81002f650110ee00d5f62799b65a</sys_update_name>
+        <sys_update_version display_value="sc_cat_item_catalog_0b6f81002f650110ee00d5f62799b65a">db6f81002f650110ee00d5f62799b65d</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-02-06 20:52:36</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

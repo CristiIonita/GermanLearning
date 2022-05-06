@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function(spUtil,$scope) {
+  /* widget controller */
+  var c = this;
+	c.showCheck = true;
+	c.showNext = false ;
+
+	
+	c.load = function () {
+		c.data.control = "nextGR";
+		$scope.loadingIndicator = true;
+		var timeString=new Date();
+		c.data.hours=timeString.getHours();
+		c.data.minutes=timeString.getMinutes();
+		c.data.seconds=timeString.getSeconds();
+		c.server.update().then(function(r) {
+               $scope.loadingIndicator = false;
+            });
+	};
+	c.checkAnswer = function(){
+		var varibale = document.getElementById('input');
+		var value = varibale.value;
+		if(value == ""){
+			spUtil.addErrorMessage("Don't leave input blank");
+			return false;
+		}
+	
+		
+		c.data.control = "checkAnswer";
+		c.showCheck = false;
+		c.showNext = true;
+		c.data.textForSim = c.data.translatedText;
+		var timeString2=new Date();
+		c.data.hour2=timeString2.getHours();
+		c.data.minutes2=timeString2.getMinutes();
+		c.data.seconds2=timeString2.getSeconds();
+		c.server.update();
+		
+	};
+	c.giveNext = function(){
+		c.data.textForTranslate = "";
+		$scope.loadingIndicator = true;
+		c.data.practiceText = "";
+		c.data.control = "nextGR";
+		c.showNext = false;
+		c.showCheck = true;
+		c.server.update().then(function(r) {
+               $scope.loadingIndicator = false;
+            });
+	};
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>  .checkButton{&#13;
+ &#13;
+  background-color: #484649;&#13;
+  border: none;&#13;
+  border-radius:5px;&#13;
+  color: white;&#13;
+  margin-top: 5px;&#13;
+  margin-right: 10px;&#13;
+  padding: 12px 26px;&#13;
+  text-align: center;&#13;
+  opacity:0.6;&#13;
+  font-size: 16px;&#13;
+ &#13;
+  transition: 0.3s;&#13;
+  display: inline-block;&#13;
+  text-decoration: none;&#13;
+ }&#13;
+  .checkButton:hover&#13;
+{&#13;
+opacity: 1;&#13;
+}&#13;
+.spinner{&#13;
+&#13;
+height: 0px;&#13;
+}&#13;
+&#13;
+&#13;
+.phrase_container{&#13;
+ margin-top:5px;&#13;
+  color: #fff;&#13;
+  font-size: 25px;&#13;
+  height: 30px;&#13;
+}&#13;
+.percent_p{&#13;
+color: #484649;&#13;
+font-size: 15px;&#13;
+font-weight: bolder;&#13;
+}&#13;
+#secondContainer{&#13;
+margin-top : 5px ;&#13;
+  &#13;
+}&#13;
+&#13;
+.main_container{&#13;
+margin-top : 10px;&#13;
+background-color: #444343; &#13;
+border-radius: 4px; &#13;
+height:210px;&#13;
+}&#13;
+&#13;
+.inputText&#13;
+{&#13;
+width: 100%;&#13;
+  padding: 12px;&#13;
+  border: 1px solid #ccc;&#13;
+  border-radius: 4px;&#13;
+ &#13;
+}&#13;
+&#13;
+.nextButton{&#13;
+&#13;
+&#13;
+  background-color: #484649;&#13;
+  border: none;&#13;
+  border-radius:5px;&#13;
+  margin-top: 10px;&#13;
+  color: white;&#13;
+  padding: 12px 26px;&#13;
+  text-align: center;&#13;
+  opacity:0.6;&#13;
+  font-size: 16px;&#13;
+ &#13;
+  transition: 0.3s;&#13;
+  display: inline-block;&#13;
+  text-decoration: none;&#13;
+}&#13;
+ .nextButton:hover&#13;
+{&#13;
+opacity: 1;&#13;
+}&#13;
+&#13;
+.flex-parent {&#13;
+  display: flex;&#13;
+}&#13;
+&#13;
+.jc-center {&#13;
+  justify-content: center;&#13;
+}&#13;
+.name_style{&#13;
+color: #484649;&#13;
+text-align: center;&#13;
+}&#13;
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>gla_translation_practice</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Translation practice</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+    if (input && input.control) {
+        if (input.control == "nextGR") {
+            data.showPercentage = false;
+
+
+            //	data.showPercentage = false ;
+            var sys = [];
+            var record = new GlideRecord('sys_ui_message');
+            record.addEncodedQuery("keyLIKEgla_phrase");
+            record.query();
+            while (record.next()) {
+                var rows = record.getRowCount();
+                sys.push(record.getUniqueValue());
+            }
+
+            var mathe = Math.floor(Math.random() * rows);
+            //var iterator = parseInt(mathe);
+
+            var randomRec = new GlideRecord('sys_ui_message');
+            randomRec.addEncodedQuery('sys_idLIKE' + sys[mathe]);
+            randomRec.query();
+
+            if (randomRec.next()) {
+                data.practiceText = randomRec.getDisplayValue('message');
+                var languageFromRecord = randomRec.getValue('language');
+                if (languageFromRecord == "en") {
+                    data.lang = "en-de";
+                } else {
+                    data.lang = "de-en";
+                }
+                var translateCall = new Translate();
+                data.translatedText = translateCall.translateText(data.lang, data.practiceText);
+
+            }
+					
+				
+						}    
+
+    }
+	
+    if (input && input.control) {
+        if (input.control == "checkAnswer") {
+            console.log("i got here");
+            data.practiceText = input.textForSim;
+            var a = new Similarity();
+            var perc = a.similarity(input.textForTranslate, input.textForSim) * 100;
+            data.percentage = (Math.round(perc * 100) / 100).toFixed(2);
+            data.showPercentage = true;
+						var grU= new GlideRecord('sys_user');
+							grU.get(gs.getUserID());
+							//points:
+							grU.u_points=(parseFloat(grU.u_points)+(data.percentage/10)).toFixed(2);
+							grU.update();
+					
+					
+					
+				}
+    }
+	
+	
+	
+
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-02-11 10:59:16</sys_created_on>
+        <sys_id>8bf3adee2f614110ee00d5f62799b6e1</sys_id>
+        <sys_mod_count>253</sys_mod_count>
+        <sys_name>Translation practice</sys_name>
+        <sys_package display_value="German Learning" source="x_723119_germanlrn">612b9ab72f100110ee00d5f62799b622</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="German Learning">612b9ab72f100110ee00d5f62799b622</sys_scope>
+        <sys_update_name>sp_widget_8bf3adee2f614110ee00d5f62799b6e1</sys_update_name>
+        <sys_updated_by>icristi</sys_updated_by>
+        <sys_updated_on>2022-04-15 16:41:30</sys_updated_on>
+        <template><![CDATA[<div >
+  <h2 class="name_style">Translation Practice </h2>
+</div>
+
+<div ng-init = "c.load()" class = "container-fluid text-center main_container" >
+  
+  <p style="color: #fff; padding:1rem; font-size: 18px;">
+    On this page you can practice your translations.
+  </p>
+  <p style="color: #fff; font-size: 18px;">
+    A phrase will be shown in English or German and you'll have to provide the correct translation for it.
+  </p>
+ 
+
+<div class = "row text-center" >
+   <div class="spinner" ng-show="loadingIndicator">
+
+           <img src="spinner-front.svg" class="loading-spinner"/>
+
+       </div>
+  <div class ="col-sm-12 text-center phrase_container">
+   {{data.practiceText}}
+   </div>
+</div>
+  
+  <br>
+  <div class ="col-sm-12">
+  <input id ="input" ng-model = "c.data.textForTranslate"  placeholder="Translation..." class="inputText">
+  </div>
+  </div>
+
+<div id = "secondContainer" class = "container-fluid text-center">
+  
+
+<div class = "row text-center" >
+ 
+</div>
+ <button  class="checkButton" ng-click = "c.checkAnswer()" >
+ Check Answer
+</button>
+    <button  ng-click = "c.giveNext()" class="nextButton" >
+ Next
+</button>
+  </div>
+<div ng-show = "data.showPercentage" class="flex-parent jc-center">
+   <div class ="row text-center" >
+    <div class ="col-sm-12 text-center">
+      <br>
+      <p class="percent_p">
+        You were {{data.percentage}}% correct !
+      </p>
+    </div>
+  </div>
+
+</div>
+]]></template>
+    </sp_widget>
+</record_update>
